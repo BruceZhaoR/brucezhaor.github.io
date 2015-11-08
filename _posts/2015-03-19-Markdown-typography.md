@@ -1,8 +1,9 @@
 ---
 layout: post
-category : syntax
+title: Markdown 简明语法
 tagline: "Supporting tagline"
-tags : [jekyll, tutorial]
+category : syntax
+tags : [Markdown, syntax]
 ---
 
 ## This is a h2
