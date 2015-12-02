@@ -2,14 +2,14 @@
 layout: post
 title: 如何设置R中的TimeZone
 tagline: "Supporting tagline"
-category : R environment
+category : R
 tags : [R_env]
 ---
 {% include JB/setup %}
 
 ## 写在前面的话
 
-欢迎大家来到小赵的blog，这是我的第一篇文章，需要拍砖的请在下面`DISQUS`评论区尽情拍。由于目前blog的布局对手机端还没有调好，所以用手机看会有点别扭，但是不用担心，这个小赵应该能解决这个问题。下面进入正题：
+欢迎大家来到小赵的blog，这是我的第一篇文章，需要拍砖的请在下面`DISQUS`评论区尽情拍。由于目前blog的布局对手机端还没有调好，所以用手机看会有点别扭，但是不用担心，这个周末小赵应该能解决这个问题。下面进入正题：
     
 这篇文章将简单记录如何设置**R**中时区-TimeZone.前一阵子使用了`devtools`包里面的一个`session_info()`函数，发现自己的`tz`设置成为了`Asia/Taipei`。在强迫症的作用下，我就要去把`tz`设置成`Asia/Shanghai`.
 
@@ -39,9 +39,9 @@ Packages -----------------------------------------------------------------------
 
 现在开始进入正题，如何设置R中的时区，以及让R每次打开都自动配置好工作环境？
 
-```R
-    Sys.setenv(TZ="Asia/Shanghai")
-```
+{% highlight r %}
+Sys.setenv(TZ="Asia/Shanghai")
+{% endhighlight %}
 
 一行命名搞定。（看着简单，我看了好几篇Google的文章）
 
@@ -57,8 +57,27 @@ Packages -----------------------------------------------------------------------
 
 ### 编码环境问题
 输入：
+{% highlight r %}
 > sessionInfo()
-你会看到 ... .936  这个是GBK编码的环境。想必很多人都碰到中文乱码的问题，小赵也是深受其害啊。下一期找一个时间写一写解决中文乱码问题的总结，把我之前探索的经验跟大家交流一下。另外 还有黑魔法用R生成**中文PDF**以及**中文beamer**教程。
+R version 3.2.2 (2015-08-14)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+Running under: Windows 8 x64 (build 9200)
+
+locale:
+[1] LC_COLLATE=Chinese (Simplified)_China.936 
+[2] LC_CTYPE=Chinese (Simplified)_China.936   
+[3] LC_MONETARY=Chinese (Simplified)_China.936
+[4] LC_NUMERIC=C                              
+[5] LC_TIME=Chinese (Simplified)_China.936    
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+loaded via a namespace (and not attached):
+[1] tools_3.2.2
+{% endhighlight %}
+
+你会看到.936...这个是GBK编码的环境。想必很多人都碰到中文乱码的问题，小赵也是深受其害啊。下一期找一个时间写一写解决中文乱码问题的总结，把我之前探索的经验跟大家交流一下。另外 还有黑魔法用R生成**中文PDF**以及**中文beamer**教程。
 
 ## 写在后面的话
 
