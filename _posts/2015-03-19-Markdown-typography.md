@@ -1,9 +1,12 @@
 ---
 layout: post
 title: Markdown 简明语法
-tagline: "Supporting tagline"
 category : syntax
 tags : [Markdown, syntax]
+tagline: 
+fullview: 
+comments: 
+description: 
 ---
 
 ## This is a h2

@@ -3,8 +3,12 @@ layout: post
 title: dplyr连接SQLite数据库
 category : R
 tags : [dplyr,database,RSQLite]
+tagline: 
+fullview: 
+comments: true
+description: 使用dplyr包和RSQLite包实现数据库的连接与管理，轻松处理百M级别数据；数据乱码源头解决方案——readr。
 ---
-{% include JB/setup %}
+
 
 ## 写在前面的话
 这篇文章为我提交的 [dplyr issue][issue1]，关于连接数据库以及解决中文乱码问题。所以这篇文章主要有三个点：
@@ -229,5 +233,3 @@ Packages -----------------------------------------------------------------------
 [issue1]: https://github.com/hadley/dplyr/issues/1561
 [issue2]: https://github.com/rstats-db/RSQLite/issues/108
 [3]: https://github.com/hadley/readr
-
-*本篇文章under [(CC) BY-NC-SA 3.0 CN](http://creativecommons.org/licenses/by-nc-sa/3.0/cn/) ,转载请标明出处* Copyright &copy; 2015 Bruce Zhao.

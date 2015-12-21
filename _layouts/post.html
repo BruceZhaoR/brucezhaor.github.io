@@ -1,7 +1,8 @@
 ---
-theme :
-  name : the-minimum
 layout: default
 ---
-{% include JB/setup %}
-{% include themes/the-minimum/post.html %}
+{% include post.html %}
+
+{% if site.disqus and page.comments %}
+    {% include disqus.html %}
+{% endif %}
