@@ -1,4 +1,4 @@
-## Bruce Tech Blog
+## BruceZhao's Tech Blog
  
 ### Hello World!
 
@@ -14,7 +14,6 @@ My name is Bruce Zhao and my major is Statistics. I use  [**R software**](https:
 
 
 ### dbyll
-=====
 Open source stylish, minimalistic theme for jekyll.  
 Demo: http://dbtek.github.io/dbyll/
 
@@ -22,6 +21,8 @@ Demo: http://dbtek.github.io/dbyll/
 - [MIT](http://opensource.org/licenses/MIT)
 
 
-### Avatar
+### Me
 
-![me](images/me1)
+<br />
+
+![me](images/me1.png)
