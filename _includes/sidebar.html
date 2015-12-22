@@ -16,10 +16,10 @@
 
 <div id="contact-list" class="text-center">
 	<ul class="list-unstyled list-inline">
-		{% if site.author.github %}
+		{% if site.author.weixin %}
 		<li>
-			<a class="btn btn-default btn-sm" href="https://github.com/{{ site.author.github }}">
-				<i class="fa fa-github-square fa-lg"></i>
+			<a class="btn btn-default btn-sm" href="http://pic.yupoo.com/{{ site.author.weixin }}">
+				<i class="fa fa-weixin fa-lg"></i>
 			</a>
 		</li>
 		{% endif %}
@@ -39,17 +39,17 @@
 		{% endif %}
 	</ul>
 	<ul id="contact-list-secondary" class="list-unstyled list-inline">
+		{% if site.author.github %}
+		<li>
+			<a class="btn btn-default btn-sm" href="https://github.com/{{ site.author.github }}">
+				<i class="fa fa-github-square fa-lg"></i>
+			</a>
+		</li>
+		{% endif %}
 		{% if site.author.linkedin %}
 		<li>
 			<a class="btn btn-default btn-sm" href="https://linkedin.com/in/{{ site.author.linkedin }}">
 				<i class="fa fa-linkedin fa-lg"></i>
-			</a>
-		</li>
-		{% endif %}
-		{% if site.author.weixin %}
-		<li>
-			<a class="btn btn-default btn-sm" href="http://pic.yupoo.com/{{ site.author.weixin }}">
-				<i class="fa fa-weixin fa-lg"></i>
 			</a>
 		</li>
 		{% endif %}
