@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>About me</title>
+	
+	<meta name="description" content="使用dplyr包和RSQLite包实现数据库的连接与管理，轻松处理百M级别数据；数据乱码源头解决方案——readr。">
+	
+	<meta name="author" content="Bruce Zhao">
+	
+	<meta property="wb:webmaster" content="58c00cb9a25a864a" />
+	
+	<!-- Enable responsive viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Le styles -->
+	<link href="/assets/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/assets/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="/assets/resources/syntax/syntax.css" rel="stylesheet">
+	<link href="/assets/css/style.css" rel="stylesheet">
+
+	<!-- Le fav and touch icons -->
+	<!-- Update these with your own images
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+	-->
+	<link rel="icon" href="/img/favicon.png">
+	
+	<link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+	<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+	
+</head>
+
+<body>
+	<nav class="navbar navbar-default visible-xs" role="navigation">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			
+			<a type="button" class="navbar-toggle nav-link" href="http://github.com/BruceZhaoR">
+				<i class="fa fa-github-square"></i>
+			</a>
+			
+			
+			<a type="button" class="navbar-toggle nav-link" href="http://weibo.com/brucezhaor">
+				<i class="fa fa-weibo"></i>
+			</a>
+			
+			
+			<a type="button" class="navbar-toggle nav-link" href="mailto:brucezhaor2016@gmail.com">
+				<i class="fa fa-envelope"></i>
+			</a>
+			
+			<a class="navbar-brand" href="/">
+				<img src="http://pic.yupoo.com/brucezhaor/FanAque4/medium.jpg" class="img-responsive" />
+				
+			</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/">Home</a></li>
+				<li><a href="/archive.html">Archive</a></li>
+				<li><a href="/categories.html">Categories</a></li>
+				<li><a href="/tags.html">Tags</a></li>
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</nav>
+
+	<!-- nav-menu-dropdown -->
+	<div class="btn-group hidden-xs" id="nav-menu">
+		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+			<i class="fa fa-bars"></i>
+		</button>
+		<ul class="dropdown-menu" role="menu">
+			<li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+			<li><a href="/archive.html"><i class="fa fa-archive"></i>Archive</a></li>
+			<li><a href="/categories.html"><i class="fa fa-folder"></i>Categories</a></li>
+			<li><a href="/tags.html"><i class="fa fa-tags"></i>Tags</a></li>
+			<li class="divider"></li>
+			<li><a href="#"><i class="fa fa-arrow-up"></i>Top of Page</a></li>
+		</ul>
+	</div>
+
+	<div class="col-sm-3 sidebar hidden-xs">
+		<!-- sidebar.html -->
+<header class="sidebar-header" role="banner">
+	<a href="/">
+		<img src="http://pic.yupoo.com/brucezhaor/FanAque4/medium.jpg" class="img-responsive" />
+	</a>
+	<h3 class="title">
+        <a href="/"></a>
+    </h3>
+</header>
+
+
+<div id="bio" class="text-center">
+	<strong>To be a Data Scientist!</strong>
+</div>
+
+
+<div id="contact-list" class="text-center">
+	<ul class="list-unstyled list-inline">
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="https://github.com/BruceZhaoR">
+				<i class="fa fa-github-square fa-lg"></i>
+			</a>
+		</li>
+		
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="http://weibo.com/brucezhaor">
+				<i class="fa fa-weibo fa-lg"></i>
+			</a>
+		</li>
+		
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="mailto:brucezhaor2016@gmail.com">
+				<i class="fa fa-envelope fa-lg"></i>
+			</a>
+		</li>
+		
+	</ul>
+	<ul id="contact-list-secondary" class="list-unstyled list-inline">
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="https://linkedin.com/in/bruce-zhao-0ab74287">
+				<i class="fa fa-linkedin fa-lg"></i>
+			</a>
+		</li>
+		
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="http://pic.yupoo.com/brucezhaor/Fc4u8KUO/medium.jpg">
+				<i class="fa fa-weixin fa-lg"></i>
+			</a>
+		</li>
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="/feed.xml">
+				<i class="fa fa-rss fa-lg"></i>
+			</a>
+		</li>
+	</ul>
+</div>
+<!-- sidebar.html end -->
+	</div>
+
+	<div class="col-sm-9 col-sm-offset-3">
+		<div class="page-header">
+  <h1>About me</h1>
+</div>
+<article>
+
+	<div class="col-sm-10">
+
+	  <div class="article_body">
+	  <h2 id="section">Hello World!</h2>
+
+<p>This is my first Blog on<a href="https://github.com">GitHub</a>, licenses under<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/">(CC) BY-NC-SA 3.0 CN</a>. Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a> and <a href="https://github.com/dbtek/dbyll">Dbyll Theme</a>. <br/>
+This Blog will be used to record some notes and thoughts about using <a href="https://www.r-project.org"> R Software</a>in analysing data.</p>
+
+<h4>这个博客将用来记录在使用<strong>R</strong>过程中的笔记和感想，欢迎大家与我交流数据分析方面的知识~.</h4>
+
+<h3>dbyll</h2>
+
+<p>Open source stylish, minimalistic theme for jekyll.</p>
+<p><a href="http://dbtek.github.io/dbyll/"> Demo </a> : <code>http://dbtek.github.io/dbyll/</code></p>
+<p><strong>License:<a href="http://opensource.org/licenses/MIT">MIT</a></strong></p>
+
+
+<h3 id="me">Me</h3>
+
+<p><br /></p>
+
+<p><img src="images/me1.png" alt="me" /></p>
+
+
+
+<h3 id="section-2">写在后面的话</h3>
+
+
+<p>干货多多，欢迎大家RSS我的blog。需要拍砖的请在下面<code>disqus</code>区域评论,可以采用访客模式，但是还是建议去注册一个账号再来评论。小赵不会坑你的，<strong>disqus</strong>是一个国外很流行的评论社区，很多大牛的博客都是基于这个评论系统，注册一个没准下次还能跟大牛们交流。当然，你要是不相信小赵，你尽管是Google一下 disqus。</p>
+
+	  </div>
+	  
+
+	<p class="text-right">
+	<a href="/">Bruce Zhao</a>
+	</span>
+	<span class="time">
+	/
+	<time> 2015-12-31</time>
+	</p>
+	<p class="text-right">
+		<strong><em>Published under<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/">(CC) BY-NC-SA 3.0 CN</a>.
+		</em></strong>
+	</p>
+
+		
+		<hr>
+
+		<div>
+      <section class="share col-sm-6">
+	  
+		<wb:share-button appkey="316501947" type="button" size="big" ></wb:share-button>
+
+      </section>
+
+      <section class="col-sm-6 author">
+	
+		<a class="btn btn-primary btn-md" href="#">
+		<i class="fa fa-arrow-up pull-left"></i>
+		Back To Top
+		</a>
+        
+      </section>
+    </div>
+
+    <div class="clearfix"></div>
+		  
+
+		<hr>
+	</div>
+
+	<div class="col-sm-2 sidebar-2">
+
+	</div>
+</article>
+<div class="clearfix"></div>
+
+
+
+    
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'brucezhaor';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+		<footer>
+			<hr/>
+			<p>
+				&copy; 2015 Bruce Zhao ,licenses under<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/">(CC) BY-NC-SA 3.0 CN</a>. Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a> and <a href="https://github.com/dbtek/dbyll">Dbyll Theme</a>.Please indicate the source if you'd like to reproduce!
+			</p>
+		</footer>
+	</div>
+
+	<script type="text/javascript" src="/assets/resources/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/assets/resources/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/assets/js/app.js"></script>
+</body>
+</html>
+
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl =
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'brucezhaor']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+

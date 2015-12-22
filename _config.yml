@@ -1,7 +1,7 @@
 # visit https://github.com/mojombo/jekyll/wiki/Configuration for more settings
 
 timezone: Asia/Shanghai
-paginate: 10 # pagination based on number of posts
+paginate: 6 # pagination based on number of posts
 paginate_path: "page:num"
 exclude: ["README.md"] # files to exclude
 highlighter: pygments
@@ -14,9 +14,9 @@ defaults:
     scope:
       path: "" # empty string for all files
     values:
-      title: Bruce的博客
+      title: Bruce Zhao's Tech blog
 
-description: Welcome to my blog
+description: Welcome to my blog!
 author:
   name: Bruce Zhao
   email: brucezhaor2016@gmail.com
@@ -31,5 +31,6 @@ rss_path: feed.xml
 categories_path: categories.html
 tags_path: tags.html
 archive_path: archive.html
+about_path: about.html
 
 BASE_PATH:
