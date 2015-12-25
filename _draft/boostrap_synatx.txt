@@ -1,0 +1,17 @@
+bootstrap
+http://www.w3schools.com/bootstrap/bootstrap_images.asp
+
+
+# 插入图片链接
+	<a href="{{ site.BASE_PATH }}/">
+		<img src="http://pic.yupoo.com/{{site.author.yupoo}}" class="img-responsive" />
+	</a>
+
+# 索引是链接	
+[google][1]  [weibo][2]
+
+[1]: www.google.com
+[2]: weibo.com
+ 
+# 段内链接
+[google](https://www.google.com)    ![me](/images/me1.png)
