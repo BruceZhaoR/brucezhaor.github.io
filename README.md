@@ -19,8 +19,9 @@ Open source stylish, minimalistic theme for jekyll.
 Demo: http://dbtek.github.io/dbyll/
 License：[MIT](http://opensource.org/licenses/MIT)
 
-### 修改log
+## 修改log
 
+2015-12-26
 * 微信图标
 * 增加about.html页面
 * 主页面 full view: false
