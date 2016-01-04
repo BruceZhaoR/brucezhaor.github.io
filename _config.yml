@@ -1,5 +1,5 @@
 # visit https://github.com/mojombo/jekyll/wiki/Configuration for more settings
-
+title: brucezhaor.github.io #输入blog主页网址，微博分享用。
 timezone: Asia/Shanghai
 paginate: 6 # pagination based on number of posts
 paginate_path: "page:num"

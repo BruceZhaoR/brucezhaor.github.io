@@ -13,16 +13,25 @@ My name is Bruce Zhao and my major is Statistics. I use  [**R software**](https:
 #### 这个博客将用来记录在使用 **R** 过程中的笔记和感想，欢迎大家与我交流数据分析方面的知识~      
 
 
-### dbyll
+### 关于主题
+本主题修改自<mark>dbyll</mark>.
 Open source stylish, minimalistic theme for jekyll.  
 Demo: http://dbtek.github.io/dbyll/
+License：[MIT](http://opensource.org/licenses/MIT)
 
-### License
-- [MIT](http://opensource.org/licenses/MIT)
+### 修改log
 
+* 微信图标
+* 增加about.html页面
+* 主页面 full view: false
+* 增加微博share
+* 手机端contact图标
 
-### Me
+--------------
 
-<br />
+2016-01-04
 
-![me](images/me1.png)
+* 增加site.title
+* weibo share 优化
+* 侧边导航滚动栏
+* 字体 以及代码块优化
