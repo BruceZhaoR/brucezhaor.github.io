@@ -1,20 +1,19 @@
 # visit https://github.com/mojombo/jekyll/wiki/Configuration for more settings
-title: brucezhaor.github.io #输入blog主页网址，微博分享用。
+title: BZ's Blog #输入blog主页网址，微博分享用。
+SEOTitle: BruceZhao's Blog
 timezone: Asia/Shanghai
-paginate: 6 # pagination based on number of posts
+paginate: 10 # pagination based on number of posts
 paginate_path: "page:num"
-exclude: ["README.md"] # files to exclude
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"] # files to exclude
 highlighter: pygments
 markdown: kramdown
-disqus: brucezhaor
-google_analytics: brucezhaor
+kramdown:
+  input: GFM                       # use Github Flavored Markdown !important
+  
+# 国内用多说
+# disqus: brucezhaor
 
-defaults:
-  -
-    scope:
-      path: "" # empty string for all files
-    values:
-      title: Bruce Zhao's Tech blog
+google_analytics: brucezhaor
 
 description: Welcome to my blog!
 author:
@@ -23,9 +22,8 @@ author:
   github: BruceZhaoR
   weibo: brucezhaor
   linkedin: bruce-zhao-0ab74287
-  yupoo: brucezhaor/FanAque4/medium.jpg  #主页左侧图片,又拍网链接的照片
   weixin: brucezhaor/Fc4u8KUO/medium.jpg #网页例子  http://pic.yupoo.com/brucezhaor/Fc4u8KUO/medium.jpg
-  bio: To be a Data Scientist!
+
 
 rss_path: feed.xml
 categories_path: categories.html
@@ -34,3 +32,58 @@ archive_path: archive.html
 about_path: about.html
 
 BASE_PATH:
+
+
+# SNS settings
+
+weibo_username:     brucezhaor
+zhihu_username:     brucezhao
+github_username:    brucezhaor
+
+anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
+
+
+
+# Markdown settings
+# replace redcarpet to kramdown,
+# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
+# document: http://jekyllrb.com/docs/configuration/#kramdown
+markdown: kramdown
+kramdown:
+  input: GFM                            # use Github Flavored Markdown !important
+
+
+
+# 评论系统
+# Duoshuo settings
+duoshuo_username: brucezhaor
+# Share component is depend on Comment so we can NOT use share only.
+duoshuo_share: true                     # set to false if you want to use Comment without Sharing
+
+
+# Sidebar settings
+sidebar: true                           # whether or not using Sidebar.
+sidebar-about-description: "致力成为数据攻城狮。"
+sidebar-avatar: /img/me1.png     # use absolute URL, seeing it's used 
+
+
+
+# Friends
+friends: [
+    {
+        title: "谢益辉",
+        href: "http://yihui.name"
+    },{
+        title: "落园",
+        href: "http://www.loyhome.cn/"
+    },{
+        title: "京东-刘思喆",
+        href: "http://www.bjt.name/"
+    },{
+        title: "邱怡轩",
+        href: "http://yixuan.cos.name/cn/"
+	}
+]
+
+
+
