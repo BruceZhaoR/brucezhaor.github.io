@@ -6,8 +6,8 @@ description: "文章归档"
 header-img: "img/archive-bg.jpg"
 ---
 
-<!-- Page Header -->
-<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+<!-- 小一号图 -->
+<!-- <header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -18,38 +18,54 @@ header-img: "img/archive-bg.jpg"
             </div>
         </div>
     </div>
+</header> -->
+
+<!-- 大图 -->
+<header class="intro-header" style="background-image: url('{{ site.BASE_PATH }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading">{{ page.description }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </header>
 
-
- {% for post in site.posts  %}
-    {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
-    {% capture this_month %}{{ post.date | date: "%B" }}{% endcapture %}
-    {% capture next_year %}{{ post.previous.date | date: "%Y" }}{% endcapture %}
-    {% capture next_month %}{{ post.previous.date | date: "%B" }}{% endcapture %}
-  
-    {% if forloop.first %}
-      <h2>{{this_year}}</h2>
-      <h3>{{this_month}}</h3>
-      <ul>
-    {% endif %}
-  
-    <li><span>{{ post.date | date: "%B %e, %Y" }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
-  
-    {% if forloop.last %}
-      </ul>
-    {% else %}
-      {% if this_year != next_year %}
-        </ul>
-        <h2>{{next_year}}</h2>
-        <h3>{{next_month}}</h3>
-        <ul>
-      {% else %}    
-        {% if this_month != next_month %}
-          </ul>
-          <h3>{{next_month}}</h3>
-          <ul>
-        {% endif %}
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	{% for post in site.posts  %}
+		{% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
+		{% capture this_month %}{{ post.date | date: "%B" }}{% endcapture %}
+		{% capture next_year %}{{ post.previous.date | date: "%Y" }}{% endcapture %}
+		{% capture next_month %}{{ post.previous.date | date: "%B" }}{% endcapture %}
+	
+		{% if forloop.first %}
+		<h2>{{this_year}}</h2>
+		<h3>{{this_month}}</h3>
+		<ul>
 		{% endif %}
-	{% endif %}
-{% endfor%}
-{% assign posts_collate = nil %}
+	
+		<li><span>{{ post.date | date: "%B %e, %Y" }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
+	
+		{% if forloop.last %}
+		</ul>
+		{% else %}
+		{% if this_year != next_year %}
+			</ul>
+			<h2>{{next_year}}</h2>
+			<h3>{{next_month}}</h3>
+			<ul>
+		{% else %}    
+			{% if this_month != next_month %}
+			</ul>
+			<h3>{{next_month}}</h3>
+			<ul>
+			{% endif %}
+			{% endif %}
+		{% endif %}
+	{% endfor%}
+	{% assign posts_collate = nil %}
+</div>

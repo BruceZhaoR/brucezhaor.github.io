@@ -522,7 +522,7 @@ pre,
     margin-bottom: 10px;
   }
   .post-preview > a > .post-subtitle {
-    font-size: 16px;
+    font-size: 18px;
   }
   .post-preview .post-meta {
     font-size: 18px;
@@ -949,3 +949,5 @@ body {
 .page-fullscreen footer .copyright a:hover {
   color: #ddd;
 }
+
+.badge { background: #0085a1; }

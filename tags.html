@@ -5,7 +5,7 @@ description: "文章标签"
 header-img: "img/tag-bg.jpg"
 ---
 
-<!-- Page Header -->
+<!-- 小一号图 -->
 <header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
     <div class="container">
         <div class="row">
@@ -40,7 +40,7 @@ header-img: "img/tag-bg.jpg"
   {% for item in (0..site.tags.size) %}{% unless forloop.last %}
     {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
     <div class="tab-pane" id="{{ this_word | replace:' ','-' }}-ref">
-      <h2 style="margin-top: 0px">Posts tagged  with {{ this_word }}</h2>
+      <h3 style="margin-top: 0px">Posts tagged  with {{ this_word }}</h3>
       <ul class="list-unstyled">
         {% for post in site.tags[this_word] %}{% if post.title != null %}
           <li style="line-height: 35px;"><a href="{{ site.BASE_PATH }}{{post.url}}">{{post.title}}</a> <span class="text-muted">- {{ post.date | date: "%B %d, %Y" }}</span></li>
