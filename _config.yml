@@ -38,8 +38,9 @@ BASE_PATH:
 # SNS settings
 
 weibo_username:     brucezhaor
-zhihu_username:     brucezhao
+facebook_username:     BruceZhaoR
 github_username:    BruceZhaoR
+google_username:  101167914127123982138/posts
 RSS: feed.xml
 email: brucezhaor2016@gmail.com
 linkedin: bruce-zhao-0ab74287
