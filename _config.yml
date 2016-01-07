@@ -1,6 +1,7 @@
 # visit https://github.com/mojombo/jekyll/wiki/Configuration for more settings
-title: BZ's Blog #输入blog主页网址，微博分享用。
+title: BZR
 SEOTitle: BruceZhao's Blog
+author: Bruce Zhao
 timezone: Asia/Shanghai
 paginate: 10 # pagination based on number of posts
 paginate_path: "page:num"
@@ -75,7 +76,7 @@ sidebar-avatar: /img/me1.png     # use absolute URL, seeing it's used
 # Friends
 friends: [
 	{
-        title: "模板来源",
+        title: "Hux-模板来源",
         href: "http://huangxuan.me"
 	},{
         title: "谢益辉",

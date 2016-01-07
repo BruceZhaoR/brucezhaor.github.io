@@ -6,7 +6,7 @@ category : R
 tags : [dplyr,database,RSQLite]
 layout: post
 date:       2015-12-17
-author:     "Bruce"
+author:     "Bruce Zhao"
 header-img: "/img/post/dplyr1-bg.jpg"
 description:  使用dplyr包和RSQLite包实现数据库的连接与管理，轻松处理百M级别数据；数据乱码源头解决方案——readr。
 ---
@@ -233,7 +233,9 @@ Packages -----------------------------------------------------------------------
 ### 5. 最后 
 改手机界面确实好难，一点都不懂CSS+html的人，完全无从下手。上个周末改版失败，还没有这个好看，所以暂时就这样了。所以为了更好的观看体验，请使用网页端。
 测试一下公式显示效果如何  $C_3^2 = 3$
+
 $$ \int_0^{+\infty} x^n e^{-x} \,dx = n!  $$
+
 
 [issue1]: https://github.com/hadley/dplyr/issues/1561
 [issue2]: https://github.com/rstats-db/RSQLite/issues/108
