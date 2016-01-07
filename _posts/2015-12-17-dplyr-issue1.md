@@ -205,7 +205,7 @@ Source: local data frame [247 x 6]
 
 **附上我的R环境**
 
-``` r 
+{% highlight R %}
 Session info ----------------------------------------------------------------------
  setting  value                         
  version  R version 3.2.2 (2015-08-14)  
@@ -228,10 +228,12 @@ Packages -----------------------------------------------------------------------
  R6             2.1.1      2015-08-19 CRAN (R 3.2.2)                    
  Rcpp           0.12.2     2015-11-15 CRAN (R 3.2.2)                    
  RSQLite      * 1.0.9000   2015-11-05 Github (rstats-db/RSQLite@1187d0c) 
-```
+{% endhighlight %}
 
 ### 5. 最后 
 改手机界面确实好难，一点都不懂CSS+html的人，完全无从下手。上个周末改版失败，还没有这个好看，所以暂时就这样了。所以为了更好的观看体验，请使用网页端。
+测试一下公式显示效果如何  $C_3^2 = 3$
+$$ \int_0^{+\infty} x^n e^{-x} \,dx = n!  $$
 
 [issue1]: https://github.com/hadley/dplyr/issues/1561
 [issue2]: https://github.com/rstats-db/RSQLite/issues/108
