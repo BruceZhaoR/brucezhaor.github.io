@@ -16,16 +16,17 @@ kramdown:
 google_analytics: brucezhaor
 
 description: Welcome to my blog!
-author:
-  name: Bruce Zhao
-  email: brucezhaor2016@gmail.com
-  github: BruceZhaoR
-  weibo: brucezhaor
-  linkedin: bruce-zhao-0ab74287
-  weixin: brucezhaor/Fc4u8KUO/medium.jpg #网页例子  http://pic.yupoo.com/brucezhaor/Fc4u8KUO/medium.jpg
+
+# author:
+  # name: Bruce Zhao
+  # email: brucezhaor2016@gmail.com
+  # github: BruceZhaoR
+  # weibo: brucezhaor
+  # linkedin: bruce-zhao-0ab74287
+  # weixin: brucezhaor/Fc4u8KUO/medium.jpg #网页例子  http://pic.yupoo.com/brucezhaor/Fc4u8KUO/medium.jpg
 
 
-rss_path: feed.xml
+RSS: feed.xml
 categories_path: categories.html
 tags_path: tags.html
 archive_path: archive.html
@@ -38,7 +39,10 @@ BASE_PATH:
 
 weibo_username:     brucezhaor
 zhihu_username:     brucezhao
-github_username:    brucezhaor
+github_username:    BruceZhaoR
+RSS: feed.xml
+email: brucezhaor2016@gmail.com
+linkedin: bruce-zhao-0ab74287
 
 anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
 
@@ -61,8 +65,7 @@ duoshuo_username: brucezhaor
 duoshuo_share: true                     # set to false if you want to use Comment without Sharing
 
 
-# Sidebar settings
-sidebar: true                           # whether or not using Sidebar.
+# page Sidebar settings
 sidebar-about-description: "致力成为数据攻城狮。"
 sidebar-avatar: /img/me1.png     # use absolute URL, seeing it's used 
 
@@ -70,7 +73,10 @@ sidebar-avatar: /img/me1.png     # use absolute URL, seeing it's used
 
 # Friends
 friends: [
-    {
+	{
+        title: "模板来源",
+        href: "http://huangxuan.me"
+	},{
         title: "谢益辉",
         href: "http://yihui.name"
     },{

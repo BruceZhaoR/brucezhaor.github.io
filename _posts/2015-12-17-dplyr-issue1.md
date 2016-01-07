@@ -1,12 +1,14 @@
 ---
 layout: post
 title: dplyr连接SQLite数据库
+subtitle: "使用dplyr包和RSQLite包实现数据库的连接与管理，轻松处理百M级别数据；数据乱码源头解决方案——readr。"
 category : R
 tags : [dplyr,database,RSQLite]
-tagline: 
-fullview: 
-comments: true
-description: 使用dplyr包和RSQLite包实现数据库的连接与管理，轻松处理百M级别数据；数据乱码源头解决方案——readr。
+layout: post
+date:       2015-12-17
+author:     "Bruce"
+header-img: "/img/post/dplyr1-bg.jpg"
+description:  使用dplyr包和RSQLite包实现数据库的连接与管理，轻松处理百M级别数据；数据乱码源头解决方案——readr。
 ---
 
 
@@ -202,7 +204,8 @@ Source: local data frame [247 x 6]
 {% endhighlight %}
 
 **附上我的R环境**
-{% highlight r %}
+
+``` r 
 Session info ----------------------------------------------------------------------
  setting  value                         
  version  R version 3.2.2 (2015-08-14)  
@@ -225,7 +228,7 @@ Packages -----------------------------------------------------------------------
  R6             2.1.1      2015-08-19 CRAN (R 3.2.2)                    
  Rcpp           0.12.2     2015-11-15 CRAN (R 3.2.2)                    
  RSQLite      * 1.0.9000   2015-11-05 Github (rstats-db/RSQLite@1187d0c) 
-{% endhighlight %}
+```
 
 ### 5. 最后 
 改手机界面确实好难，一点都不懂CSS+html的人，完全无从下手。上个周末改版失败，还没有这个好看，所以暂时就这样了。所以为了更好的观看体验，请使用网页端。

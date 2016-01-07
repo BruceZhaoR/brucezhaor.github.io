@@ -1,11 +1,12 @@
 ---
 layout: post
 title: 如何设置R中的TimeZone和CRAN
-tagline: 默认启动加载
+subtitle:   "一打开R就自动默认加载"
 categories : [R]
 tags : [R_env]
-fullview: 
-comments: true
+date:       2015-12-02
+author:     "Bruce"
+header-img: "/img/post/firstblog-bg.jpg"
 description: 第一篇blog，关于配置R中的启动变量。
 ---
 
@@ -24,7 +25,7 @@ description: 第一篇blog，关于配置R中的启动变量。
 > Sys.timezone()
 [1] "Asia/Taipei"
 > devtools::session_info()
-Session info ---------------------------------------------------------------
+Session info --------------------------------------------------
  setting  value                         
  version  R version 3.2.2 (2015-08-14)  
  system   x86_64, mingw32               
@@ -33,7 +34,7 @@ Session info ---------------------------------------------------------------
  collate  Chinese (Simplified)_China.936
  tz       Asia/Taipei                   
  date     2015-12-02                    
-Packages --------------------------------------------------------------------
+Packages ------------------------------------------------------
  package  * version date       source        
  devtools   1.9.1   2015-09-11 CRAN (R 3.2.2)
  digest     0.6.8   2014-12-31 CRAN (R 3.1.2)
@@ -93,9 +94,9 @@ loaded via a namespace (and not attached):
 - R连接数据库 RSQLite
 - dplyr 调用数据库
 - readr 方便快捷读入写出数据
-- jekeyll 如何搭建像小赵这样的blog（这个主题没有选好，建议大家去这里 `https://github.com/jekyll/jekyll/wiki/Themes` 挑
+- jekeyll 如何搭建像小赵这样的blog（这个主题没有选好，建议大家去这里 https://github.com/jekyll/jekyll/wiki/Themes 挑）
 - 用R生成中文PDF
 - 用R生成中文beamer
 - 可视化专场
 
-干货多多，欢迎大家RSS我的blog。需要拍砖的请在下面`disqus`区域评论,可以采用访客模式，但是还是建议去注册一个账号再来评论。小赵不会坑你的，**disqus**是一个国外很流行的评论社区，很多大牛的博客都是基于这个评论系统，注册一个没准下次还能跟大牛们交流。当然，你要是不相信小赵，你尽管是Google一下 disqus。
+干货多多，欢迎大家RSS我的blog。需要拍砖的请在下面`多说`区域评论,可以采用访客模式，但是还是建议去注册一个账号再来评论。

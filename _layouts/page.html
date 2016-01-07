@@ -20,33 +20,6 @@ layout: default
 <!-- Main Content -->
 <div class="container">
 	<div class="row">
-        {% if site.sidebar == false %}
-<!-- NO SIDEBAR -->
-    <!-- Post Container -->
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container">
-			
-                {{ content }}
-				
-            </div>
-    <!-- Sidebar Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-                <!-- Friends Blog -->
-                {% if site.friends %}
-                <hr>
-                <h5>大牛们的博客</h5>
-                <ul class="list-inline">
-                    {% for friend in site.friends %}
-                        <li><a href="{{friend.href}}">{{friend.title}}</a></li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </div>
-        {% else %}
-
 <!-- USE SIDEBAR -->
     <!-- Post Container -->
     		<div class="
@@ -66,10 +39,9 @@ layout: default
                 col-xs-12
                 sidebar-container">
 
-
                 <!-- Short About -->
                 <section class="visible-md visible-lg">
-                    <hr><h5><a href="{{ /about.html }}">ABOUT ME</a></h5>
+                    <hr><h5><a href="/about.html">ABOUT ME</a></h5>
                     <div class="short-about">
                         {% if site.sidebar-avatar %}
                             <img src="{{site.sidebar-avatar}}" />
@@ -79,10 +51,10 @@ layout: default
                         {% endif %}
                         <!-- SNS Link -->
                         <ul class="list-inline">
-                            {% if site.author.weibo %}
+                            {% if site.weibo_username %}
 							<li>
-								<a class="btn btn-default btn-sm" href="http://weibo.com/{{ site.author.weibo }}">
-									<i class="fa fa-weibo fa-2x fa-inverse"></i>
+								<a target="_blank" href="http://weibo.com/{{ site.weibo_username }}">
+									<i class="fa fa-weibo fa-2x"></i>
 								</a>
 							</li>
 							{% endif %}
@@ -90,35 +62,26 @@ layout: default
                             {% if site.zhihu_username %}
                             <li>
                                 <a target="_blank" href="https://www.zhihu.com/people/{{ site.zhihu_username }}">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa  fa-stack-1x fa-inverse">知</i>
-                                    </span>
+									<i class="fa fa-zhihu fa-2x"></i>
                                 </a>
                             </li>
                             {% endif %}
 
-							{% if site.author.github %}
+							{% if site.github_username %}
 							<li>
-								<a class="btn btn-default btn-sm" href="https://github.com/{{ site.author.github }}">
-									<i class="fa fa-github-square fa-2x fa-inverse"></i>
+								<a target="_blank" href="https://github.com/{{ site.github_username }}">
+									<i class="fa fa-github-square fa-2x"></i>
 								</a>
 							</li>
 							{% endif %}
-							{% if site.author.linkedin %}
-							<li>
-								<a class="btn btn-default btn-sm" href="https://linkedin.com/in/{{ site.author.linkedin }}">
-									<i class="fa fa-linkedin fa-2x fa-inverse"></i>
-								</a>
-							</li>
-							{% endif %}		
+	
                         </ul>
                     </div>
                 </section>
                 <!-- Friends Blog -->
                 {% if site.friends %}
                 <hr>
-                <h5>FRIENDS</h5>
+                <h5>大牛们的博客</h5>
                 <ul class="list-inline">
                     {% for friend in site.friends %}
                         <li><a href="{{friend.href}}">{{friend.title}}</a></li>

@@ -23,7 +23,7 @@ header-img: "img/tag-bg.jpg"
 {% assign tag_words = site_tags | split:',' | sort %}
 
 
-<div class="col-sm-3 col-xs-6">
+<div class="col-sm-2 col-sm-offset-2 col-xs-4">
     <ul class="nav nav-tabs-vertical">
     {% for item in (0..site.tags.size) %}{% unless forloop.last %}
       {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
@@ -36,7 +36,7 @@ header-img: "img/tag-bg.jpg"
    </ul>
 </div>
 <!-- Tab panes -->
-<div class="tab-content col-sm-9 col-xs-6">
+<div class="tab-content col-sm-8 col-xs-8">
   {% for item in (0..site.tags.size) %}{% unless forloop.last %}
     {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
     <div class="tab-pane" id="{{ this_word | replace:' ','-' }}-ref">
