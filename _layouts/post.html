@@ -5,7 +5,7 @@ layout: default
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('{{ site.base_PATH }}{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')
+        background-image: url('{{ site.BASE_PATH }}{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')
     }
 </style>
 <header class="intro-header" >
@@ -107,14 +107,13 @@ layout: default
 			
 			{% if site.duoshuo_share && site.duoshuo_username %}
                 <!-- 多说 Share start -->
-				</style>
 				<div class="ds-share"
                     style="text-align: right"
                     data-thread-key="{{page.id}}"
                     data-title="{{page.title}}"
-                    data-url="{{site.base_PATH}}{{page.url}}"
-                    data-images="{{site.base_PATH}}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}"
-                    data-content="{{ content | strip_html | truncate:80 }} | {{ site.SEOTitle }} " >
+                    data-url="{{site.url}}{{site.BASE_PATH}}{{page.url}}"
+                    data-images="{{site.url}}{{site.BASE_PATH}}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}"
+                    data-content="{{ post.description }} | {{ site.SEOTitle }} " >
                     <div class="ds-share-inline">
                       <ul  class="ds-share-icons-16">
                         <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -153,8 +152,10 @@ layout: default
                     <div class="ds-thread"
                         data-thread-key="{{page.id}}"
                         data-title="{{page.title}}"
-                        data-url="{{site.base_PATH}}{{page.url}}" >
+                        data-url="{{site.BASE_PATH}}{{page.url}}" >
                     </div>
+					<!-- 多说热评文章 end -->
+					<div class="ds-top-threads" data-range="monthly" data-num-items="5"></div>
                 </div>
                 <!-- 多说评论框 end -->
                 {% endif %}
@@ -200,8 +201,21 @@ layout: default
     })();
 </script>
 <!-- 多说公共JS代码 end -->
-{% endif %}
 
+<!-- 多说热评文章 end -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"brucezhaor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+{% endif %}
 
 {% if site.disqus_username %}
 <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
@@ -209,7 +223,7 @@ layout: default
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "{{site.disqus_username}}";
     var disqus_identifier = "{{page.id}}";
-    var disqus_url = "{{site.base_PATH}}{{page.url}}";
+    var disqus_url = "{{site.BASE_PATH}}{{page.url}}";
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
@@ -218,6 +232,7 @@ layout: default
 </script>
 <!-- disqus 公共JS代码 end -->
 {% endif %}
+
 
 
 {% if site.anchorjs %}
@@ -240,7 +255,7 @@ layout: default
           placement: 'left',
           icon: '§'
         };
-        anchors.add('h2');
+        anchors.add('h2').remove('.subheading');
     })
 </script>
 <style>

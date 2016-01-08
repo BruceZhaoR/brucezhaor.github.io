@@ -65,7 +65,7 @@ kramdown:
 duoshuo_username: brucezhaor
 # Share component is depend on Comment so we can NOT use share only.
 duoshuo_share: true                     # set to false if you want to use Comment without Sharing
-
+url: "http://brucezhaor.github.io" 
 
 # page Sidebar settings
 sidebar-about-description: "致力成为数据攻城狮。"
