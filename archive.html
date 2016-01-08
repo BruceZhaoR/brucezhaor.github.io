@@ -35,7 +35,7 @@ header-img: "img/archive-bg.jpg"
     </div>
 </header>
 
-<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class="col-lg-8 col-lg-offset-2 col-sm-10 col-sm-offset-1">
 	{% for post in site.posts  %}
 		{% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
 		{% capture this_month %}{{ post.date | date: "%B" }}{% endcapture %}

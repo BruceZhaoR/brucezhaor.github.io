@@ -23,7 +23,7 @@ header-img: "img/tag-bg.jpg"
 {% assign tag_words = site_tags | split:',' | sort %}
 
 
-<div class="col-sm-2 col-sm-offset-2 col-xs-4">
+<div class="col-sm-2 col-sm-offset-2 col-xs-5">
     <ul class="nav nav-tabs-vertical">
     {% for item in (0..site.tags.size) %}{% unless forloop.last %}
       {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
@@ -36,14 +36,14 @@ header-img: "img/tag-bg.jpg"
    </ul>
 </div>
 <!-- Tab panes -->
-<div class="tab-content col-sm-8 col-xs-8">
+<div class="tab-content col-sm-8 col-xs-7">
   {% for item in (0..site.tags.size) %}{% unless forloop.last %}
     {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
     <div class="tab-pane" id="{{ this_word | replace:' ','-' }}-ref">
       <h3 style="margin-top: 0px">Posts tagged  with {{ this_word }}</h3>
       <ul class="list-unstyled">
         {% for post in site.tags[this_word] %}{% if post.title != null %}
-          <li style="line-height: 35px;"><a href="{{ site.BASE_PATH }}{{post.url}}">{{post.title}}</a> <span class="text-muted">- {{ post.date | date: "%B %d, %Y" }}</span></li>
+          <li><a href="{{ site.BASE_PATH }}{{post.url}}">{{post.title}}</a> <span class="text-muted">- {{ post.date | date: "%B %d, %Y" }}</span></li>
         {% endif %}{% endfor %}
       </ul>
     </div>

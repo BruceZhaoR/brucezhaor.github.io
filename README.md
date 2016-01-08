@@ -2,7 +2,7 @@
  
 ### Hello World!
 
-This is my first Blog on [GitHub](https://github.com), powered by [Jekyll](https://github.com/mojombo/jekyll) and [Jekyll-bootstrap](http://jekyllbootstrap.com), licensed under [(CC) BY-NC-SA 3.0 CN](http://creativecommons.org/licenses/by-nc-sa/3.0/cn) Theme:[dbyll](http://dbtek.github.io/dbyll/).
+This is my first Blog on [GitHub](https://github.com), powered by [Jekyll](https://github.com/mojombo/jekyll) and [Jekyll-bootstrap](http://jekyllbootstrap.com), licensed under [(CC) BY-NC-SA 3.0 CN](http://creativecommons.org/licenses/by-nc-sa/3.0/cn) Theme From:[dbyll](http://dbtek.github.io/dbyll/) & [Hux](http://huangxuan.me) .
 
 This Blog will be used to record some notes and thoughts about using  [**R**](https://www.r-project.org)  in analysing data.
 
@@ -14,9 +14,8 @@ My name is Bruce Zhao and my major is Statistics. I use  [**R software**](https:
 
 
 ### 关于主题
-本主题修改自<mark>dbyll</mark>.
+本主题修改自[dbyll](http://dbtek.github.io/dbyll/)和[Hux(http://huangxuan.me)].
 Open source stylish, minimalistic theme for jekyll.  
-Demo: http://dbtek.github.io/dbyll/
 License：[MIT](http://opensource.org/licenses/MIT)
 
 ## 修改log
@@ -29,10 +28,19 @@ License：[MIT](http://opensource.org/licenses/MIT)
 * 手机端contact图标
 
 --------------
-
 2016-01-04
 
 * 增加site.title
 * weibo share 优化
 * 侧边导航滚动栏
 * 字体 以及代码块优化
+
+--------------
+2016-01-08
+
+* 改自Hux的博客
+- [x] 增加 tags,archives,categories等页面
+- [x] 页面布局小修改
+- [x] 代码高亮配色方案（RStudio&Jekyll)
+- [x] 多说分享链接修复
+- [ ] 文章页面侧边导航栏
