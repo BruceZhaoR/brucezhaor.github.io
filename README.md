@@ -14,7 +14,7 @@ My name is Bruce Zhao and my major is Statistics. I use  [**R software**](https:
 
 
 ### 关于主题
-本主题修改自[dbyll](http://dbtek.github.io/dbyll/)和[Hux(http://huangxuan.me)].
+本主题修改自[dbyll](http://dbtek.github.io/dbyll/)和[Hux](http://huangxuan.me).   
 Open source stylish, minimalistic theme for jekyll.  
 License：[MIT](http://opensource.org/licenses/MIT)
 
@@ -38,7 +38,7 @@ License：[MIT](http://opensource.org/licenses/MIT)
 --------------
 2016-01-08
 
-* 改自Hux的博客
+改自Hux的博客
 - [x] 增加 tags,archives,categories等页面
 - [x] 页面布局小修改
 - [x] 代码高亮配色方案（RStudio&Jekyll)
