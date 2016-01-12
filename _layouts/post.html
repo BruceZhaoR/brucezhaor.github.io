@@ -251,11 +251,11 @@ var duoshuoQuery = {short_name:"brucezhaor"};
 <script>
     async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
         anchors.options = {
-          visible: 'always',
-          placement: 'left',
-          icon: '§'
+          visible: 'hover',
+          placement: 'left'
+          <!-- icon: '§' -->
         };
-        anchors.add('h2').remove('.subheading');
+        anchors.add('h2,h3').remove('.subheading');
     })
 </script>
 <style>
@@ -264,7 +264,7 @@ var duoshuoQuery = {short_name:"brucezhaor"};
         .anchorjs-link{
             position: absolute;
             left: -0.75em;
-            font-size: 1.1em;
+            font-size: 1.2em;
             margin-top : -0.1em;
         }
     }
@@ -281,3 +281,26 @@ var duoshuoQuery = {short_name:"brucezhaor"};
   })();
 </script>
 
+
+<div id="back-top">
+  <a href="#top" title="回到顶部">
+</div>
+ <script type="text/javascript" src="{{ site.BASE_PATH }}/assets/resources/jquery/jquery-1.8.3.js"></script>
+<script>
+	$('#back-top').hide();
+	$(document).ready(function () {
+	$(window).scroll(function () {
+    if ($(this).scrollTop() > 100) {
+      $('#back-top').fadeIn();
+    } else {
+      $('#back-top').fadeOut();
+    }
+  });
+  $('#back-top a').click(function () {
+    $('body,html').animate({
+      scrollTop: 0
+    }, 800);
+    return false;
+  });
+});
+</script>
