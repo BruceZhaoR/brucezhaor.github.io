@@ -54,7 +54,7 @@ body {
   font-family: -apple-system, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: 1.7;
   font-size: 16px;
-  color: #404040;
+  color: #000;
   overflow-x: hidden;
 }
 p {
@@ -145,6 +145,7 @@ pre,
 .post-container a {
   color: #337ab7;
   font-weight: bold;
+  font-size: 14px
 }
 .post-container a:hover,
 .post-container a:focus {
@@ -498,13 +499,13 @@ pre,
   font-size: 15px;
   line-height: 1.3;
   margin: 0;
-  font-weight: 300;
+  font-weight: 500;
   margin-bottom: 10px;
 }
 .post-preview > .post-meta {
   font-family: 'Lora', 'Times New Roman', serif;
   color: #808080;
-  font-size: 14px;
+  font-size: 15px;
   font-style: italic;
   margin-top: 0;
 }
@@ -535,6 +536,7 @@ pre,
   font-size: 13px;
   font-style: italic;
   color: #a3a3a3;
+  font-weight: 300;
 }
 .post-content-preview:hover {
   color: #0085a1;
@@ -868,14 +870,21 @@ a.anchorjs-link {
 .fa-chevron-up:before {
     color: rgba(252,252,252,0.81);
 }
-/* 小屏幕贴右边;文章标题字体减小2px */
+/* 更好的手机端显示效果 */
 @media only screen and (max-width: 768px) {
+	/* 返回顶部贴右边 */
 	#back-top {
 	right: 0em;	
 	}
-	.post-container p{font-size: 15px}
-	.post-container h2{font-size: 28px}
-	.post-container h3{font-size: 22px}
-	.post-container h4{font-size: 18px}
-	.MathJax span {font-size: 16px;}
+	/* 文章左右两边留白 */
+	.row {
+		padding-left: 10px;
+		padding-right: 10px;
+		}
+	/* 字号统一调小 */
+	.post-container p{font-size: 14px}
+	.post-container h2{font-size: 20px}
+	.post-container h3{font-size: 16px}
+	.post-container h4{font-size: 15px}
+	.MathJax span {font-size: 15px;}
 }	
