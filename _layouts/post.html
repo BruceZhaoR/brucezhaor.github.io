@@ -284,13 +284,15 @@ var duoshuoQuery = {short_name:"brucezhaor"};
 
 <div id="back-top">
   <a href="#top" title="回到顶部">
+	<i class="fa fa-chevron-up"></i>
+  </a>
 </div>
- <script type="text/javascript" src="{{ site.BASE_PATH }}/assets/resources/jquery/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="{{ site.BASE_PATH }}/assets/resources/jquery/jquery-1.8.3.js"></script>
 <script>
 	$('#back-top').hide();
 	$(document).ready(function () {
 	$(window).scroll(function () {
-    if ($(this).scrollTop() > 100) {
+    if ($(this).scrollTop() > 250) {
       $('#back-top').fadeIn();
     } else {
       $('#back-top').fadeOut();

@@ -144,6 +144,7 @@ pre,
 }
 .post-container a {
   color: #337ab7;
+  font-weight: bold;
 }
 .post-container a:hover,
 .post-container a:focus {
@@ -229,8 +230,8 @@ pre,
     -webkit-transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
   }
   #huxblog_navbar a {
-    font-size: 13px;
-    line-height: 28px;
+    font-size: 12px;
+    line-height: 24px;
   }
   #huxblog_navbar .navbar-collapse {
     height: 0px;
@@ -414,7 +415,7 @@ pre,
 .intro-header .site-heading h1,
 .intro-header .page-heading h1 {
   margin-top: 0;
-  font-size: 50px;
+  font-size: 38px;
 }
 .intro-header .site-heading .subheading,
 .intro-header .page-heading .subheading {
@@ -491,6 +492,7 @@ pre,
   line-height: 1.3;
   margin-top: 30px;
   margin-bottom: 8px;
+  color: #0085a1;
 }
 .post-preview > a > .post-subtitle {
   font-size: 15px;
@@ -502,7 +504,7 @@ pre,
 .post-preview > .post-meta {
   font-family: 'Lora', 'Times New Roman', serif;
   color: #808080;
-  font-size: 16px;
+  font-size: 14px;
   font-style: italic;
   margin-top: 0;
 }
@@ -520,6 +522,7 @@ pre,
     font-size: 26px;
     line-height: 1.3;
     margin-bottom: 10px;
+	color: #0085a1;
   }
   .post-preview > a > .post-subtitle {
     font-size: 18px;
@@ -704,6 +707,7 @@ form .row:first-child .floating-label-form-group {
   text-shadow: none;
   background: #0085a1;
 }
+
 img::selection {
   color: white;
   background: transparent;
@@ -824,8 +828,7 @@ body {
 /* 标签、分类页图标底色 */
 .badge { background: #0085a1; }
 /* anchorJs css */
-.anchorjs-link {
-    opacity: 0;
+a.anchorjs-link {
     text-decoration: none;
     -webkit-font-smoothing: antialiased;
 }
@@ -833,21 +836,24 @@ body {
 /* back-top */
 #back-top {
   position: fixed;
-  bottom: 30px;
-  margin-left: 1040px;
+  bottom: 110px;
+  right: 2em;
 }
 #back-top a {
-  width: 54px;
-  height: 54px;
-  display: block;
-  background: #ddd ;
-  background-color: #aaa;
+  background: rgba(0, 0, 0, 0.45);
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
-  border-radius: 7px;
   -webkit-transition: 1s;
   -moz-transition: 1s;
   transition: 1s;
+  width: 40px;
+  height: 40px;
+  display: block;
+  font-size: 36px;
+  color: #fff;
+  text-align: center;
+  border-radius: 3px 3px;
+  text-decoration: none;
 }
 #back-top a:hover {
   background-color: #0085a1;
@@ -858,3 +864,18 @@ body {
     line-height: 40px;
     vertical-align: top;
 }
+/* 向上图标透明白色 */
+.fa-chevron-up:before {
+    color: rgba(252,252,252,0.81);
+}
+/* 小屏幕贴右边;文章标题字体减小2px */
+@media only screen and (max-width: 768px) {
+	#back-top {
+	right: 0em;	
+	}
+	.post-container p{font-size: 15px}
+	.post-container h2{font-size: 28px}
+	.post-container h3{font-size: 22px}
+	.post-container h4{font-size: 18px}
+	.MathJax span {font-size: 16px;}
+}	
