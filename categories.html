@@ -34,7 +34,7 @@ header-img: "img/categories-bg.jpg"
     </div>
 </header>
 
-<div class="col-sm-2 col-sm-offset-2 col-xs-4">
+<div class="col-sm-2 col-sm-offset-2 col-xs-5">
     <ul class="nav nav-tabs-vertical">
       {% assign categories_list = site.categories %}
       {% if categories_list.first[0] == null %}
@@ -58,7 +58,7 @@ header-img: "img/categories-bg.jpg"
     </ul>
 </div>
 <!-- Tab panes -->
-<div class="tab-content col-sm-8 col-xs-8">
+<div class="tab-content col-sm-8 col-xs-7">
   {% for category in site.categories %}
     <div class="tab-pane" id="{{ category[0] | replace:' ','-' }}-ref">
       <h3 style="margin-top: 0px">Posts in {{ category[0] | capitalize }}</h3>

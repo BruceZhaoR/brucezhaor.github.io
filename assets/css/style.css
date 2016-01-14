@@ -145,7 +145,6 @@ pre,
 .post-container a {
   color: #337ab7;
   font-weight: bold;
-  font-size: 14px
 }
 .post-container a:hover,
 .post-container a:focus {
@@ -882,6 +881,7 @@ a.anchorjs-link {
 		padding-right: 10px;
 		}
 	/* 字号统一调小 */
+	.post-container a {font-size: 14px}
 	.post-container p{font-size: 14px}
 	.post-container h2{font-size: 20px}
 	.post-container h3{font-size: 16px}
