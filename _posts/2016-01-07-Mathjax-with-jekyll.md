@@ -3,7 +3,7 @@ layout: post
 title: MathJax with Jekyll
 subtitle: "在jekyll中使用MathJax生成漂亮公式"
 category : Jekyll
-tags : [Jekyll, equation, MathJax]
+tags : [MathJax]
 layout: post
 date:       2016-01-07
 author:     "Bruce Zhao"
