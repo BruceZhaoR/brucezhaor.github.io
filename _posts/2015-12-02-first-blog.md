@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 如何设置R中的TimeZone和CRAN
+title: 如何设置R中的TimeZone
 subtitle:   "一打开R就自动默认加载"
 categories : [R]
 tags : [R_env]
@@ -13,11 +13,9 @@ description: 第一篇blog，关于配置R中的启动变量。
 
 ## 写在前面的话
 
-欢迎大家来到小赵的blog，这是我的第一篇文章，需要拍砖的请在下面`DISQUS`评论区尽情拍。
+欢迎大家来到小赵的blog，这是我的第一篇文章。
     
-这篇文章将简单记录如何配置**R**中默认启动项。前一阵子使用了`devtools`包里面的一个`session_info()`函数，发现自己的`tz`设置成为了`Asia/Taipei`，用`sessionInfo()`也是可以看到的；在下载packages的时候发现大多数人的CRAN Mirror都只有一个选项——"China(Beijing4)[https]-TUNA Team,Tsinghua University"...
-
-了在强迫症的作用下，我就要去把`tz`设置成`Asia/Shanghai`.
+这篇文章将简单记录如何配置**R**中默认启动项。前一阵子使用了`devtools`包里面的一个`session_info()`函数，发现自己的`tz`设置成为了`Asia/Taipei`，用`sessionInfo()`也是可以看到的。在强迫症的作用下，我就要去把`tz`设置成`Asia/Shanghai`.
 
 代码为：
 {% highlight r %}
@@ -99,4 +97,4 @@ loaded via a namespace (and not attached):
 - 用R生成中文beamer
 - 可视化专场
 
-干货多多，欢迎大家RSS我的blog。需要拍砖的请在下面`多说`区域评论,可以采用访客模式，但是还是建议去注册一个账号再来评论。
+干货多多，欢迎大家RSS我的blog。需要拍砖的请在下面`多说`区域评论,可以采用访客模式，但是还是建议去注册一个账号再来评论，支持主流社交账号。
