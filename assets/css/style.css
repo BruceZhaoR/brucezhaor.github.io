@@ -882,9 +882,10 @@ a.anchorjs-link {
 		}
 	/* 字号统一调小 */
 	.post-container a {font-size: 14px}
-	.post-container p{font-size: 14px}
-	.post-container h2{font-size: 20px}
-	.post-container h3{font-size: 16px}
-	.post-container h4{font-size: 15px}
+	.post-container p {font-size: 14px}
+	.post-container li {font-size: 14px}
+	.post-container h2 {font-size: 20px}
+	.post-container h3 {font-size: 16px}
+	.post-container h4 {font-size: 15px}
 	.MathJax span {font-size: 15px;}
 }	
