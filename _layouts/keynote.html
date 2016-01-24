@@ -116,15 +116,15 @@ layout: default
 			
                 <hr>
 
-                {% if site.duoshuo_share && site.duoshuo_username %}
+			{% if site.duoshuo_share && site.duoshuo_username %}
                 <!-- 多说 Share start -->
-                </style>
-                <div class="ds-share"
+				<div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="{{page.id}}" data-title="{{page.title}}"
-                    data-images="{{ site.url }}{{site.BASE_PATH}}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}"
-                    data-content="{{ content | strip_html | truncate:80 }} | {{ site.SEOTitle }}"
-                    data-url="{{site.url}}{{site.BASE_PATH}}{{page.url}}">
+                    data-thread-key="{{page.id}}"
+                    data-title="{{page.title}}"
+                    data-url="{{site.url}}{{site.BASE_PATH}}{{page.url}}"
+                    data-images="{{site.url}}{{site.BASE_PATH}}{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}"
+                    data-content="{{ page.description }} | {{ site.SEOTitle }} " >
                     <div class="ds-share-inline">
                       <ul  class="ds-share-icons-16">
                         <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -137,19 +137,19 @@ layout: default
                     </div>
                 <hr>
                 </div>
-                <!-- duoshuo Share end-->
+                <!-- 多说 Share end-->
                 {% endif %}
 
 
                 <ul class="pager">
 
 					{% if page.previous %}
-					<li class="previous"><a href="{{ site.BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; Previous</a></li>
+					<li class="previous"><a href="{{ site.BASE_PATH }}{{ page.previous.url }}" data-toggle="tooltip" data-placement="top" title="{{ page.previous.title }}">&larr; Previous</a></li>
 					{% else %}
 					<li class="previous disabled"><a>&larr; Previous</a></li>
 					{% endif %}
 					{% if page.next %}
-					<li class="next"><a href="{{ site.BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">Next &rarr;</a></li>
+					<li class="next"><a href="{{ site.BASE_PATH }}{{ page.next.url }}" data-toggle="tooltip" data-placement="top" title="{{ page.next.title }}">Next &rarr;</a></li>
 					{% else %}
 						<li class="next disabled"><a>Next &rarr;</a>
 					{% endif %}
@@ -165,43 +165,20 @@ layout: default
                         data-title="{{page.title}}"
                         data-url="{{site.url}}{{site.BASE_PATH}}{{page.url}}" >
                     </div>
+					<!-- 多说热评文章 end -->
+					<div class="ds-top-threads" data-range="monthly" data-num-items="5"></div>
                 </div>
                 <!-- 多说评论框 end -->
                 {% endif %}
 
-                {% if site.disqus_username %}
-                <!-- disqus 评论框 start -->
-                <div class="comment">
-                    <div id="disqus_thread" class="disqus-thread">
-
-                    </div>
-                </div>
-                <!-- disqus 评论框 end -->
-                {% endif %}
-
             </div>
-
-            <!-- Sidebar Container -->
-            <div class="sidebar-container
+    </div>
+		<!-- Sidebar Container -->
+            <div class="
                 col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1 ">
+                col-md-10 col-md-offset-1
+                sidebar-container">
 
-                <!-- Featured Tags -->
-                {% if site.featured-tags %}
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                        {% for tag in site.tags %}
-                            {% if tag[1].size > {{site.featured-condition-size}} %}
-                                <a href="/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
-                                    {{ tag[0] }}
-                                </a>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                </section>
-                {% endif %}
 
                 <!-- Friends Blog -->
                 {% if site.friends %}
@@ -244,9 +221,8 @@ layout: default
 {% if site.duoshuo_username %}
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
-    // dynamic User by Hux
-    var _user = '{{site.duoshuo_username}}';
 
+    var _user = '{{site.duoshuo_username}}';
     // duoshuo comment query.
     var duoshuoQuery = {short_name: _user };
     (function() {
@@ -259,8 +235,21 @@ layout: default
     })();
 </script>
 <!-- 多说公共JS代码 end -->
-{% endif %}
 
+<!-- 多说热评文章 end -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"brucezhaor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+{% endif %}
 
 {% if site.disqus_username %}
 <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
@@ -268,8 +257,7 @@ layout: default
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "{{site.disqus_username}}";
     var disqus_identifier = "{{page.id}}";
-    var disqus_url = "{{site.url}}{{page.url}}";
-
+    var disqus_url = "{{site.BASE_PATH}}{{page.url}}";
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
@@ -278,6 +266,7 @@ layout: default
 </script>
 <!-- disqus 公共JS代码 end -->
 {% endif %}
+
 
 
 {% if site.anchorjs %}
@@ -296,11 +285,11 @@ layout: default
 <script>
     async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
         anchors.options = {
-          visible: 'always',
-          placement: 'left',
-          icon: '§'
+          visible: 'hover',
+          placement: 'left'
+          <!-- icon: '§' -->
         };
-        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+        anchors.add('h2,h3').remove('.subheading');
     })
 </script>
 <style>
@@ -309,9 +298,45 @@ layout: default
         .anchorjs-link{
             position: absolute;
             left: -0.75em;
-            font-size: 1.1em;
+            font-size: 1.2em;
             margin-top : -0.1em;
         }
     }
 </style>
 {% endif %}
+
+<!-- mathjax -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+
+<div id="back-top">
+  <a href="#section" title="回到目录">
+	<i class="fa fa-chevron-up"></i>
+  </a>
+</div>
+<script type="text/javascript" src="{{ site.BASE_PATH }}/assets/resources/jquery/jquery-1.8.3.js"></script>
+<script>
+	$('#back-top').hide();
+	$(document).ready(function () {
+	$(window).scroll(function () {
+    if ($(this).scrollTop() > 250) {
+      $('#back-top').fadeIn();
+    } else {
+      $('#back-top').fadeOut();
+    }
+  });
+  $('#back-top a').click(function () {
+    $('body,html').animate({
+      scrollTop: 0
+    }, 800);
+    return false;
+  });
+});
+</script>

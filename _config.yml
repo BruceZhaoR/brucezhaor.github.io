@@ -13,8 +13,9 @@ kramdown:
   
 # 国内用多说
 # disqus: brucezhaor
-
-google_analytics: brucezhaor
+#Google Analytics https://developers.google.com/analytics/devguides/collection/analyticsjs/
+google_analytics_id: UA-72808482-1
+google_analytics_domain: auto
 
 
 # author:
@@ -45,18 +46,7 @@ RSS: feed.xml
 email: brucezhaor2016@gmail.com
 linkedin: bruce-zhao-0ab74287
 
-anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
-
-
-
-# Markdown settings
-# replace redcarpet to kramdown,
-# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
-# document: http://jekyllrb.com/docs/configuration/#kramdown
-markdown: kramdown
-kramdown:
-  input: GFM                            # use Github Flavored Markdown !important
-
+anchorjs: true                          # 修改在default.html->footer
 
 
 # 评论系统
@@ -68,7 +58,7 @@ url: "http://brucezhaor.github.io"
 
 # page Sidebar settings
 sidebar-about-description: "致力成为数据攻城狮。"
-sidebar-avatar: /img/me1.png     # use absolute URL, seeing it's used 
+sidebar-avatar: /img/me1.png     # img前面加`/`绝对引用。
 
 
 
