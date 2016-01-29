@@ -13,19 +13,16 @@ kramdown:
   
 # 国内用多说
 # disqus: brucezhaor
+
 #Google Analytics https://developers.google.com/analytics/devguides/collection/analyticsjs/
 google_analytics_id: UA-72808482-1
 google_analytics_domain: auto
 
+# 自定义永久链接
+permalink: /blog/:year/:month/:day/:title/
 
-# author:
-  # name: Bruce Zhao
-  # email: brucezhaor2016@gmail.com
-  # github: BruceZhaoR
-  # weibo: brucezhaor
-  # linkedin: bruce-zhao-0ab74287
-  # weixin: brucezhaor/Fc4u8KUO/medium.jpg #网页例子  http://pic.yupoo.com/brucezhaor/Fc4u8KUO/medium.jpg
-
+#默认底图
+header-img: /img/default-bg.jpg
 
 RSS: feed.xml
 categories_path: categories.html
@@ -78,6 +75,9 @@ friends: [
         href: "http://www.bjt.name/"
     },{
         title: "邱怡轩",
+        href: "http://yixuan.cos.name/cn/"
+	},{
+        title: "JRQ 西南交大",
         href: "http://yixuan.cos.name/cn/"
 	}
 ]

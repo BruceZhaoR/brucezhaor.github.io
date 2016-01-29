@@ -44,3 +44,6 @@ License：[MIT](http://opensource.org/licenses/MIT)
 - [x] 代码高亮配色方案（RStudio&Jekyll)
 - [x] 多说分享链接修复
 - [ ] 文章页面侧边导航栏
+- [x] 多说分享图片设置
+- [x] change perimalink
+- [x] add back to top.

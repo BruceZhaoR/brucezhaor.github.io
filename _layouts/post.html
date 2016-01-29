@@ -112,8 +112,8 @@ layout: default
                     data-thread-key="{{page.id}}"
                     data-title="{{page.title}}"
                     data-url="{{site.url}}{{site.BASE_PATH}}{{page.url}}"
-                    data-images="{{site.url}}{{site.BASE_PATH}}/"
-                    data-content="| {{ page.description }} |{{ site.SEOTitle }}" >
+                    data-images="{{site.url}}{{site.BASE_PATH}}{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}"
+                    data-content="| {{ page.description }} ——{{ site.SEOTitle }}." >
                     <div class="ds-share-inline">
                       <ul  class="ds-share-icons-16">
                         <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -210,19 +210,6 @@ layout: default
 </script>
 <!-- 多说公共JS代码 end -->
 
-<!-- 多说热评文章 end -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"brucezhaor"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- 多说公共JS代码 end -->
 {% endif %}
 
 {% if site.disqus %}
@@ -263,7 +250,8 @@ var duoshuoQuery = {short_name:"brucezhaor"};
           placement: 'left'
           <!-- icon: '§' -->
         };
-        anchors.add('h2,h3').remove('.subheading');
+        anchors.add('h2,h3');
+		anchors.remove('.subheading');
     })
 </script>
 <style>
@@ -291,7 +279,7 @@ var duoshuoQuery = {short_name:"brucezhaor"};
 
 
 <div id="back-top">
-  <a href="#section" title="回到目录">
+  <a href="#section" data-toggle="tooltip" data-placement="top" title="top">
 	<i class="fa fa-chevron-up"></i>
   </a>
 </div>
