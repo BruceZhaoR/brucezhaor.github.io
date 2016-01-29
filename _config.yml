@@ -1,5 +1,5 @@
 # visit https://github.com/mojombo/jekyll/wiki/Configuration for more settings
-title: BZR
+title: BZRLC
 SEOTitle: BruceZhao's Blog
 author: Bruce Zhao
 timezone: Asia/Shanghai
@@ -61,13 +61,16 @@ sidebar-avatar: /img/me1.png     # img前面加`/`绝对引用。
 
 # Friends
 friends: [
-	{
+	{   
+        title: "BZRLC",
+        href: "http://bzrlc.github.io"
+	},{
         title: "Hux-模板来源",
         href: "http://huangxuan.me"
 	},{
         title: "谢益辉",
         href: "http://yihui.name"
-    },{
+	},{
         title: "落园",
         href: "http://www.loyhome.cn/"
     },{
