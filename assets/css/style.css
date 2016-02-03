@@ -904,4 +904,5 @@ legend {
 	legend { font-size: 20px;}
 	.tab-content a{ font-size: 14px}
 	.badge { font-size: 10px }
+	.text-muted {color: #888;font-size: 14px;}
 }	
