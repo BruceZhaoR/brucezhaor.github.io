@@ -869,7 +869,21 @@ a.anchorjs-link {
 .fa-chevron-up:before {
     color: rgba(252,252,252,0.81);
 }
-/* 更好的手机端显示效果 */
+
+/* Archive 更好的显示效果 */
+legend {
+    font-size: 24px;
+	font-weight: bold;
+    line-height: inherit;
+    color: #000;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+/* categories更好的显示效果 */
+.tab-content a {color: #337ab7;font-weight: bold;}
+.tab-content a:hover {color: #0085a1;}
+
+/* 字体更好的手机端显示效果 */
 @media only screen and (max-width: 768px) {
 	/* 返回顶部贴右边 */
 	#back-top {
@@ -883,8 +897,11 @@ a.anchorjs-link {
 	/* 字号统一调小 */
 	.post-container p {font-size: 14px}
 	.post-container li {font-size: 14px}
-	.post-container h2 {font-size: 20px}
-	.post-container h3 {font-size: 16px}
-	.post-container h4 {font-size: 15px}
+	.post-container h2, h2 {font-size: 20px}
+	.post-container h3, h3 {font-size: 16px}
+	.post-container h4, h4 {font-size: 15px}
 	.MathJax span {font-size: 15px;}
+	legend { font-size: 20px;}
+	.tab-content a{ font-size: 14px}
+	.badge { font-size: 10px }
 }	
