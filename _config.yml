@@ -10,6 +10,7 @@ markdown: kramdown
 kramdown:
   input: GFM                       # use Github Flavored Markdown !important
   
+gems: [jekyll-paginate]   #jekyll 3.0.X
 # 国内用多说
 # disqus: brucezhaor
 
