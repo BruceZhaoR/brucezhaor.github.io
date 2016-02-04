@@ -14,8 +14,9 @@ kramdown:
 # disqus: brucezhaor
 
 #Google Analytics https://developers.google.com/analytics/devguides/collection/analyticsjs/
-google_analytics_id: UA-72808482-1
-google_analytics_domain: auto
+#去_layout/default.html的头文件中去设置.
+#google_analytics_id: UA-72808482-1
+#google_analytics_domain: auto
 
 # 自定义永久链接
 permalink: /blog/:year/:month/:day/:title/

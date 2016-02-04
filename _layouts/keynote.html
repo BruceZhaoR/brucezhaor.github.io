@@ -183,7 +183,7 @@ layout: default
                 <!-- Friends Blog -->
                 {% if site.friends %}
                 <hr>
-                <h5>大牛们的博客</h5>
+                <h5>友情链接</h5>
                 <ul class="list-inline">
                     {% for friend in site.friends %}
                         <li><a href="{{friend.href}}">{{friend.title}}</a></li>
@@ -289,7 +289,8 @@ var duoshuoQuery = {short_name:"brucezhaor"};
           placement: 'left'
           <!-- icon: '§' -->
         };
-        anchors.add('h2,h3').remove('.subheading');
+        anchors.add('h2,h3');
+		anchors.remove('.subheading');
     })
 </script>
 <style>
@@ -315,28 +316,3 @@ var duoshuoQuery = {short_name:"brucezhaor"};
   })();
 </script>
 
-
-<div id="back-top">
-  <a href="#section" title="回到目录">
-	<i class="fa fa-chevron-up"></i>
-  </a>
-</div>
-<script type="text/javascript" src="{{ site.BASE_PATH }}/assets/resources/jquery/jquery-1.8.3.js"></script>
-<script>
-	$('#back-top').hide();
-	$(document).ready(function () {
-	$(window).scroll(function () {
-    if ($(this).scrollTop() > 250) {
-      $('#back-top').fadeIn();
-    } else {
-      $('#back-top').fadeOut();
-    }
-  });
-  $('#back-top a').click(function () {
-    $('body,html').animate({
-      scrollTop: 0
-    }, 800);
-    return false;
-  });
-});
-</script>
