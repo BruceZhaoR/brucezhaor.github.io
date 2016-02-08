@@ -1,3 +1,7 @@
+// Tooltip Init
+$(function() {
+    $("[data-toggle='tooltip']").tooltip();
+});
 
 // make all images responsive
 
