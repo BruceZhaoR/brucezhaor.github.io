@@ -32,9 +32,7 @@ description:  使用dplyr包和RSQLite包实现数据库的连接与管理，轻
 {% highlight sql %}
 
 -- ----------------------------
-
 -- Table structure for flights
-
 -- ----------------------------
 
 DROP TABLE IF EXISTS "main"."flights";
@@ -51,9 +49,7 @@ CREATE TABLE flights(
 );
 
 -- ----------------------------
-
 -- Records of flights
-
 -- ----------------------------
 
 INSERT INTO "main"."flights" VALUES (2013, 1, 1, 517, 2.0, 830, 11.0, 'UA', 'N14228');
@@ -64,9 +60,7 @@ INSERT INTO "main"."flights" VALUES (2013, 1, 1, 554, -6.0, 812, -25.0, 'DL', 'N
 INSERT INTO "main"."flights" VALUES (2013, 1, 1, 554, -4.0, 740, 12.0, 'UA', 'N39463');
 
 -- ----------------------------
-
 -- Table structure for cor
-
 -- ----------------------------
 
 DROP TABLE IF EXISTS "main"."cor";
@@ -80,9 +74,7 @@ CREATE TABLE cor(
 );
 
 -- ----------------------------
-
 -- Records of cor
-
 -- ----------------------------
 
 INSERT INTO "main"."cor" VALUES ('0015', 2, 11, 3, 3, 4);
@@ -168,16 +160,11 @@ RSQLite能够调入数据，但是标题乱码。其原因我个人认为是 sql
 > I think I figure out the reason why Chinese Characters garbled in my R environment. It‘s because the encoding of the data is `UTF-8` while my local environment is `GBK` [(Simplified)_China.936)] , R don't automatically convert the `UTF-8` encoding to `GBK`.  So ,I use `iconv(char,"UTF-8","GBK")` to convert the encoding. ~~装逼，请走开~~。
 
 {% highlight r %}
-
 >library(stringi)
 >stri_enc_get()  # 用于检测本地是什么编码环境 
-
 >stri_enc_detect2(char) # 用于检测字符串是什么编码
- 
->stri_conv(char,"UTF-8","GBK") # 直接转 
-
->iconv(char,"UTF-8","GBK") # {base} package 效果一样
- 
+>stri_conv(char,"UTF-8","GBK") # 直接转码
+>iconv(char,"UTF-8","GBK") # 与{base} package 效果一样
 {% endhighlight %}
 
 **To solve the problem from the source, I recommend the [{readr}][3] package**
@@ -224,7 +211,7 @@ Source: local data frame [247 x 6]
 **附上我的R环境**
 
 {% highlight R %}
-Session info ----------------------------------------------------------------------
+Session info -----------------------------------------------------------------
  setting  value                         
  version  R version 3.2.2 (2015-08-14)  
  system   x86_64, mingw32               
@@ -233,7 +220,7 @@ Session info -------------------------------------------------------------------
  collate  Chinese (Simplified)_China.936
  tz       Asia/Taipei                   
  date     2015-12-01                    
-Packages --------------------------------------------------------------------------
+Packages -----------------------------------------------------------------
  package      * version    date       source                            
  assertthat     0.1        2013-12-06 CRAN (R 3.2.1)                    
  DBI          * 0.3.1.9008 2015-11-05 Github (rstats-db/DBI@7a0ad76)    
