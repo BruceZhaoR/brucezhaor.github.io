@@ -9,9 +9,9 @@
   overflow-x: auto;      
 }
 
-/* .highlight pre code {
+.highlight pre code {
   white-space: pre;    
-} */
+}
 
 .highlight pre, pre, .highlight .hll { background-color: #000038; border: 1px solid #000; padding: 6px 10px; border-radius: 3px; }
 .highlight  { background: #000038; }
@@ -83,7 +83,7 @@
    pre .paren { color: #4182FA;font-weight: bold;}
    pre .literal { color: #FA0043;}
    pre .number {color: #009999;}
-   pre .comment {color: ##1378CE; font-style: italic;}
+   pre .comment {color: #1378CE; font-style: italic;}
    pre .keyword {color: #FF9D00; font-weight: bold;}
    pre .identifier { color: #fff;}
    pre .string { color: #3AD900;font-weight: bold;}
