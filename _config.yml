@@ -28,7 +28,7 @@ header-img: /img/default-bg.jpg
 RSS: feed.xml
 categories_path: categories
 tags_path: tags
-archive_path: archive
+archive_path: archives
 about_path: about.html
 
 BASE_PATH:
