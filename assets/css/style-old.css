@@ -905,4 +905,12 @@ legend {
 	.tab-content a{ font-size: 14px}
 	.badge { font-size: 10px }
 	.text-muted {color: #888;font-size: 14px;}
-}	
+}
+
+/* for anchorJs	 */
+.anchorjs-link {
+  transition: all .25s linear;
+}
+*:hover > .anchorjs-link {
+  margin-left: -1.125em !important;
+}

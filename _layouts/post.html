@@ -209,7 +209,6 @@ layout: default
     })();
 </script>
 <!-- 多说公共JS代码 end -->
-
 {% endif %}
 
 {% if site.disqus %}
@@ -228,8 +227,6 @@ layout: default
 <!-- disqus 公共JS代码 end -->
 {% endif %}
 
-
-
 {% if site.anchorjs %}
 <!-- async load function -->
 <script>
@@ -245,26 +242,11 @@ layout: default
 <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
 <script>
     async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
-        anchors.options = {
-          visible: 'hover',
-          placement: 'left'
-          <!-- icon: '§' -->
-        };
+        anchors.options.placement = 'left';
         anchors.add('h2,h3');
 		anchors.remove('.subheading');
     })
 </script>
-<style>
-    /* place left on bigger screen */
-    @media all and (min-width: 800px) {
-        .anchorjs-link{
-            position: absolute;
-            left: -0.75em;
-            font-size: 1.2em;
-            margin-top : -0.1em;
-        }
-    }
-</style>
 {% endif %}
 
 <!-- mathjax -->

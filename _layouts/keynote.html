@@ -235,20 +235,6 @@ layout: default
     })();
 </script>
 <!-- 多说公共JS代码 end -->
-
-<!-- 多说热评文章 end -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"brucezhaor"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- 多说公共JS代码 end -->
 {% endif %}
 
 {% if site.disqus_username %}
@@ -267,8 +253,6 @@ var duoshuoQuery = {short_name:"brucezhaor"};
 <!-- disqus 公共JS代码 end -->
 {% endif %}
 
-
-
 {% if site.anchorjs %}
 <!-- async load function -->
 <script>
@@ -284,26 +268,11 @@ var duoshuoQuery = {short_name:"brucezhaor"};
 <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
 <script>
     async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
-        anchors.options = {
-          visible: 'hover',
-          placement: 'left'
-          <!-- icon: '§' -->
-        };
+        anchors.options.placement = 'left';
         anchors.add('h2,h3');
 		anchors.remove('.subheading');
     })
 </script>
-<style>
-    /* place left on bigger screen */
-    @media all and (min-width: 800px) {
-        .anchorjs-link{
-            position: absolute;
-            left: -0.75em;
-            font-size: 1.2em;
-            margin-top : -0.1em;
-        }
-    }
-</style>
 {% endif %}
 
 <!-- mathjax -->
