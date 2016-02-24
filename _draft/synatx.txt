@@ -17,3 +17,8 @@ http://www.w3schools.com/bootstrap/bootstrap_images.asp
 [google](https://www.google.com)    ![me](/images/me1.png)
 
 <kbd>F12</kbd>
+
+{% highlight ruby linenos %}
+
+{% endhighlight %}
+
