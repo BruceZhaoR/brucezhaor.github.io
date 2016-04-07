@@ -15,7 +15,7 @@
 
 .highlight pre, pre, .highlight .hll { background-color: #000038; border: 1px solid #000; padding: 6px 10px; border-radius: 3px; }
 .highlight  { background: #000038; }
-.highlight .c { color: ##1378CE; font-style: italic } /* Comment */
+.highlight .c { color: #1378CE; font-style: italic } /* Comment */
 .highlight .err { color: #FFF; }
 .highlight .p { color: #FFF; }
 .highlight .n { color: #FFF; }
