@@ -134,7 +134,7 @@ git reset --hard 3628164	#回退指定的commit
 
 每次commit之后，git都会生成很长的一串SHA值，但是有用的就前7位。通过`git log`来查看提交历史记录的commit，按<kbd>Enter</kbd>查看更多记录，当然高级的方法是检索匹配，[git-pro-2.3](https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2) 这本书有详细说明。目前我还没有用到，以后用到了再写。
 
-找到相应的commit后，按<kbd>Ctr + C</kbd>终止命令。然后`git reset --hard <前7> 就能回退到相应的版本了。所以，你在每次提交commit的时候是不是应该写清楚你干了什么呢?
+找到相应的commit后，按<kbd>Ctr + C</kbd>终止命令。然后`git reset --hard <前7>` 就能回退到相应的版本了。所以，你在每次提交commit的时候是不是应该写清楚你干了什么呢?
 
 ### fork后的同步
 
