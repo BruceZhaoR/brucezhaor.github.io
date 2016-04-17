@@ -39,23 +39,23 @@ description: "这几个月在使用Git的过程中学到了不少实用的小技
 
 假设你已经clone了master分支到了本地，现在要创建一个分支用作项目展示的网站。这个时候你需要创建一个`gh-pages`的分支。下面的代码就是创建分支的过程。Ps:作为网站的话，这个分支下面需要有`index.html`文件,然后你点击`settings`就能看到自动生成的网站地址。
 
-{% highlight bash %}
+{% highlight shell %}
 
 git checkout -b gh-pages	#新建分支,名为gh-pages,并switch.
-git branch -vv 				#查看分支信息
-git remote -v  				#查看远程仓库信息
-git push origin gh-pages 	#将本地新建的分支同步到github上面
+git branch -vv			#查看分支信息
+git remote -v			#查看远程仓库信息
+git push origin gh-pages	#将本地新建的分支同步到github上面
 
 {% endhighlight %}
 
 假设你需要创建一个名为`new_branch_name`的分支来开发新的特性。
 
-{% highlight %}
+{% highlight bash %}
 
-git branch new_branch_name 		#来创建新的分支
+git branch new_branch_name	#来创建新的分支
 git checkout new_branch_name	#switch到分支
-git branch  					#查看分支列表
-git checkout master				#switch到主干/master
+git branch 			#查看分支列表
+git checkout master 		#switch到主干/master
 
 {% endhighlight %}
 
@@ -67,12 +67,12 @@ git checkout master				#switch到主干/master
 
 ### 重命名分支
 
-{% highlight %}
+{% highlight bash %}
 
 git checkout -b test 		#创建新的分支并switch
-git branch					#查看分支状态
-git branch -m dev			#直接将test重命名为dev
-git branch					#查看分支状态
+git branch     			#查看分支状态
+git branch -m dev		#直接将test重命名为dev
+git branch			#查看分支状态
 
 {% endhighlight %}
 
@@ -80,7 +80,7 @@ git branch					#查看分支状态
 
 *删除分支的时候需要切换到其他分支，然后才能删除当前的分支。*
 
-{% highlight %}
+{% highlight bash %}
 
 git checkout master			#切换到主分支
 git branch -D dev			#删除dev分支
@@ -98,22 +98,22 @@ git branch -D dev			#删除dev分支
 
 还是来一个例子吧：
 
-{%highlight %}
+{%highlight bash %}
 
 git checkout gh-pages		#切换到需要同步的分支
-git branch -vv 				#查看分支信息
-git pull 					#自动同步过来
-git branch -vv				#会发现commit变成最新的了
+git branch -vv 			#查看分支信息
+git pull 			#自动同步过来
+git branch -vv			#会发现commit变成最新的了
 
 {% endhighlight %}
 
 同步完成后，你就可以在家里的电脑进行各种操作了。当操作完成后，你需要将工作同步到github，这样你第二天同步到公司的电脑了。
 
-{% highlight %}
+{% highlight bash %}
 
-git add .					#添加所有修改过的文件
-git commit -m "修改注释"	#添加修改注释
-git push 					#同步到远程github
+git add .			#添加所有修改过的文件
+git commit -m "修改注释" 	#添加修改注释
+git push 			#同步到远程github
 
 {% endhighlight %}
 
@@ -123,9 +123,9 @@ git push 					#同步到远程github
 
 有时候开发做着做着发现不太对，我要回到出错前的那个状态该肿么办?好在git有类似时光机的功能。
 
-{% highlight %}
+{% highlight bash %}
 
-git log -5					#显示最近5条commit记录
+git log -5			#显示最近5条commit记录
 git reset --hard HEAD^		#回退1个commit
 git reset --hard HEAD^^		#回退2个commit
 git reset --hard 3628164	#回退指定的commit
@@ -142,12 +142,12 @@ git reset --hard 3628164	#回退指定的commit
 
 比如我fork了`qinwf/awesome-R`这个repository，这个经常更新我需要去同步过来。
 
-{% highlight %}
+{% highlight bash %}
 git remote add qinwf-awr git@github.com:qinwf/awesome-R.git
-git remote -v							#会发现多了一个qinwf-awr
-git branch -u qinwf-awr/master master 	#为master添加上游仓库 
+git remote -v						#会发现多了一个qinwf-awr
+git branch -u qinwf-awr/master master 			#为master添加上游仓库 
 git branch -vv
-git pull 								#完成同步
+git pull 						#完成同步
 git push origin master					#同步到自己的远程github仓库
 {% endhighlight %}
 
@@ -155,16 +155,16 @@ git push origin master					#同步到自己的远程github仓库
 
 另外还有其他的办法：
 
-{% highlight %}
-git fetch qinwf-awr	master		#
+{% highlight bash %}
+git fetch qinwf-awr	master
 git checkout master 			#如果你本来就是master就不用switch
 git merge qinwf-awr/master		#合并同步
 #或者
 git checkout -b qinwf-awr 		#新建分支
 git pull git://github.com/qinwf/awesome-R.git master
 git checkout master
-git merge qinwf-awr				#合并同步
-git push origin master --force	#强制覆盖远程仓库
+git merge qinwf-awr			#合并同步
+git push origin master --force		#强制覆盖远程仓库
 {% endhighlight %}
 
 还有另外一种方法: `git branch --track iss1 origin/master`  #创建一个新的分支 iss1 用于track 远程/上游仓库,然后你就可以跟踪远程的更新，而不影响现在分支的开发。
