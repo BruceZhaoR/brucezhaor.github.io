@@ -6,16 +6,22 @@ http://www.w3schools.com/bootstrap/bootstrap_images.asp
 	<a href="{{ site.BASE_PATH }}/">
 		<img src="http://pic.yupoo.com/{{site.author.yupoo}}" class="img-responsive" />
 	</a>
+![图片显示的时候的文字]('/images/me1.png' "title")
 
-# 索引是链接	
+# 插入链接	
 [google][1]  [weibo][2]
 
 [1]: www.google.com
 [2]: weibo.com
- 
+
+# 脚注
+
+^[引用的内容，如果有链接加上[name](http://....)]
+
 # 段内链接
 [google](https://www.google.com)    ![me](/images/me1.png)
 
+# 代码高亮
 <kbd>F12</kbd>
 
 {% highlight ruby linenos %}
