@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Git进阶1"
+title: "Git进阶"
 subtitle:   "常用基本操作"
 categories : [Git]
 tags : [Git]
