@@ -19,6 +19,19 @@ description: "使用ggplot2绘制常见基本图形，附有代码与调整参�
 
 本篇文章基于`ggplot2-2.1.0`，有数据格式 + 代码，方便套用。 不定期更新中，更多的资料请见[ggplot2官方文档]("http://docs.ggplot2.org/current/")。
 
+**背景图片代码:**
+
+{% highlight r%}
+ggplot(diamonds, aes(carat, price,colour=cut)) +
+    geom_point(alpha = 1/3) +
+    stat_smooth() + xlim(0,4) +
+    theme(text=element_blank(),
+        line=element_blank(),
+        legend.position="none",
+        title=element_blank())
+ggsave("ggplot-basic.jpg",width = 8,height = 4.5,dpi=600)
+{% endhighlight %}
+
 ## 占比饼图
 
 <p>有没有发现ggplot2里面没有直接画饼图的函数，这需要做一些小改变：将柱状图的笛卡尔坐标系变为极坐标。下面来简单介绍一下画法。</p>
