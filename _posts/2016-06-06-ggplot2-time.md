@@ -16,30 +16,17 @@ description:  "如果我们的时间序列是以更高频的形式呈现，那�
 * 目录
 {:toc}
 
-本篇文章基于`ggplot2-2.1.0`，有数据格式 + 代码，方便套用。 不定期更新中，更多的资料请见[ggplot2官方文档]("http://docs.ggplot2.org/current/")。
 
-**背景图片代码:**
-
-{% highlight r%}
-ggplot(diamonds, aes(carat, price,colour=cut)) +
-    geom_point(alpha = 1/3) +
-    stat_smooth() + xlim(0,4) +
-    theme(text=element_blank(),
-        line=element_blank(),
-        legend.position="none",
-        title=element_blank())
-ggsave("ggplot-basic.jpg",width = 8,height = 4.5,dpi=600)
-{% endhighlight %}
 
 ## 开始
 
 <p>我们常常要利用R来绘制简单的时序图，当时间序列间隔以天为单位时，我们可以利用’ts()’函数将数据非常方便的转换成R可以识别的时间对象，然后在利用’plot.ts()’函数绘制就行了。</p>
 <p>但如果我们的时间序列是以更高频的形式呈现，那么简单粗暴的’ts()’就显得不够用了，因此今天介绍一下如何绘制高频数据的时序图。</p>
 <p>R中除了有Date这种时间格式之外，还有许多姿势任君挑选（手动微笑），下面介绍三种不同的时间格式。</p>
-</div>
-<div id="xts" class="section level2">
-<h2>转换成xts格式</h2>
-<p>xts作为zoo的</p>
+
+
+## 转换成xts格式
+
 <pre class="r"><code>f1&lt;-file.choose()
 x&lt;-read.csv(f1,header=T,row.names = 1)
 head(x)
