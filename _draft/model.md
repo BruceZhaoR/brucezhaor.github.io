@@ -7,7 +7,7 @@ tags:       [Misc]
 mathjax:    false
 date:       2016-01-01
 author:     "Bruce Zhao"
-header-img: "/img/post/..."
+header-img: "https://cdn.rawgit.com/BruceZhaoR/brucezhaor.github.io/master/img/post/..."
 description: "简单描述"
 ---
 
