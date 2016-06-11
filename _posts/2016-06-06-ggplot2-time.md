@@ -5,7 +5,7 @@ categories : [R]
 tags : [ggplot2]
 date:       "2016-06-06"
 author:    "Elsa.Liu & Bruce Zhao"
-header-img: "https://cdn.rawgit.com/BruceZhaoR/brucezhaor.github.io/master/img/post/ggplot-basic.jpg"
+header-img: "https://cdn.rawgit.com/BruceZhaoR/brucezhaor.github.io/master/img/post/ggplot-time.jpg"
 description:  "如果我们的时间序列是以更高频的形式呈现，那么简单粗暴的’ts()’就显得不够用了，因此今天介绍一下如何绘制高频数据的时序图。"
 ---
 
