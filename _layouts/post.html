@@ -41,16 +41,20 @@ layout: default
     			{{ content }}
 				
 				<p class="text-right">
-				<a href="/">{{ site.author }}</a>
+				<a href="/">{{ page.author }}</a>
 				<span class="time">
 				/
-				<time >{{ page.date | date:"%Y-%m-%d" }}</time>
-				</span>
+				<time>{{ page.date | date:"%Y-%m-%d" }}</time>
+				<style>span.test {color: #0085A5;font-weight: bold;}</style>
+				</span>/ &nbsp;<span data-hk-page="current" class="test"> - </span>&nbsp;views
 				<br>
 				<span>
 					<strong><em>Published under<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/">(CC) BY-NC-SA 3.0 CN</a>.
 					</em></strong>
 				</span>
+				
+					
+				
 				</p>
 	
 					<hr>
@@ -262,3 +266,8 @@ layout: default
 <!-- for R highlight -->
 <script type="text/javascript" src="{{ site.BASE_PATH }}/assets/js/r-highlight.js"></script>
 {% endif %}
+
+<!--page views-->
+<script src="https://cdn1.lncld.net/static/js/av-mini-0.6.10.js"></script>
+<script src="http://jerry-cdn.b0.upaiyun.com/hit-kounter/hit-kounter-lc-0.2.0.js"></script>
+
