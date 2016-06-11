@@ -1,0 +1,961 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN"> 
+<head>
+	<meta charset="utf-8">
+	<title>方差分析：穷人家的孩子学不好？ | BruceZhao's Blog</title>
+	
+	<meta name="description" content="总有学校说，我们乡下地方，孩子读书的条件差，肯定考不过城里孩子的...那么？事实真的是这样吗？">
+	
+	<meta name="author" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- Enable responsive viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- 国产高速渲染 -->
+	<meta name="renderer" content="webkit">
+	<link rel="shortcut icon" href="/img/favicon.ico">	
+	<link rel="canonical" href="/blog/2016/01/15/aov/">
+	<link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+	<!-- Le styles -->
+	<link href="/assets/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/assets/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="/assets/resources/syntax/syntax.css" rel="stylesheet">
+	<link href="/assets/css/style.css" rel="stylesheet">
+	<!-- google-analytics	 -->
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72808482-1', 'auto');
+  ga('send', 'pageview');
+
+	</script>
+</head>
+
+<body ontouchstart="">
+
+	<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://bzrlc.github.io">BZRLC</a>
+        </div>
+
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/">Home</a></li>
+					<li><a href="/archives/">Archives</a></li>
+					<li><a href="/categories/">Categories</a></li>
+					<li><a href="/tags/">Tags</a></li>
+					<li><a href="/about.html">About Me</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+	
+	var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+	 *
+	 * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+	
+	<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/post/aov_info/aov-bg.png')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>方差分析：穷人家的孩子学不好？</h1>
+                    
+                    
+                    <h2 class="subheading">重新认识方差分析</h2>
+                    
+                    <span class="meta">Posted by 赵炜 on January 15, 2016</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<article>
+<!-- Main Content -->
+	<div class="container">
+		<div class="row">
+
+		<!-- Post Container -->
+    		<div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+				
+    			<h2 class="no_toc" id="section">目录</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#section-1" id="markdown-toc-section-1">1. 方差分析基本原理与思想</a>    <ul>
+      <li><a href="#section-2" id="markdown-toc-section-2">方差分析的起源</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">理论推导—以单因素方差分析为例</a></li>
+      <li><a href="#section-4" id="markdown-toc-section-4">结果判断</a></li>
+      <li><a href="#section-5" id="markdown-toc-section-5">方差分析的思想</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-6" id="markdown-toc-section-6">2. 实例分析</a>    <ul>
+      <li><a href="#section-7" id="markdown-toc-section-7">经济水平与语文平均成绩</a>        <ul>
+          <li><a href="#section-8" id="markdown-toc-section-8">正态性检验</a></li>
+          <li><a href="#section-9" id="markdown-toc-section-9">方差齐性检验</a></li>
+          <li><a href="#section-10" id="markdown-toc-section-10">方差分析</a></li>
+        </ul>
+      </li>
+      <li><a href="#section-11" id="markdown-toc-section-11">经济水平与数学平均成绩</a>        <ul>
+          <li><a href="#section-12" id="markdown-toc-section-12">正态性检验</a></li>
+          <li><a href="#section-13" id="markdown-toc-section-13">方差齐性检验</a></li>
+          <li><a href="#section-14" id="markdown-toc-section-14">方差分析</a></li>
+        </ul>
+      </li>
+      <li><a href="#section-15" id="markdown-toc-section-15">经济水平与英语平均成绩</a>        <ul>
+          <li><a href="#section-16" id="markdown-toc-section-16">正态性检验</a></li>
+          <li><a href="#section-17" id="markdown-toc-section-17">方差齐性检验</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#section-18" id="markdown-toc-section-18">3. 结语</a></li>
+  <li><a href="#section-19" id="markdown-toc-section-19">4. 参考文献</a></li>
+</ul>
+
+<p>与统计和数据分析打交道的人，想必对<code class="highlighter-rouge">方差分析</code>一点都不陌生，但是真正懂得其原理的人又有多少呢？在写这篇文章之前，作为统计学专业毕业的人，表示对方差分析也只是一知半解，有时候还会出现误用的情况。为了写这篇文章，我又重拾《数理统计》这本书，经过一番推导和查阅相关资料后，总算是有了一定的了解。于是打算写这么一篇文章来与大家分享方差分析的原理以及用法，最后给出实际的例子。</p>
+
+<h2 id="section-1">1. 方差分析基本原理与思想</h2>
+
+<blockquote>
+  <p>没有公式就没有伤害</p>
+</blockquote>
+
+<p>为了不给大家造成伤害，我尽量不照搬公式，用人话来解释清楚。</p>
+
+<h3 id="section-2">方差分析的起源</h3>
+
+<p>一般两个样本的均值检验，现实中最常用的是<strong>t检验</strong>。因为t检验具有具有以下性质：</p>
+
+<ul>
+  <li>两总体方差未知时，可以使用；</li>
+  <li>非正态总体，大样本情况下可以使用；</li>
+</ul>
+
+<p>而<strong>Z检验</strong>（又叫U检验）的前提条件就是两样本的<strong>总体方差已知</strong>，一般情况下总体的方差是不知道的，用样本的方差去估计个人认为偏差很大，所以Z建议现实生活中基本用不上。当然，如果你精通抽样技术（很难），能够计算无偏的总体方差估计，想必早就对这些基本方法不屑一顾了。</p>
+
+<p>刚说了<strong>t检验</strong>只适用于两个样本的均值检验，那如果涉及到多个样本的均值检验呢？有人说:“两两t检验不就行了吗，虽然麻烦了一点，但还不是能做出来的，根本用不着新方法吧。”</p>
+
+<p>假设有三个样本要对其均值进行检验是否相等，那么就要比较 <script type="math/tex">C_3^2 = 3</script> 次了。关键问题是：若t检验的显著性水平 <script type="math/tex">\alpha = 0.05</script>,那么三次比较的显著性水平为<script type="math/tex">1 - (1-\alpha)^3 = 0.1426</script>,远远超过当初的设定的0.05，犯第一类错误（弃真）概率大大加大。所以对于多样本的均值比较检验，应采用方差分析。</p>
+
+<h3 id="section-3">理论推导—以单因素方差分析为例</h3>
+
+<p>单因素方差分析是将影响试验结果的因素控制为1个，然后取该因素的几个水平进行分析。举个例子：现在要研究上网时间会不会影响学生的数学成绩？在同一个学校抽取成绩相当的90个学生，将其随机分为三组，每组30个学生。在一个月内，第一组控制每天不上网，第二组控制每天上网时间为1个小时，第三组控制每天上网时间为2个小时。三组在同一个班级上数学课，一个月后进行数学测试，对其结果进行方差分析。说了这么多就是将影响数学成绩控制为一个因素——上网时间。讲到统计学原理之类的东西，总是少不了公式，要不然会显得不够专业。但是考虑到大多数人看到公式就会直接略过，所以这部分结合例子一起来推导。</p>
+
+<p>在公式推导前，先上一个表格，有助于对公式的理解。横轴A对应着3个水平，纵轴表示测试的学生个数r=30。得到数据如下表所示,一共有30行和3列：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>水平</th>
+      <th>A1</th>
+      <th>A2</th>
+      <th>A3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>\(X_{11}\)</td>
+      <td>\(X_{12}\)</td>
+      <td>\(X_{13}\)</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>\(X_{21}\)</td>
+      <td>\(X_{22}\)</td>
+      <td>\(X_{23}\)</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>\(X_{31}\)</td>
+      <td>\(X_{32}\)</td>
+      <td>\(X_{33}\)</td>
+    </tr>
+    <tr>
+      <td>…</td>
+      <td>\(X_{…}\)</td>
+      <td>\(X_{…}\)</td>
+      <td>\(X_{…}\)</td>
+    </tr>
+    <tr>
+      <td>r</td>
+      <td>\(X_{r1}\)</td>
+      <td>\(X_{r2}\)</td>
+      <td>\(X_{r3}\)</td>
+    </tr>
+    <tr>
+      <td>列平均值</td>
+      <td>\( \overline{X_{.1}}\)</td>
+      <td>\( \overline{X_{.2}}\)</td>
+      <td>\( \overline{X_{.3}}\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>假设条件：
+1. 三组的学生不受彼此影响，也就是样本的独立性；
+2. 每个组内的学生考试成绩理论上服从<script type="math/tex">N(\mu_j,\sigma^2)</script>的正态分布；
+3. 方差齐性，也就是条件2里面相同的<script type="math/tex">\sigma^2</script>。</p>
+
+<p>这个假设是一切分析的基础，否则没法做下去了。令<script type="math/tex">\varepsilon_{ij} = X_{ij} - u_j  \sim N(0,\sigma^2)</script>,为随机误差；<script type="math/tex">\alpha_j = \mu_j - \mu</script>, 其中 <script type="math/tex">\mu =\frac{1}{c} \sum \mu_j</script> 为各水平的效应. <strong>随机误差来源</strong>可能是学生发挥水平造成，当然也有其他各种各样的不可控原因。<strong>效应误差的来源</strong>是处理水平的不同——上网时间。当由处理水平不同造成误差在<strong>一定程度</strong>上大于由随机因素造成的误差的时候，我们就有理由认为是因为上网时间的不同导致学生考试成绩的差异。但是这个程度如何判断呢？这个就需要借助于F分布了。下面就是利用随机误差和效应误差的性质来推导出F分布，然后构成检验统计量用于判断。大波公式来袭，请注意 :)</p>
+
+<p>这里方差分析的原假设为H0: <script type="math/tex">\mu_1=\mu_2 =\mu_3</script> ; 备择假设为H1: <script type="math/tex">\mu_1,\mu_2 ,\mu_3</script>不全相等。</p>
+
+<p>所有学生考试总偏差平方和为：</p>
+
+<script type="math/tex; mode=display">SST = \sum{ \sum{ (X_{ij} - \overline{X_{..}})^2}} ,</script>
+
+<p>其中<script type="math/tex">\overline{X_{..}} = \frac{\sum{\sum{X_{ij}}}}{n}</script>为90个学生的平均成绩。其可以分解为：</p>
+
+<script type="math/tex; mode=display">SST = \sum{ \sum{ (X_{ij} - \overline{X_{.j}})^2}} + \sum{ r (\overline{X_{.j}} - \overline{X_{..}})^2}</script>
+
+<p>这就是平方和分解定理(证明过程感兴趣的可以看下面的参考文献1) 令：<script type="math/tex">SSE = \sum{ \sum{ (X_{ij} - \overline{X_{.j}})^2}}</script>为误差平方和，<script type="math/tex">SSA = \sum{ r (\overline{X_{.j}} - \overline{X_{..}})^2}</script>为水平的效应平方和。</p>
+
+<p>从公式可以看出，<strong>误差平方和</strong>是先计算每个组的学生成绩与组的平均值的差值平方和，然后将所有组的加起来就是总的误差平方和；<strong>效应平方和</strong>是先计算每一个组均值减去所有组的均值的差值平方和，乘以组的学生个数，然后所有计算结果加起来就是总的效应平方和。</p>
+
+<p>这个时候我们要用到了假设的部分，这部分需要知道基本统计分布的性质。<strong>拿第一列举例,j=1</strong>. 第一列的误差(<script type="math/tex">X_{i1} - \overline{X_{.1}}</script>)是服从均值为0，标准差为<script type="math/tex">\sigma</script>的正态分布 <script type="math/tex">\sim N(0,\sigma^2)</script> , 那么这一列的误差平方和除以方差 服从.</p>
+
+<script type="math/tex; mode=display">\frac{\sum_{i=1}^{30}{ (X_{i1} - \overline{X_{.1}})^2}}{\sigma^2} \sim \chi^2(29)</script>
+
+<p>自由度为29的卡方分布。之所以要减去一个自由度是因为 <script type="math/tex">\overline{X_{.1}} = \frac{1}{30} \sum_{i=1}^{30}(X_{i1})</script> ，利用了样本信息，故丢失一个自由度。由于<strong>卡方分布的可加性</strong>，那么<strong>所有列的误差平方和</strong></p>
+
+<script type="math/tex; mode=display">\frac{SSE}{\sigma^2} \sim \chi^2(n - 3) ,其中 n=90 .</script>
+
+<p>因为卡方分布的期望是其自由度，可以知道SSE的期望是</p>
+
+<script type="math/tex; mode=display">\frac{E(SSE)}{n-3} = \sigma^2</script>
+
+<p><strong>当H0为真时</strong>，<script type="math/tex">X_{ij}  \sim N(\mu,\sigma^2).</script></p>
+
+<script type="math/tex; mode=display">\therefore \frac{SST}{\sigma^2} = \frac{\sum{ \sum{ (X_{ij} - \overline{X_{..}})^2}}}{\sigma^2} \sim \chi^2(n-1)</script>
+
+<p>由分解定理可知:</p>
+
+<script type="math/tex; mode=display">\frac{SSA}{\sigma^2} = \frac{\sum_{i=1}^{r}{ (X_{.j} - \overline{X_{..}})^2}}{\sigma^2} \sim \chi^2(3 - 1)</script>
+
+<p>可以求得：</p>
+
+<script type="math/tex; mode=display">\frac{E(SSA)}{2} = \sigma^2</script>
+
+<p><strong>当H1为真时</strong>，计算得：</p>
+
+<script type="math/tex; mode=display">E(SSA) = 2 \times \sigma^2  + \sum_{j=1}^{c}r\alpha_j^2</script>
+
+<p>其值跟<script type="math/tex">\alpha_j</script>水平的效应有关系，水平效应越大，则实际的SSA越大(推导请见参考资料1)。而SSE不管H0是否为真,<script type="math/tex">E(SSE) =(n-3) \sigma^2</script>。</p>
+
+<p>F分布是由两个卡方分布分别除以其自由度的比值构成的，当<strong>H0为真</strong>时，以SSE/(N-3)作为分母，以SSA/(3-1)作为分子就可以可以构建<em>*检验统计量F</em>。 F分布见文章标题的底图。</p>
+
+<script type="math/tex; mode=display">F = \frac{SSA/(3-1)}{SSE/(N-3)} \sim F(2,87)</script>
+
+<h3 id="section-4">结果判断</h3>
+
+<p>检验统计量F的计算是基于实际样本的观测值计算的，若试验水平的效应很小，则F值小；若水平的效应很大，则F值大。</p>
+
+<p>统计学上，小概率事件(在一次实验中看成是实际不可能发生的事件)，一般认为其发生的概率等于或小于0.05或0.01。若发生小概率事件发生，则认为其在统计学上具有显著性。
+基于给定的显著水平<script type="math/tex">\alpha=0.05</script>，本题的拒绝域为：</p>
+
+<script type="math/tex; mode=display">F \ge F_{0.05}(2,87)</script>
+
+<p>若计算的F值大于或等于<script type="math/tex">F_{\alpha}(2,87)</script>，即落在了拒绝域中，所以可以拒绝原假设，认为各水平的均值不相等。若计算出来的F值小于<script type="math/tex">F_{\alpha}(2,87)</script>，则没有充分的理由认为是上网时间影响学生成绩，不具有统计上的显著性。</p>
+
+<p><script type="math/tex">F_{0.05}(2,87)</script>一般需要查表才知道其值，但是P值的出现解决了查表比对的问题。在H0为真的情况下，设计算的统计量值为F0，则<script type="math/tex">p_{value} = P \{ F \ge F_0 \}</script>。实际上P值可以理解为尾部概率，若尾部概率越小，F值越大，试验的水平效应越大，越应该拒绝原假设。当P值接近临界值(给定的显著性水平)，不能武断做出推断。例如P=0.052时，略大于给定的显著性水平0.05，这种情况下如果条件允许可以多做几次试验，综合实际情况给出判断。</p>
+
+<h3 id="section-5">方差分析的思想</h3>
+
+<p>上面推导了单因素方差分析的基本原理，但是实际问题中我们还会碰到多因素以及因素之间的交互作用的情况，其基本的思想是一致的：就是将每一个因素造成的误差给分解出来，分别与随机误差进行比较。本例中将学生成绩的差异来源分解成了随机误差和效应误差（其实效应误差是含有随机误差的，见参考资料1的P23），当效应误差大于一定的随机误差时，可以认为引起差异的原因大部分在于水平变量的控制。F分布解决了如何判断问题，它是由英国统计学家<a href="https://en.wikipedia.org/wiki/Ronald_Fisher">R.A.Fisher</a>提出，并以其姓氏的第一个字母命名的。Fisher是现代统计学奠基人之一。方差分析一般的结果呈现是方差分析表的形式：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>方差来源</th>
+      <th>平方和</th>
+      <th>自由度</th>
+      <th>均方</th>
+      <th>F比值</th>
+      <th>p值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>因素A</td>
+      <td>SSA</td>
+      <td>R-1</td>
+      <td>MSA=SSA/(R-1)</td>
+      <td>FA= MSA/MSE</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>因素B</td>
+      <td>SSB</td>
+      <td>S-1</td>
+      <td>MSA=SSB/(S-1)</td>
+      <td>FB= MSB/MSE</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+    </tr>
+    <tr>
+      <td>误差</td>
+      <td>SSE</td>
+      <td>(R-1)(S-1)</td>
+      <td>MSE=SSE/(R-1)(S-1)</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>总合</td>
+      <td>SST</td>
+      <td>RS-1</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>请牢记方差分析的假设条件：1.各组样本独立；2.组内误差服从正态分布；3.各组间的方差近似相等。</strong></p>
+
+<p>前面两个条件一般都比较好满足，最后一个同方差性比较难满足。很多人在做方差分析前都没有对样本进行检验，拿起数据就算，这样得出的结果是不可信的。有人会问如果条件都不满足，那怎么办? 我的建议是可以尝试非参数的方法，比如kruskal-wallis单因素方差分析，Friedman秩方差分析法。下面介绍一个完整的方差分析的步骤，并给出实例。</p>
+
+<h2 id="section-6">2. 实例分析</h2>
+
+<p>这里我们研究的问题是：<strong>处在不同经济水平地区的学校学生的平均成绩是否有差异</strong>。我们是用学校周边的房价来衡量经济水平的高低，并将学校分为三挡。平均成绩用2014年各学科各年级的平均成绩。</p>
+
+<p>本人使用的是R软件，软件只是思想的载体，方差分析的思路都是一致。下面请看完整的方差分析过程。</p>
+
+<p>首先载入需要packages，准备好数据：</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">readxl</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">&lt;-</span> <span class="n">read_excel</span><span class="p">(</span><span class="s2">"data.xlsx"</span><span class="p">)</span> <span class="c1">#导入数据
+</span><span class="n">Source</span><span class="o">:</span> <span class="n">local</span> <span class="n">data</span> <span class="n">frame</span> <span class="p">[</span><span class="m">84</span> <span class="n">x</span> <span class="m">5</span><span class="p">]</span>
+    <span class="n">xxdm</span>   <span class="n">eco</span>      <span class="n">chi</span>      <span class="n">mat</span>      <span class="n">eng</span>
+   <span class="p">(</span><span class="n">chr</span><span class="p">)</span> <span class="p">(</span><span class="n">chr</span><span class="p">)</span>    <span class="p">(</span><span class="n">dbl</span><span class="p">)</span>    <span class="p">(</span><span class="n">dbl</span><span class="p">)</span>    <span class="p">(</span><span class="n">dbl</span><span class="p">)</span>
+<span class="m">1</span>   <span class="m">0003</span>    <span class="err">高</span> <span class="m">86.63555</span> <span class="m">84.55955</span> <span class="m">84.69365</span>
+<span class="m">2</span>   <span class="m">0004</span>    <span class="err">高</span> <span class="m">82.80060</span> <span class="m">84.32115</span> <span class="m">79.51330</span>
+<span class="m">3</span>   <span class="m">0007</span>    <span class="err">高</span> <span class="m">85.01712</span> <span class="m">86.03630</span> <span class="m">88.01676</span>
+<span class="m">4</span>   <span class="m">0008</span>    <span class="err">高</span> <span class="m">81.89492</span> <span class="m">82.90956</span> <span class="m">84.15971</span>
+<span class="m">5</span>   <span class="m">0009</span>    <span class="err">高</span> <span class="m">85.50658</span> <span class="m">85.68337</span> <span class="m">89.13135</span>
+<span class="m">6</span>   <span class="m">0010</span>    <span class="err">高</span> <span class="m">83.41341</span> <span class="m">85.41472</span> <span class="m">84.65958</span>
+<span class="m">7</span>   <span class="m">0012</span>    <span class="err">高</span> <span class="m">81.03484</span> <span class="m">80.36919</span> <span class="m">85.29970</span>
+<span class="m">8</span>   <span class="m">0015</span>    <span class="err">高</span> <span class="m">84.27045</span> <span class="m">88.00999</span> <span class="m">88.32905</span>
+<span class="m">9</span>   <span class="m">0024</span>    <span class="err">高</span> <span class="m">80.03031</span> <span class="m">79.97170</span> <span class="m">79.62687</span>
+<span class="m">10</span>  <span class="m">0039</span>    <span class="err">高</span> <span class="m">84.38389</span> <span class="m">87.05825</span> <span class="m">85.93709</span>
+<span class="k">...</span>  <span class="k">...</span>   <span class="k">...</span>      <span class="k">...</span>      <span class="k">...</span>      <span class="k">...</span></code></pre></figure>
+
+<p>这就是基本的数据的样子，xxdm表示学校代码；eco表示经济水平，有高中低三个档；chi表示语文平均成绩，mat表示数学平均成绩，eng表示英语平均成绩。</p>
+
+<h3 id="section-7">经济水平与语文平均成绩</h3>
+
+<p>首先通过箱线图来了解，处在不同经济水平的学校语文平均成绩总体情况：</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">windowsFonts</span><span class="p">(</span><span class="n">myfont</span><span class="o">=</span><span class="n">windowsFont</span><span class="p">(</span><span class="s2">"Microsoft YaHei"</span><span class="p">))</span> <span class="c1"># 绑定字体-微软雅黑
+</span><span class="n">p</span> <span class="o">&lt;-</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">eco</span><span class="p">,</span><span class="n">chi</span><span class="p">,</span><span class="n">colour</span><span class="o">=</span><span class="n">factor</span><span class="p">(</span><span class="n">eco</span><span class="p">)))</span>
+<span class="n">p</span> <span class="o">+</span> <span class="n">geom_boxplot</span><span class="p">(</span><span class="n">colour</span><span class="o">=</span> <span class="s2">"darkgrey"</span><span class="p">,</span><span class="n">outlier.colour</span> <span class="o">=</span> <span class="s2">"red"</span><span class="p">,</span> 
+		<span class="n">outlier.shape</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span><span class="n">outlier.size</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span> <span class="o">+</span>  <span class="c1">#设置箱体颜色标出离群点
+</span>  <span class="n">geom_jitter</span><span class="p">(</span><span class="n">width</span> <span class="o">=</span> <span class="m">0.2</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">3</span><span class="p">)</span> <span class="o">+</span>  <span class="c1">#散点分布
+</span>  <span class="n">coord_flip</span><span class="p">()</span> <span class="o">+</span>  <span class="c1">#坐标轴翻转
+</span>  <span class="n">labs</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">"各学校平均成绩"</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s2">"经济水平"</span><span class="p">,</span><span class="n">colour</span><span class="o">=</span><span class="s2">"经济水平"</span><span class="p">)</span> <span class="o">+</span>  <span class="c1">#坐标轴及标题
+</span>  <span class="n">ggtitle</span><span class="p">(</span><span class="s2">"不同经济水平下学校语文平均成绩箱线图"</span><span class="p">)</span><span class="o">+</span>
+  <span class="n">theme_bw</span><span class="p">()</span><span class="o">+</span>  <span class="c1">#简洁主题，设置标题字体
+</span>  <span class="n">theme</span><span class="p">(</span><span class="n">plot.title</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">family</span> <span class="o">=</span> <span class="s2">"myfont"</span><span class="p">,</span><span class="n">face</span> <span class="o">=</span> <span class="s2">"bold"</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">rel</span><span class="p">(</span><span class="m">2</span><span class="p">)),</span>
+        <span class="n">axis.title.x</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">family</span> <span class="o">=</span> <span class="s2">"myfont"</span><span class="p">,</span><span class="n">face</span> <span class="o">=</span> <span class="s2">"bold"</span><span class="p">),</span>
+        <span class="n">axis.title.y</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">family</span> <span class="o">=</span> <span class="s2">"myfont"</span><span class="p">,</span><span class="n">face</span> <span class="o">=</span> <span class="s2">"bold"</span><span class="p">),</span>
+        <span class="n">legend.title</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">family</span> <span class="o">=</span> <span class="s2">"myfont"</span><span class="p">,</span><span class="n">face</span> <span class="o">=</span> <span class="s2">"bold"</span><span class="p">))</span>
+		</code></pre></figure>
+
+<p>得到的图是这样的：
+<img src="/img/post/aov_info/chi.png" alt="不同经济水平下学校语文平均成绩箱线图" title="不同经济水平下学校语文平均成绩箱线图" /></p>
+
+<p>从上面的图可以看出有中等经济水平和高经济水平各有一个学校为离群点，为了准确性，应该剔除这两个学校。在数据准备好的情况下，就可以进行分析前的检验。所以，这里的水平有3个，样本数量为82个。</p>
+
+<h4 id="section-8">正态性检验</h4>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">#剔除异常值并将语文成绩排序
+</span><span class="o">&gt;</span><span class="n">chinese</span> <span class="o">&lt;-</span> <span class="n">select</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">))</span> <span class="o">%&gt;%</span> <span class="n">filter</span><span class="p">(</span><span class="n">chi</span><span class="o">&gt;</span><span class="m">76</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">arrange</span><span class="p">(</span><span class="n">chi</span><span class="p">)</span>
+<span class="n">Source</span><span class="o">:</span> <span class="n">local</span> <span class="n">data</span> <span class="n">frame</span> <span class="p">[</span><span class="m">82</span> <span class="n">x</span> <span class="m">3</span><span class="p">]</span>
+    <span class="n">xxdm</span>   <span class="n">eco</span>      <span class="n">chi</span>
+   <span class="p">(</span><span class="n">chr</span><span class="p">)</span> <span class="p">(</span><span class="n">chr</span><span class="p">)</span>    <span class="p">(</span><span class="n">dbl</span><span class="p">)</span>
+<span class="m">1</span>   <span class="m">1032</span>    <span class="err">中</span> <span class="m">77.84325</span>
+<span class="m">2</span>   <span class="m">0038</span>    <span class="err">低</span> <span class="m">78.36574</span>
+<span class="m">3</span>   <span class="m">0029</span>    <span class="err">低</span> <span class="m">79.11266</span>
+<span class="m">4</span>   <span class="m">0030</span>    <span class="err">低</span> <span class="m">79.87137</span>
+<span class="m">5</span>   <span class="m">1008</span>    <span class="err">中</span> <span class="m">79.94627</span>
+<span class="m">6</span>   <span class="m">0024</span>    <span class="err">高</span> <span class="m">80.03031</span>
+<span class="m">7</span>   <span class="m">0042</span>    <span class="err">中</span> <span class="m">80.36948</span>
+<span class="m">8</span>   <span class="m">0025</span>    <span class="err">中</span> <span class="m">80.76178</span>
+<span class="m">9</span>   <span class="m">0046</span>    <span class="err">中</span> <span class="m">80.85167</span>
+<span class="m">10</span>  <span class="m">0012</span>    <span class="err">高</span> <span class="m">81.03484</span>
+<span class="err">..</span>   <span class="k">...</span>   <span class="k">...</span>      <span class="k">...</span>
+<span class="c1">#低经济水平学校正态性检验
+</span><span class="o">&gt;</span><span class="n">shapiro.test</span><span class="p">(</span><span class="n">filter</span><span class="p">(</span><span class="n">chinese</span><span class="p">,</span><span class="n">eco</span> <span class="o">==</span><span class="s2">"低"</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">select</span><span class="p">(</span><span class="n">chi</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="err">.</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span>
+
+	<span class="n">Shapiro</span><span class="o">-</span><span class="n">Wilk</span> <span class="n">normality</span> <span class="n">test</span>
+<span class="n">data</span><span class="o">:</span>  <span class="n">filter</span><span class="p">(</span><span class="n">chinese</span><span class="p">,</span> <span class="n">eco</span> <span class="o">==</span> <span class="s2">"低"</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">select</span><span class="p">(</span><span class="n">chi</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="err">.</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
+<span class="n">W</span> <span class="o">=</span> <span class="m">0.97135</span><span class="p">,</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span> <span class="o">=</span> <span class="m">0.7422</span>
+
+<span class="o">&gt;</span> <span class="n">shapiro.test</span><span class="p">(</span><span class="n">filter</span><span class="p">(</span><span class="n">chinese</span><span class="p">,</span><span class="n">eco</span> <span class="o">==</span><span class="s2">"中"</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">select</span><span class="p">(</span><span class="n">chi</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="err">.</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span>
+
+	<span class="n">Shapiro</span><span class="o">-</span><span class="n">Wilk</span> <span class="n">normality</span> <span class="n">test</span>
+<span class="n">data</span><span class="o">:</span>  <span class="n">filter</span><span class="p">(</span><span class="n">chinese</span><span class="p">,</span> <span class="n">eco</span> <span class="o">==</span> <span class="s2">"中"</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">select</span><span class="p">(</span><span class="n">chi</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="err">.</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
+<span class="n">W</span> <span class="o">=</span> <span class="m">0.97593</span><span class="p">,</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span> <span class="o">=</span> <span class="m">0.5417</span>
+
+<span class="o">&gt;</span> <span class="n">shapiro.test</span><span class="p">(</span><span class="n">filter</span><span class="p">(</span><span class="n">chinese</span><span class="p">,</span><span class="n">eco</span> <span class="o">==</span><span class="s2">"高"</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">select</span><span class="p">(</span><span class="n">chi</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="err">.</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span>
+
+	<span class="n">Shapiro</span><span class="o">-</span><span class="n">Wilk</span> <span class="n">normality</span> <span class="n">test</span>
+<span class="n">data</span><span class="o">:</span>  <span class="n">filter</span><span class="p">(</span><span class="n">chinese</span><span class="p">,</span> <span class="n">eco</span> <span class="o">==</span> <span class="s2">"高"</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">select</span><span class="p">(</span><span class="n">chi</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="err">.</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
+<span class="n">W</span> <span class="o">=</span> <span class="m">0.96808</span><span class="p">,</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span> <span class="o">=</span> <span class="m">0.7139</span></code></pre></figure>
+
+<p>可以看到三个水平下学校的平均成绩正态性检验结果P值都较大，可以认为满足正态性。</p>
+
+<h4 id="section-9">方差齐性检验</h4>
+
+<p>多组的方差齐性检验采用 <strong>Bartlett Test of Homogeneity of Variances</strong>，其H0为每组方差相等。</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span><span class="n">bartlett.test</span><span class="p">(</span><span class="n">chi</span> <span class="o">~</span> <span class="n">eco</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">chinese</span><span class="p">)</span>
+
+	<span class="n">Bartlett</span> <span class="n">test</span> <span class="n">of</span> <span class="n">homogeneity</span> <span class="n">of</span> <span class="n">variances</span>
+	
+<span class="n">data</span><span class="o">:</span>  <span class="n">chi</span> <span class="n">by</span> <span class="n">eco</span>
+<span class="n">Bartlett</span><span class="err">'</span><span class="n">s</span> <span class="n">K</span><span class="o">-</span><span class="n">squared</span> <span class="o">=</span> <span class="m">1.8056</span><span class="p">,</span> <span class="n">df</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span> <span class="o">=</span> <span class="m">0.4054</span><span class="err">.</span></code></pre></figure>
+
+<p>通过P值发现并不能拒绝H0，可以认为样本的方差是齐性的，符合方差分析的条件。</p>
+
+<h4 id="section-10">方差分析</h4>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span><span class="n">c.aov</span> <span class="o">&lt;-</span><span class="n">aov</span><span class="p">(</span><span class="n">chi</span><span class="o">~</span><span class="n">eco</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">chinese</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">summary</span><span class="p">(</span><span class="n">aov</span><span class="p">(</span><span class="n">chi</span><span class="o">~</span><span class="n">eco</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">chinese</span><span class="p">))</span>
+
+            <span class="n">Df</span> <span class="n">Sum</span> <span class="n">Sq</span> <span class="n">Mean</span> <span class="n">Sq</span> <span class="n">F</span> <span class="n">value</span> <span class="n">Pr</span><span class="p">(</span><span class="o">&gt;</span><span class="n">F</span><span class="p">)</span>
+<span class="n">eco</span>          <span class="m">2</span>   <span class="m">18.3</span>   <span class="m">9.132</span>    <span class="m">1.07</span>  <span class="m">0.348</span>
+<span class="n">Residuals</span>   <span class="m">79</span>  <span class="m">674.1</span>   <span class="m">8.533</span>               </code></pre></figure>
+
+<p>看到这个结果是不是很熟悉，这个就是<a href="#section-5">前面</a>方差分析表。通过查看P值，远大于显著性水平0.05，所以不能拒绝原假设，认为不同经济水平对学校的语文平均成绩没有显著性影响。</p>
+
+<h3 id="section-11">经济水平与数学平均成绩</h3>
+
+<p>步骤与上面分析语文平均成绩类似，有些代码省略。首先通过箱线图来了解，处在不同经济水平的学校数学平均成绩总体情况.得到的图是这样的：</p>
+
+<p><img src="/img/post/aov_info/mat.png" alt="不同经济水平下学校数学平均成绩箱线图" title="不同经济水平下学校数学平均成绩箱线图" /></p>
+
+<p>数学的箱线图中有一个异常点非常明显应该剔除掉。剔除后得到的图是这样的：</p>
+
+<p><img src="/img/post/aov_info/mat1.png" alt="剔除异常值后数学的箱线图" title="剔除异常值后数学的箱线图" /></p>
+
+<p>相比语文的箱线图，不同水平下的数学均值差异略大一些。接下来需要方差分析来验证一下。</p>
+
+<h4 id="section-12">正态性检验</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">shapiro.test</span><span class="p">(</span><span class="n">filter</span><span class="p">(</span><span class="n">math</span><span class="p">,</span><span class="n">eco</span> <span class="o">==</span><span class="s2">"低"</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">select</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="err">.</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span>
+
+	<span class="n">Shapiro</span><span class="o">-</span><span class="n">Wilk</span> <span class="n">normality</span> <span class="n">test</span>
+
+<span class="n">data</span><span class="o">:</span>  <span class="n">filter</span><span class="p">(</span><span class="n">math</span><span class="p">,</span> <span class="n">eco</span> <span class="o">==</span> <span class="s2">"低"</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">select</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="err">.</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
+<span class="n">W</span> <span class="o">=</span> <span class="m">0.93386</span><span class="p">,</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span> <span class="o">=</span> <span class="m">0.1476</span>
+
+<span class="o">&gt;</span> <span class="n">shapiro.test</span><span class="p">(</span><span class="n">filter</span><span class="p">(</span><span class="n">math</span><span class="p">,</span><span class="n">eco</span> <span class="o">==</span><span class="s2">"中"</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">select</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="err">.</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span>
+
+	<span class="n">Shapiro</span><span class="o">-</span><span class="n">Wilk</span> <span class="n">normality</span> <span class="n">test</span>
+
+<span class="n">data</span><span class="o">:</span>  <span class="n">filter</span><span class="p">(</span><span class="n">math</span><span class="p">,</span> <span class="n">eco</span> <span class="o">==</span> <span class="s2">"中"</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">select</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="err">.</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
+<span class="n">W</span> <span class="o">=</span> <span class="m">0.99041</span><span class="p">,</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span> <span class="o">=</span> <span class="m">0.9794</span>
+
+<span class="o">&gt;</span> <span class="n">shapiro.test</span><span class="p">(</span><span class="n">filter</span><span class="p">(</span><span class="n">math</span><span class="p">,</span><span class="n">eco</span> <span class="o">==</span><span class="s2">"高"</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">select</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="err">.</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span>
+
+	<span class="n">Shapiro</span><span class="o">-</span><span class="n">Wilk</span> <span class="n">normality</span> <span class="n">test</span>
+
+<span class="n">data</span><span class="o">:</span>  <span class="n">filter</span><span class="p">(</span><span class="n">math</span><span class="p">,</span> <span class="n">eco</span> <span class="o">==</span> <span class="s2">"高"</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">select</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="err">.</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
+<span class="n">W</span> <span class="o">=</span> <span class="m">0.94347</span><span class="p">,</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span> <span class="o">=</span> <span class="m">0.255</span>
+</code></pre>
+</div>
+<p>中等水平下的学校平均成绩更加符合正态分布，其他两个水平勉强服从总体分布。</p>
+
+<h4 id="section-13">方差齐性检验</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">bartlett.test</span><span class="p">(</span><span class="n">mat</span> <span class="o">~</span> <span class="n">eco</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">math</span><span class="p">)</span>
+
+	<span class="n">Bartlett</span> <span class="n">test</span> <span class="n">of</span> <span class="n">homogeneity</span> <span class="n">of</span> <span class="n">variances</span>
+
+<span class="n">data</span><span class="o">:</span>  <span class="n">mat</span> <span class="n">by</span> <span class="n">eco</span>
+<span class="n">Bartlett</span><span class="err">'</span><span class="n">s</span> <span class="n">K</span><span class="o">-</span><span class="n">squared</span> <span class="o">=</span> <span class="m">1.2086</span><span class="p">,</span> <span class="n">df</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span> <span class="o">=</span> <span class="m">0.5465</span>
+
+</code></pre>
+</div>
+<p>方差齐性也通过检验，下面可以进行方差分析。</p>
+
+<h4 id="section-14">方差分析</h4>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> <span class="n">summary</span><span class="p">(</span><span class="n">aov</span><span class="p">(</span><span class="n">mat</span><span class="o">~</span><span class="n">eco</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">math</span><span class="p">))</span>
+
+            <span class="n">Df</span> <span class="n">Sum</span> <span class="n">Sq</span> <span class="n">Mean</span> <span class="n">Sq</span> <span class="n">F</span> <span class="n">value</span> <span class="n">Pr</span><span class="p">(</span><span class="o">&gt;</span><span class="n">F</span><span class="p">)</span>  
+<span class="n">eco</span>          <span class="m">2</span>   <span class="m">92.4</span>   <span class="m">46.22</span>   <span class="m">3.293</span> <span class="m">0.0423</span> <span class="o">*</span>
+<span class="n">Residuals</span>   <span class="m">80</span> <span class="m">1122.9</span>   <span class="m">14.04</span>                 
+<span class="o">---</span>
+<span class="n">Signif.</span> <span class="n">codes</span><span class="o">:</span>  <span class="m">0</span> <span class="err">‘</span><span class="o">***</span><span class="err">’</span> <span class="m">0.001</span> <span class="err">‘</span><span class="o">**</span><span class="err">’</span> <span class="m">0.01</span> <span class="err">‘</span><span class="o">*</span><span class="err">’</span> <span class="m">0.05</span> <span class="err">‘.’</span> <span class="m">0.1</span> <span class="err">‘</span> <span class="err">’</span> <span class="m">1</span>      </code></pre></figure>
+
+<p>在0.05显著性水平，可以认为经济水平会影响到数学的平均成绩。</p>
+
+<h3 id="section-15">经济水平与英语平均成绩</h3>
+
+<p>原始数据：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Source: local data frame [84 x 3]
+
+    xxdm   eco      eng
+   (chr) (chr)    (dbl)
+1   1008    中 71.47867
+2   1020    中 72.24419
+3   0038    低 72.27352
+4   1030    低 72.91755
+5   0030    低 75.05625
+6   4006    低 78.20742
+7   5001    中 79.12962
+8   0004    高 79.51330
+9   0024    高 79.62687
+10  1032    中 79.74482
+..   ...   ...      ...
+</code></pre>
+</div>
+
+<p>首先通过箱线图来了解，处在不同经济水平的学校英语平均成绩总体情况.得到的图是这样的：</p>
+
+<p><img src="/img/post/aov_info/eng.png" alt="不同经济水平下学校英语平均成绩箱线图" title="不同经济水平下学校英语平均成绩箱线图" /></p>
+
+<p>英语的箱线图中有四个异常点非常明显，特别是处在中等经济水平的学校。先尝试去掉四个点，后尝试只去掉中等水平下的两个点。</p>
+
+<h4 id="section-16">正态性检验</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">eng</span> <span class="o">&lt;-</span> <span class="n">select</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">5</span><span class="p">))</span> <span class="o">%&gt;%</span> <span class="n">arrange</span><span class="p">(</span><span class="n">eng</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">filter</span><span class="p">(</span><span class="n">eng</span><span class="o">&gt;</span><span class="m">73</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">shapiro.test</span><span class="p">(</span><span class="n">filter</span><span class="p">(</span><span class="n">eng</span><span class="p">,</span><span class="n">eco</span> <span class="o">==</span><span class="s2">"低"</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">select</span><span class="p">(</span><span class="n">eng</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="err">.</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span>
+
+	<span class="n">Shapiro</span><span class="o">-</span><span class="n">Wilk</span> <span class="n">normality</span> <span class="n">test</span>
+
+<span class="n">data</span><span class="o">:</span>  <span class="n">filter</span><span class="p">(</span><span class="n">eng</span><span class="p">,</span> <span class="n">eco</span> <span class="o">==</span> <span class="s2">"低"</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">select</span><span class="p">(</span><span class="n">eng</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="err">.</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
+<span class="n">W</span> <span class="o">=</span> <span class="m">0.95912</span><span class="p">,</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span> <span class="o">=</span> <span class="m">0.5265</span>
+
+<span class="o">&gt;</span> <span class="n">shapiro.test</span><span class="p">(</span><span class="n">filter</span><span class="p">(</span><span class="n">eng</span><span class="p">,</span><span class="n">eco</span> <span class="o">==</span><span class="s2">"中"</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">select</span><span class="p">(</span><span class="n">eng</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="err">.</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span>
+
+	<span class="n">Shapiro</span><span class="o">-</span><span class="n">Wilk</span> <span class="n">normality</span> <span class="n">test</span>
+
+<span class="n">data</span><span class="o">:</span>  <span class="n">filter</span><span class="p">(</span><span class="n">eng</span><span class="p">,</span> <span class="n">eco</span> <span class="o">==</span> <span class="s2">"中"</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">select</span><span class="p">(</span><span class="n">eng</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="err">.</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
+<span class="n">W</span> <span class="o">=</span> <span class="m">0.96591</span><span class="p">,</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span> <span class="o">=</span> <span class="m">0.2791</span>
+
+<span class="o">&gt;</span> <span class="n">shapiro.test</span><span class="p">(</span><span class="n">filter</span><span class="p">(</span><span class="n">eng</span><span class="p">,</span><span class="n">eco</span> <span class="o">==</span><span class="s2">"高"</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">select</span><span class="p">(</span><span class="n">eng</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="err">.</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span>
+
+	<span class="n">Shapiro</span><span class="o">-</span><span class="n">Wilk</span> <span class="n">normality</span> <span class="n">test</span>
+
+<span class="n">data</span><span class="o">:</span>  <span class="n">filter</span><span class="p">(</span><span class="n">eng</span><span class="p">,</span> <span class="n">eco</span> <span class="o">==</span> <span class="s2">"高"</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">select</span><span class="p">(</span><span class="n">eng</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="err">.</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
+<span class="n">W</span> <span class="o">=</span> <span class="m">0.9679</span><span class="p">,</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span> <span class="o">=</span> <span class="m">0.6862</span>
+
+</code></pre>
+</div>
+<p>可以认为通过了正态性检验。</p>
+
+<h4 id="section-17">方差齐性检验</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">bartlett.test</span><span class="p">(</span><span class="n">eng</span> <span class="o">~</span> <span class="n">eco</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">eng</span><span class="p">)</span>
+
+	<span class="n">Bartlett</span> <span class="n">test</span> <span class="n">of</span> <span class="n">homogeneity</span> <span class="n">of</span> <span class="n">variances</span>
+
+<span class="n">data</span><span class="o">:</span>  <span class="n">eng</span> <span class="n">by</span> <span class="n">eco</span>
+<span class="n">Bartlett</span><span class="err">'</span><span class="n">s</span> <span class="n">K</span><span class="o">-</span><span class="n">squared</span> <span class="o">=</span> <span class="m">0.0060188</span><span class="p">,</span> <span class="n">df</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span> <span class="o">=</span> <span class="m">0.997</span>
+
+</code></pre>
+</div>
+<p>方差齐性也通过检验，下面可以进行方差分析。</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> <span class="n">summary</span><span class="p">(</span><span class="n">aov</span><span class="p">(</span><span class="n">eng</span><span class="o">~</span><span class="n">eco</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">eng</span><span class="p">))</span>
+
+            <span class="n">Df</span> <span class="n">Sum</span> <span class="n">Sq</span> <span class="n">Mean</span> <span class="n">Sq</span> <span class="n">F</span> <span class="n">value</span> <span class="n">Pr</span><span class="p">(</span><span class="o">&gt;</span><span class="n">F</span><span class="p">)</span>  
+<span class="n">eco</span>          <span class="m">2</span>   <span class="m">93.9</span>   <span class="m">46.97</span>   <span class="m">3.775</span> <span class="m">0.0273</span> <span class="o">*</span>
+<span class="n">Residuals</span>   <span class="m">77</span>  <span class="m">958.1</span>   <span class="m">12.44</span>                 
+<span class="o">---</span>
+<span class="n">Signif.</span> <span class="n">codes</span><span class="o">:</span>  <span class="m">0</span> <span class="err">‘</span><span class="o">***</span><span class="err">’</span> <span class="m">0.001</span> <span class="err">‘</span><span class="o">**</span><span class="err">’</span> <span class="m">0.01</span> <span class="err">‘</span><span class="o">*</span><span class="err">’</span> <span class="m">0.05</span> <span class="err">‘.’</span> <span class="m">0.1</span> <span class="err">‘</span> <span class="err">’</span> <span class="m">1</span></code></pre></figure>
+
+<p>在0.05显著性水平下，可以认为经济水平显著性地影响英语的平均成绩。</p>
+
+<p>现在考虑第二种情况，因为中等经济水平的那两个异常值离最小值非常远，而低经济水平两个异常值离最小值相对较近，可以考虑只去掉两个值。</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span> <span class="n">summary</span><span class="p">(</span><span class="n">aov</span><span class="p">(</span><span class="n">eng</span><span class="o">~</span><span class="n">eco</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">eng1</span><span class="p">))</span>
+
+            <span class="n">Df</span> <span class="n">Sum</span> <span class="n">Sq</span> <span class="n">Mean</span> <span class="n">Sq</span> <span class="n">F</span> <span class="n">value</span>  <span class="n">Pr</span><span class="p">(</span><span class="o">&gt;</span><span class="n">F</span><span class="p">)</span>   
+<span class="n">eco</span>          <span class="m">2</span>  <span class="m">198.6</span>   <span class="m">99.29</span>   <span class="m">6.577</span> <span class="m">0.00228</span> <span class="o">**</span>
+<span class="n">Residuals</span>   <span class="m">79</span> <span class="m">1192.6</span>   <span class="m">15.10</span>                   
+<span class="o">---</span>
+<span class="n">Signif.</span> <span class="n">codes</span><span class="o">:</span>  <span class="m">0</span> <span class="err">‘</span><span class="o">***</span><span class="err">’</span> <span class="m">0.001</span> <span class="err">‘</span><span class="o">**</span><span class="err">’</span> <span class="m">0.01</span> <span class="err">‘</span><span class="o">*</span><span class="err">’</span> <span class="m">0.05</span> <span class="err">‘.’</span> <span class="m">0.1</span> <span class="err">‘</span> <span class="err">’</span> <span class="m">1</span></code></pre></figure>
+
+<p>从结果来看，经济水平对英语平均成绩的影响非常的显著。总的来说，在三个科目中，经济水平对英语平均成绩影响最大，其次是数学平均成绩，语文平均成绩可以认为没有影响。</p>
+
+<h2 id="section-18">3. 结语</h2>
+
+<p>这篇文章从详细的解释了方差分析的基本原理，并在后面给出了实例分析，有助于加深对方法分析的理解，避免在今后的使用各种犯错误。当然，关于后的实例，还可以进一步深入分析各个年级的平均成绩与经济水平之间的关系。读者可以自行去深入去研究，另外文章给出的代码都是可以复用的。</p>
+
+<h2 id="section-19">4. 参考文献</h2>
+<p>[1]关于方差分析的详细推导请看这里：<a href="http://memory.scu.edu.cn/UploadFiles/jiaoan_pdf/%E5%94%90%E5%97%A3%E6%94%BF-%E5%87%A0%E4%B8%AA%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0%E7%9A%84%E6%8E%A8%E5%AF%BC%20%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90%20%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90.pdf">四川大学唐嗣政教授手稿P20-P28</a></p>
+
+
+				
+				<p class="text-right">
+				<a href="/">Bruce Zhao</a>
+				<span class="time">
+				/
+				<time >2016-01-15</time>
+				</span>
+				<br>
+				<span>
+					<strong><em>Published under<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/">(CC) BY-NC-SA 3.0 CN</a>.
+					</em></strong>
+				</span>
+				</p>
+	
+					<hr>
+					
+					<ul class="tag_box list-unstyled list-inline">
+					<li><i class="fa fa-folder-open"></i></li>
+					
+					
+						 
+							<li><a href="/categories#stat-ref">
+								stat <span>(1)</span>
+								
+							</a></li>
+						
+					
+					</ul>
+					  
+			
+					
+					<ul class="list-inline">
+					<li><i class="fa fa-tags"></i></li>
+					
+					
+						 
+							<li>
+								<a href="/tags#aov-ref">
+								aov <span>(1)</span>
+								
+								</a>
+							</li>
+						
+					
+					
+					</ul>
+					  
+			
+					<hr>
+			
+			
+                <!-- 多说 Share start -->
+				<div class="ds-share"
+                    style="text-align: right"
+                    data-thread-key="/blog/2016/01/15/aov"
+                    data-title="方差分析：穷人家的孩子学不好？"
+                    data-url="http://brucezhaor.github.io/blog/2016/01/15/aov/"
+                    data-images="http://brucezhaor.github.io/img/post/aov_info/aov-bg.png"
+                    data-content="| 总有学校说，我们乡下地方，孩子读书的条件差，肯定考不过城里孩子的...那么？事实真的是这样吗？ | BruceZhao's Blog." >
+                    <div class="ds-share-inline">
+                      <ul  class="ds-share-icons-16">
+                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                        <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                        <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                        <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                      </ul>
+                      <div class="ds-share-icons-more">
+                      </div>
+                    </div>
+                <hr>
+                </div>
+                <!-- 多说 Share end-->
+                
+
+
+                <ul class="pager">
+
+					
+					<li class="previous"><a href="/blog/2016/01/07/Mathjax-with-jekyll/" data-toggle="tooltip" data-placement="top" title="MathJax with Jekyll">&larr; Previous</a></li>
+					
+					
+					<li class="next"><a href="/blog/2016/01/17/review-2015/" data-toggle="tooltip" data-placement="top" title="回顾——2015">Next &rarr;</a></li>
+					
+
+                </ul>
+
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                        data-thread-key="/blog/2016/01/15/aov"
+                        data-title="方差分析：穷人家的孩子学不好？"
+                        data-url="http://brucezhaor.github.io/blog/2016/01/15/aov/" >
+                    </div>
+					<!-- 多说热评文章 end -->
+					<div class="ds-top-threads" data-range="monthly" data-num-items="5"></div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+				
+                
+
+            </div>
+    </div>
+		<!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>友情链接</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://bzrlc.github.io">BZRLC</a></li>
+                    
+                        <li><a href="https://github.com/Huxpro/huxpro.github.io">Hux-模板来源</a></li>
+                    
+                        <li><a href="http://yihui.name">谢益辉</a></li>
+                    
+                        <li><a href="http://www.loyhome.cn/">落园</a></li>
+                    
+                        <li><a href="http://www.bjt.name/">京东-刘思喆</a></li>
+                    
+                        <li><a href="http://yixuan.cos.name/cn/">邱怡轩</a></li>
+                    
+                        <li><a href="http://ruiqiangjiao.github.io/">JRQ 西南交大</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+
+    var _user = 'brucezhaor';
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options.placement = 'left';
+        anchors.add('h2,h3');
+		anchors.remove('.subheading');
+    })
+</script>
+
+
+<!-- mathjax -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+<!-- for R highlight -->
+<script type="text/javascript" src="/assets/js/r-highlight.js"></script>
+
+	
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                        <a href="/feed.xml" >
+                            <i class="fa fa-rss fa-2x"></i>
+                        </a>
+                    </li>
+                    
+					
+                    <li>
+                        <a target="_blank" href="mailto:brucezhaor2016@gmail.com">
+							<i class="fa fa-envelope fa-2x"></i>
+						</a>
+					</li>
+					
+					
+					<li>
+						<a target="_blank" href="https://linkedin.com/in/brucezhaor">
+							<i class="fa fa-linkedin fa-2x"></i>
+						</a>
+					</li>
+						
+                </ul>
+                <p class="copyright text-muted">
+                    &copy; 2015-2016  ,licenses under<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/">(CC) BY-NC-SA 3.0 CN</a>. | Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a> and <a href="http://www.bootcss.com/">Bootstrap</a>.Theme by <a href="http://huangxuan.me">Hux</a>.
+					<br>
+					<span class="label label-primary label-md"><strong>转载请标明作者和出处</strong></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript" src="/assets/resources/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/resources/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/assets/js/blog.js"></script>
+	
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+	
+	<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);  
+    })
+</script>
+
+<!-- back-to-top -->
+<div id="back-top">
+  <a href="#section" data-toggle="tooltip" data-placement="top" title="top">
+	<i class="fa fa-chevron-up"></i>
+  </a>
+</div>
+<script type="text/javascript" src="/assets/resources/jquery/jquery-1.8.3.js"></script>
+<script>
+	$('#back-top').hide();
+	$(document).ready(function () {
+	$(window).scroll(function () {
+    if ($(this).scrollTop() > 250) {
+      $('#back-top').fadeIn();
+    } else {
+      $('#back-top').fadeOut();
+    }
+  });
+  $('#back-top a').click(function () {
+    $('body,html').animate({
+      scrollTop: 0
+    }, 800);
+    return false;
+  });
+});
+</script>
+	
+</body>
+</html>
