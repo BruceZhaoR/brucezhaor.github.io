@@ -3,7 +3,7 @@ layout: post
 title: 如何设置R中的TimeZone
 subtitle:   "一打开R就自动默认加载"
 categories : [R]
-tags : [R_env]
+tags : [Misc]
 date:       2015-12-02
 author:     "Bruce"
 header-img: "/img/post/firstblog-bg.jpg"

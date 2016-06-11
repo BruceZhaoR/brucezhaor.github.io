@@ -2,9 +2,9 @@
 layout: post
 title: MathJax with Jekyll
 subtitle: "在jekyll中使用MathJax生成漂亮公式"
-category : Jekyll
-tags : [MathJax]
-layout: post
+category: Jekyll
+tags: [MathJax]
+mathjax:    true
 date:       2016-01-07
 author:     "Bruce Zhao"
 header-img: "/img/post/mathjax-logo.svg"

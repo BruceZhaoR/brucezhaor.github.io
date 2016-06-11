@@ -249,6 +249,7 @@ layout: default
 </script>
 {% endif %}
 
+{% if page.mathjax %}
 <!-- mathjax -->
 <script>
   (function () {
@@ -260,3 +261,4 @@ layout: default
 </script>
 <!-- for R highlight -->
 <script type="text/javascript" src="{{ site.BASE_PATH }}/assets/js/r-highlight.js"></script>
+{% endif %}

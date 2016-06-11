@@ -2,8 +2,8 @@
 layout: post
 title: R——正确提问的姿势
 subtitle:   "Hadley教你如何规范格式，让别人快速get到你的问题，从而高效给出解决方案."
-categories : [R]
-tags : []
+categories: [R]
+tags: [Misc]
 date:       2016-04-24
 author:     "Bruce Zhao"
 header-img: "/img/post/baracktocat.jpg"

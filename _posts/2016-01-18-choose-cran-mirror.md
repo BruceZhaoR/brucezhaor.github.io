@@ -3,7 +3,7 @@ layout: post
 title: 如何选择最快的CRAN Mirror下载R包?
 subtitle:   "寻找被隐藏的秘密镜像"
 categories : [R]
-tags : [R镜像,R_env]
+tags : [Misc]
 date:       2016-01-18
 author:     "Bruce Zhao"
 description: "前一阵子帮别人安装Rstudio的时候，发现在选择CRAN Mirror只有清华大学的镜像网站可以选，但是明明自己的USTC的镜像是可以用的，而且非常的快，于是我就来一探究竟。"
