@@ -47,3 +47,4 @@ License：[MIT](http://opensource.org/licenses/MIT)
 - [x] 多说分享图片设置
 - [x] change perimalink
 - [x] add back to top.
+- [ ] header.image  note:`background-color: #155799; background-image: linear-gradient(110deg, #155799, #159978);`
