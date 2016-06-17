@@ -48,3 +48,4 @@ License：[MIT](http://opensource.org/licenses/MIT)
 - [x] change perimalink
 - [x] add back to top.
 - [ ] header.image  note:`background-color: #155799; background-image: linear-gradient(110deg, #155799, #159978);`
+- [ ] r-highlight  add keyword & fix string highlight.
