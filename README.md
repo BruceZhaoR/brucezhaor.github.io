@@ -27,11 +27,11 @@ To do :
 
 2016-06-30
 
-- [x]在头文件中加上`mathjax: true`, 实现数学公式渲染.
-- [x]增加了jekyll-sitemap.
-- [x]升级了Gemfile. 直接运行 `bundle install`
-- [x]添加了emoji表情功能,可以直接在文章中输入了.
-- [x]新增RSS订阅功能
+- [x] 在头文件中加上`mathjax: true`, 实现数学公式渲染.
+- [x] 增加了jekyll-sitemap.
+- [x] 升级了Gemfile. 直接运行 `bundle install`
+- [x] 添加了emoji表情功能,可以直接在文章中输入了.
+- [x] 新增RSS订阅功能
 
 关于emoji使用方法和表情大全看这里: <http://www.emoji-cheat-sheet.com/>
 
