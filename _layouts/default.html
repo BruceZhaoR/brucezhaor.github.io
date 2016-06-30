@@ -6,7 +6,7 @@
 	{% if page.description %}
 	<meta name="description" content="{{ page.description }}">
 	{% endif %}
-	<meta name="author" content="{{ site.author.name }}">
+	<meta name="author" content="{{ site.author }}">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!-- Enable responsive viewport -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,7 @@
 	<meta name="renderer" content="webkit">
 	<link rel="shortcut icon" href="/img/favicon.ico">	
 	<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.BASE_PATH }}">
-	<link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.BASE_PATH }}/feed.xml">
+	<link rel="alternate" type="application/rss+xml" title="{{ site.SEOTitle }}" href="{{ site.BASE_PATH }}/feed.xml">
 	<!-- Le styles -->
 	<link href="{{ site.BASE_PATH }}/assets/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="{{ site.BASE_PATH }}/assets/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">

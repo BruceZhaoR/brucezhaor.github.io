@@ -5,9 +5,10 @@ layout: default
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('{{ site.BASE_PATH }}{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')
+        background-image: {% if page.header-img %} url('{{ site.BASE_PATH }}{{ page.header-img }}'){% endif %}{% if page.bg-color %} {{ page.bg-color }}{% endif %}
     }
 </style>
+
 <header class="intro-header" >
     <div class="container">
         <div class="row">
