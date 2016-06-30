@@ -2,6 +2,8 @@
  
 这个博客将用来记录在使用 **R** 过程中的笔记和感想，欢迎大家与我交流数据分析方面的知识~
 
+欢迎大家RSS订阅我的博客,只需要复制 `http://brucezhaor.github.io/feed.xml`到邮箱或者订阅阅读器之类的地方就可以了.
+
 **郑重声明:** 本博客所有文章均采用 [署名-非商业性使用-相同方式共享 3.0 中国大陆许可协议 (CC BY-NC-SA 3.0 CN)](https://creativecommons.org/licenses/by-nc-sa/3.0/cn/)，分享、演绎需准守以下原则:
 
 1. 署名: 您需要标出原文链接和作者信息;如果更改了原文章内容,需要说明.
@@ -29,6 +31,7 @@ To do :
 - [x]增加了jekyll-sitemap.
 - [x]升级了Gemfile. 直接运行 `bundle install`
 - [x]添加了emoji表情功能,可以直接在文章中输入了.
+- [x]新增RSS订阅功能
 
 关于emoji使用方法和表情大全看这里: <http://www.emoji-cheat-sheet.com/>
 
