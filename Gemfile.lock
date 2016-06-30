@@ -124,6 +124,8 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
+  jekyll-paginate
+  jekyll-sitemap (~> 0.10.0)
   wdm (>= 0.1.0)
 
 BUNDLED WITH

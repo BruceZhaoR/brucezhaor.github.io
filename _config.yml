@@ -1,5 +1,5 @@
 # visit https://github.com/mojombo/jekyll/wiki/Configuration for more settings
-title: BZRLC
+title: BZR
 SEOTitle: BruceZhao's Blog
 author: Bruce Zhao
 timezone: Asia/Shanghai
@@ -13,6 +13,8 @@ kramdown:
 gems:
   - jekyll-paginate
   - jekyll-sitemap
+  - jemoji
+
 # 国内用多说
 # disqus: brucezhaor
 

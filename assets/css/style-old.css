@@ -904,13 +904,19 @@ legend {
 	legend { font-size: 20px;}
 	.tab-content a{ font-size: 14px}
 	.badge { font-size: 10px }
-	.text-muted {color: #888;font-size: 14px;}
+	.text-muted {color: #bfbfbf;font-size: 14px;}
 }
 
-/* for anchorJs	 */
+/* for anchorJs */
 .anchorjs-link {
   transition: all .25s linear;
 }
 *:hover > .anchorjs-link {
   margin-left: -1.125em !important;
+}
+
+/* for emoj  */
+img.emoji {
+    display: inline-block;
+    margin: auto;
 }
