@@ -927,3 +927,23 @@ img.emoji {
     font-weight: 400;
     letter-spacing: .5px;
 }
+.post-container .pager li {
+  width: 48%;
+}
+.post-container .pager li.next {
+  float: right;
+}
+.post-container .pager li.previous {
+  float: left;
+}
+.post-container .pager li > a {
+  width: 100%;
+}
+.post-container .pager li > a > span {
+  color: #808080;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+}
+.pager li>a:hover>span, .pager li>a:focus>span {
+    color: #fff;
+}
