@@ -920,3 +920,10 @@ img.emoji {
     display: inline-block;
     margin: auto;
 }
+
+/* for pager previous&next */
+.post-container .pager li>a>span {
+    color: gray;
+    font-weight: 400;
+    letter-spacing: .5px;
+}

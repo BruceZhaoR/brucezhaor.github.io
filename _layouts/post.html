@@ -134,22 +134,21 @@ layout: default
                 <!-- 多说 Share end-->
                 {% endif %}
 
-
                 <ul class="pager">
-
-					{% if page.previous %}
-					<li class="previous"><a href="{{ site.BASE_PATH }}{{ page.previous.url }}" data-toggle="tooltip" data-placement="top" title="{{ page.previous.title }}">&larr; Previous</a></li>
-					{% else %}
-					<li class="previous disabled"><a>&larr; Previous</a></li>
-					{% endif %}
-					{% if page.next %}
-					<li class="next"><a href="{{ site.BASE_PATH }}{{ page.next.url }}" data-toggle="tooltip" data-placement="top" title="{{ page.next.title }}">Next &rarr;</a></li>
-					{% else %}
-						<li class="next disabled"><a>Next &rarr;</a>
-					{% endif %}
-
+                    {% if page.previous %}
+                    <li class="previous">
+                      <a href="{{ site.BASE_PATH }}{{ page.previous.url }}" data-toggle="tooltip" data-placement="top" title="{{ page.previous.title }}">&larr; Previous<br>
+                      <span>{{page.previous.title}}</span></a></li>
+                    {% else %}
+                    <li class="previous disabled"><a>&larr; Previous</a></li>
+                   {% endif %}
+                   {% if page.next %}
+                    <li class="next"><a href="{{ site.BASE_PATH }}{{ page.next.url }}" data-toggle="tooltip" data-placement="top" title="{{ page.next.title }}">Next &rarr;<br>
+                    <span>{{page.next.title}}</span></a></li>
+                    {% else %}
+                    <li class="next disabled"><a>Next &rarr;</a>
+                    {% endif %}
                 </ul>
-
 
                 {% if site.duoshuo_username %}
                 <!-- 多说评论框 start -->
