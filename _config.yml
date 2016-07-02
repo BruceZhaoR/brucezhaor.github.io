@@ -68,8 +68,8 @@ sidebar-avatar: /img/me1.png     # img前面加`/`绝对引用。
 # Friends
 friends: [
 	{   
-        title: "BZRLC",
-        href: "http://bzrlc.github.io"
+        title: "R学习社区",
+        href: "http://bzrlc.github.io/about/"
 	},{
         title: "Hux-模板来源",
         href: "https://github.com/Huxpro/huxpro.github.io"
