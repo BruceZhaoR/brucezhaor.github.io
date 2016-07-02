@@ -947,3 +947,10 @@ img.emoji {
 .pager li>a:hover>span, .pager li>a:focus>span {
     color: #fff;
 }
+
+.post-container .pager li.home {
+  width: 30%;
+}
+.pager li>span.page_number {
+    width: 30%;
+}

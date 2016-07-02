@@ -36,7 +36,7 @@ header-img: "/img/home-bg.jpg"
 <ul class="pager"> 
 
   {% if paginator.previous_page %}
-  <li class="previous">
+  <li class="home previous">
     {% if paginator.previous_page == 1 %}
     <a href="{{ site.BASE_PATH }}/">&larr; Newer</a>
     {% else %}
@@ -44,7 +44,7 @@ header-img: "/img/home-bg.jpg"
     {% endif %}
   </li>
   {% else %}
-  <li class="previous disabled">
+  <li class="home previous disabled">
     <a>&larr; Newer</a>
   </li>
   {% endif %}
@@ -54,11 +54,11 @@ header-img: "/img/home-bg.jpg"
   </li>
 
   {% if paginator.next_page %}
-  <li class="next">
+  <li class="home next">
     <a href="{{ site.BASE_PATH }}/{{ site.paginate_path | replace: ':num', paginator.next_page }}">Older &rarr;</a>
   </li>
   {% else %}
-  <li class="next disabled">
+  <li class="home next disabled">
     <a>Older &rarr;</a>        
   </li>
   {% endif %}
