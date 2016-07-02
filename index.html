@@ -25,7 +25,7 @@ header-img: "/img/home-bg.jpg"
 		{% endif %}
     </a>
     <p class="post-meta">
-        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}
+        Posted on {{ post.date | date: "%B %-d, %Y" }};&nbsp;浏览量:&nbsp;<span data-hk-page="{{ post.url | prepend: site.url }}"> - </span>次.
     </p>
 </div>
 <hr>
