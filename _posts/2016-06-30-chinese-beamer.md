@@ -8,7 +8,7 @@ mathjax:    false
 date:       2016-06-30
 author:     "Bruce Zhao"
 bg-color: "linear-gradient(56deg, #155799, #159978)"
-description: "不知道大家有没有看过那种PDF的幻灯片? 小赵觉得学术氛围浓厚,拿这样的能插入R代码和生成的图片的PDF幻灯片去交流,逼格瞬间就能提升一个档次.废话少说,直接上图让你们来感受一下. :smirk: "
+description: " :cn: 不知道大家有没有看过那种PDF的幻灯片? 小赵觉得学术氛围浓厚,拿这样的能插入R代码和生成的图片的PDF幻灯片去交流,逼格瞬间就能提升一个档次.废话少说,直接上图让你们来感受一下. :smirk: "
 ---
 
 
