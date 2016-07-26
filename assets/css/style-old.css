@@ -954,3 +954,6 @@ img.emoji {
 .pager li>span.page_number {
     width: 30%;
 }
+.pager li > a > span {
+    text-transform: capitalize;
+}
