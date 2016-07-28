@@ -6,7 +6,6 @@ layout: default
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
-        /*background-image: url('{{ site.BASE_PATH }}{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')*/
         height: 500px;
         overflow: hidden;
     }
@@ -53,18 +52,23 @@ layout: default
 				{{ content }}
 
 				<p class="text-right">
-				<a href="/">{{ site.author }}</a>
+				<a href="/">{{ page.author }}</a>
 				<span class="time">
 				/
-				<time >{{ page.date | date:"%Y-%m-%d" }}</time>
-				</span>
-				</p>
-				<p class="text-right">
+				<time>{{ page.date | date:"%Y-%m-%d" }}</time>
+				<style>span.test {color: #0085A5;font-weight: bold;}</style>
+				</span>/&nbsp;<span data-hk-page="current" class="test"> - </span>&nbsp;views
+				<br>
+				<span>
 					<strong><em>Published under<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/">(CC) BY-NC-SA 3.0 CN</a>.
 					</em></strong>
-				</p>
-				<br>
+				</span>
 				
+					
+				
+				</p>
+	
+					<hr>
 					{% unless page.categories == empty %}
 					<ul class="tag_box list-unstyled list-inline">
 					<li><i class="fa fa-folder-open"></i></li>
@@ -142,18 +146,19 @@ layout: default
 
 
                 <ul class="pager">
-
-					{% if page.previous %}
-					<li class="previous"><a href="{{ site.BASE_PATH }}{{ page.previous.url }}" data-toggle="tooltip" data-placement="top" title="{{ page.previous.title }}">&larr; Previous</a></li>
-					{% else %}
-					<li class="previous disabled"><a>&larr; Previous</a></li>
-					{% endif %}
-					{% if page.next %}
-					<li class="next"><a href="{{ site.BASE_PATH }}{{ page.next.url }}" data-toggle="tooltip" data-placement="top" title="{{ page.next.title }}">Next &rarr;</a></li>
-					{% else %}
-						<li class="next disabled"><a>Next &rarr;</a>
-					{% endif %}
-
+                    {% if page.previous %}
+                    <li class="previous">
+                      <a href="{{ site.BASE_PATH }}{{ page.previous.url }}" data-toggle="tooltip" data-placement="top" title="{{ page.previous.title }}">&larr; Previous<br>
+                      <span>{{page.previous.title}}</span></a></li>
+                    {% else %}
+                    <li class="previous disabled"><a>&larr; Previous</a></li>
+                   {% endif %}
+                   {% if page.next %}
+                    <li class="next"><a href="{{ site.BASE_PATH }}{{ page.next.url }}" data-toggle="tooltip" data-placement="top" title="{{ page.next.title }}">Next &rarr;<br>
+                    <span>{{page.next.title}}</span></a></li>
+                    {% else %}
+                    <li class="next disabled"><a>Next &rarr;</a>
+                    {% endif %}
                 </ul>
 
 
@@ -170,7 +175,14 @@ layout: default
                 </div>
                 <!-- 多说评论框 end -->
                 {% endif %}
-
+				
+                {% if site.disqus %}
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                {% endif %}
             </div>
     </div>
 		<!-- Sidebar Container -->
@@ -241,7 +253,7 @@ layout: default
 <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = "{{site.disqus_username}}";
+    var disqus_shortname = "{{site.disqus}}";
     var disqus_identifier = "{{page.id}}";
     var disqus_url = "{{site.BASE_PATH}}{{page.url}}";
     (function() {
@@ -275,6 +287,7 @@ layout: default
 </script>
 {% endif %}
 
+{% if page.mathjax %}
 <!-- mathjax -->
 <script>
   (function () {
@@ -284,4 +297,4 @@ layout: default
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
-
+{% endif %}
