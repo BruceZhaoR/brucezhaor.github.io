@@ -34,7 +34,7 @@ RSS: feed.xml
 categories_path: categories
 tags_path: tags
 archive_path: archives
-about_path: about.html
+about_path: about
 
 BASE_PATH:
 

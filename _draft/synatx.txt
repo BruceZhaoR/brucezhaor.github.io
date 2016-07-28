@@ -1,4 +1,4 @@
-﻿bootstrap
+bootstrap
 http://www.w3schools.com/bootstrap/bootstrap_images.asp
 
 
@@ -6,6 +6,7 @@ http://www.w3schools.com/bootstrap/bootstrap_images.asp
 	<a href="{{ site.BASE_PATH }}/">
 		<img src="http://pic.yupoo.com/{{site.author.yupoo}}" class="img-responsive" />
 	</a>
+
 ![图片显示的时候的文字]('/images/me1.png' "title")
 
 # 插入链接	
@@ -16,7 +17,12 @@ http://www.w3schools.com/bootstrap/bootstrap_images.asp
 
 # 脚注
 
-^[引用的内容，如果有链接加上[name](http://....)]
+[^quote1]
+
+
+## footnotes
+
+[^quote1]: 随便写点什么东西.
 
 # 段内链接
 [google](https://www.google.com)    ![me](/images/me1.png)
@@ -28,3 +34,9 @@ http://www.w3schools.com/bootstrap/bootstrap_images.asp
 
 {% endhighlight %}
 
+# 有用的css attribution
+column-count: 3;
+border-radius: 15px;
+background-image: linear-gradient(to right bottom,#fff,#808080,#000);
+background-image: linear-gradient(110deg, #155799, #159978);
+font-variant: small-caps;

@@ -21,9 +21,10 @@ Licensed under the[Apache License, Version 2.0](/LICENSE)开源证书.
 ## 修改log
 
 To do :
-- [ ] header.image  note:`background-color: #155799; background-image: linear-gradient(110deg, #155799, #159978);`
+
 - [ ] r-highlight  add keyword & fix string highlight.
 - [ ] 文章页面侧边导航栏
+- [x] header.image  note:`background-image: linear-gradient(to right bottom,#fff,#808080,#000);background-image: linear-gradient(110deg, #155799, #159978);`
 
 2016-06-30
 
