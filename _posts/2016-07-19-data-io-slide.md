@@ -1,16 +1,24 @@
 ---
 layout:     keynote
-title:      "Data I/O and manipulation in R"
-subtitle:   ""
+title:      "slide: Data I/O and manipulation in R"
+subtitle:   "è¿™ä¸ªæ˜¯æˆ‘ç¬¬ä¸€æ¬¡å°è¯•ç”¨revealjsåšçš„html5çš„slide,æœŸé—´è¿˜ç»™revealjsè´¡çŒ®äº†ä¸€äº›ä»£ç , ç„¶åè‡ªå·±è¿˜å¼€å‘äº†æ–°çš„æ¨¡æ¿,æƒ³è¦ç§ç§ç©¶ç«Ÿæœ‰å¤šç‚«é…·, è¯·å¤§èƒ†æˆ³æˆ‘."
 iframe:     "https://brucezhaor.github.io/my-slides/data-manipulation.html#/"
 author:     "Bruce Zhao"
 tags:        slides
 ---
 
-> ¸ü¶àËµÃ÷ÍùÏÂ·­
+> æ›´å¤šè¯´æ˜å¾€ä¸‹ç¿»
 
-Õâ¸öÊÇÎÒµÚÒ»´Î³¢ÊÔÓÃrevealjs×öµÄhtml5µÄslide, ÆÚ¼ä»¹¸ø[revealjs](https://github.com/rstudio/revealjs)¹±Ï×ÁËÒ»Ğ©´úÂë, È»ºó×Ô¼ºfork¿ª·¢ÁËĞÂµÄÄ£°å.ÏëÒª³¢ÊÔĞÂÄ£°åµÄ¿ÉÒÔÕâÑùÏÂÔØÀ´ÍæÒ»Íæ: <code>devtools::install_github("BruceZhaoR/revealjs")</code>.
+<ul>
+<li><code>S</code> æ¼”è®²è€…æ¨¡å¼</li>
+<li><code>O</code> å¿«é€Ÿæµè§ˆæ¨¡å¼</li>
+<li><kbd>Alt + click</kbd> æ”¾å¤§</li>
+</ul> 
 
-°²×°Íê±Ïºó, Ö±½Óµãnew rmarkdown -> form template -> revealjs , È»ºóÄã¾Í»á·¢ÏÖ×öµÄÒ»Ğ©ÉèÖÃ,È»ºóÄã²Î¿¼[Rmarkdown](http://rmarkdown.rstudio.com/revealjs_presentation_format.html)¹Ù·½ËµÃ÷½øĞĞÉèÖÃ, ¸üÈ«µÄÔÚ[githubÖ÷Ò³ÉÏ](https://github.com/rstudio/revealjs/blob/master/README.md).
+è¿™ä¸ªæ˜¯æˆ‘ç¬¬ä¸€æ¬¡å°è¯•ç”¨revealjsåšçš„html5çš„slide, æœŸé—´è¿˜ç»™[revealjs](https://github.com/rstudio/revealjs)è´¡çŒ®äº†ä¸€äº›ä»£ç , ç„¶åè‡ªå·±forkå¼€å‘äº†æ–°çš„æ¨¡æ¿.æƒ³è¦å°è¯•æ–°æ¨¡æ¿çš„å¯ä»¥è¿™æ ·ä¸‹è½½æ¥ç©ä¸€ç©: <code>devtools::install_github("BruceZhaoR/revealjs")</code>.
 
-±¾slideÖÆ×÷ËµÃ÷ÔÚ[ÕâÀï](https://github.com/BruceZhaoR/my-slides/blob/master/revealjs/instruction.md), ÖÆ×÷Ä£°åÔÚ[ÕâÀï](https://github.com/BruceZhaoR/my-slides/blob/master/revealjs/template.Rmd).
+å®‰è£…å®Œæ¯•å, ç›´æ¥ç‚¹new rmarkdown -> form template -> revealjs , ç„¶åä½ å°±ä¼šå‘ç°åšçš„ä¸€äº›è®¾ç½®,ç„¶åä½ å‚è€ƒ[Rmarkdown](http://rmarkdown.rstudio.com/revealjs_presentation_format.html)å®˜æ–¹è¯´æ˜è¿›è¡Œè®¾ç½®, æ›´å…¨çš„åœ¨[githubä¸»é¡µä¸Š](https://github.com/rstudio/revealjs/blob/master/README.md).
+
+æœ¬slideåˆ¶ä½œè¯´æ˜åœ¨[è¿™é‡Œ](https://github.com/BruceZhaoR/my-slides/blob/master/revealjs/instruction.md), åˆ¶ä½œæ¨¡æ¿åœ¨[è¿™é‡Œ](https://github.com/BruceZhaoR/my-slides/blob/master/revealjs/template.Rmd).
+
+æœ€å, æˆ‘æƒ³è¯´çš„æ˜¯ Rstudio å¼€å‘çš„è¿™ä¸ªrevealjså¹¶æ²¡æœ‰åŸç”Ÿçš„[reveal.js](https://github.com/hakimel/reveal.js)çµæ´», åŠŸèƒ½ä¹Ÿå°‘äº†ä¸€ç‚¹ç‚¹, æ„Ÿè§‰åœ¨é‡Œé¢æ’å…¥ä»£ç çœ‹èµ·æ¥æœ‰ç‚¹æ€ªæ€ªçš„æ„Ÿè§‰, æ„Ÿè§‰åªé€‚åˆå¿«é€Ÿåšä¸ªç½‘é¡µç‰ˆçš„PPT. æƒ³è¦æ›´ç²¾è‡´, æ›´å¤šç‰¹æ€§çš„è¿˜æ˜¯å»ºè®®æŠ„èµ·é”®ç›˜å†™htmlå§.
