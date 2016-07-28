@@ -1,10 +1,12 @@
 ---
 layout:     keynote
 title:      "Slide: Data I/O and manipulation in R"
-subtitle:   "这个是我第一次尝试用revealjs做的html5的slide,期间还给revealjs贡献了一些代码, 然后自己还开发了新的模板,想要瞧瞧究竟有多炫酷, 请大胆戳我."
+subtitle:   "第一次尝试用revealjs做的html5的slide."
+description: "这是我用RStudio开发的revealjs做的slide, 期间还给其贡献了一些代码, 自己还做了一个新的模板. :grin: 想要瞧瞧究竟有多炫酷, 请大胆戳我."
 iframe:     "https://brucezhaor.github.io/my-slides/data-manipulation.html#/"
 author:     "Bruce Zhao"
-tags:        slides
+tags:        [slides]
+categories: [R]
 ---
 
 > 更多说明往下翻
