@@ -3,7 +3,7 @@ layout: post
 title: dplyr连接SQLite数据库
 subtitle: "使用dplyr包和RSQLite包实现数据库的连接与管理，轻松处理百M级别数据；数据乱码源头解决方案——readr。"
 category : R
-tags : [dplyr,database,RSQLite]
+tags : [dplyr,DataBase,RSQLite]
 layout: post
 date:       2015-12-17
 author:     "Bruce Zhao"
