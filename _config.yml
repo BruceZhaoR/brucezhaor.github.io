@@ -3,7 +3,7 @@ title: BZR
 SEOTitle: BruceZhao's Blog
 author: Bruce Zhao
 timezone: Asia/Shanghai
-paginate: 8 # pagination based on number of posts
+paginate: 10 # pagination based on number of posts
 paginate_path: "page:num"
 highlighter: rouge
 markdown: kramdown
