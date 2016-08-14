@@ -60,34 +60,37 @@ duoshuo_share: true                     # set to false if you want to use Commen
 url: "http://brucezhaor.github.io" 
 
 # page Sidebar settings
-sidebar-about-description: "致力成为数据攻城狮。"
-sidebar-avatar: /img/me1.png     # img前面加`/`绝对引用。
+sidebar-about-description: "A future technique geek."
+sidebar-avatar: /img/me2.jpg     # img前面加`/`绝对引用。
 
 
 
 # Friends
 friends: [
 	{   
-        title: "R学习社区",
+        title: "R学习社区"
         href: "http://bzrlc.github.io/about/"
 	},{
         title: "Hux-模板来源",
         href: "https://github.com/Huxpro/huxpro.github.io"
 	},{
-        title: "谢益辉",
+        title: "谢益辉"
         href: "http://yihui.name"
 	},{
-        title: "落园",
+        title: "落园"
         href: "http://www.loyhome.cn/"
     },{
-        title: "京东-刘思喆",
+        title: "刘思喆"
         href: "http://www.bjt.name/"
     },{
-        title: "邱怡轩",
+        title: "邱怡轩"
         href: "http://yixuan.cos.name/cn/"
 	},{
-        title: "JRQ 西南交大",
+        title: "JRQ 西南交大"
         href: "http://ruiqiangjiao.github.io/"
+	},{
+        title: "MenBin 东财应统"
+        href: "http://binmen.github.io/blog"
 	}
 ]
 
