@@ -129,5 +129,18 @@ Unit: milliseconds
 
 总体来看，RMySQL性能要比odbc的接口要好一些，而且不用下载驱动之类的东西，用起来十分的方便，我个人还是推荐这个。
 
-最后忘了填补一个小坑：数据库中的编码为GB18030所以在读入到R中的时候回乱码，你需要这样的一行命令 —— `dbSendQuery(conn,"set character_set_results=gb18030;")`，然后你就不会出现中文乱码的问题了。Good Luck！ :blush:
+最后忘了填补一个小坑：数据库中的编码为GB18030所以在读入到R中的时候回乱码，你需要这样几行命令：
+
+{% highlight r %}
+#编码问题
+dbSendQuery(conn,"set character_set_results=gb18030;")
+# dbSendQuery(conn,'set character set gbK')
+dbSendQuery(conn,'set character set gb18030')
+
+#测试是否中文乱码
+dbListTables(conn)
+dbGetQuery(conn,"SELECT * FROM `table` LIMIT 6;")
+{% endhighlight %}
+
+然后你就不会出现中文乱码的问题了。Good Luck！ :blush:
 
