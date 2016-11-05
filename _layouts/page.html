@@ -87,6 +87,11 @@ layout: default
                 <!-- Friends Blog -->
                 {% if site.friends %}
                 <hr>
+                <form action="/search" method="get">
+                <label for="search-box"></label>
+                <input type="text" id="search-box" name="query" placeholder="Search Articles">
+                </form>
+                <hr/>
                 <h5>友情链接</h5>
                 <ul class="list-inline">
                     {% for friend in site.friends %}
