@@ -1,0 +1,11 @@
+Google Blue
+Hex: #4285f4
+
+ Google Red
+Hex: #ea4335
+
+Google Yellow
+Hex: #fbbc05
+
+Google Green
+Hex: #34a853
