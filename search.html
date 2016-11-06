@@ -26,19 +26,12 @@ title: Search Results
     <!-- Post Container -->
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container">
     
-      <article class="post">
-      <form action="/search" method="get">
-      <label for="search-box"></label>
-      <input type="text" id="search-box" name="query" placeholder="search">
-      </form>
-      <hr />
-<div id="search-results"></div>
+<form action="/search" method="get">
+  <label for="search-box"></label>
+  <input type="text" id="search-box" name="query" placeholder="Search Articles">
+</form>
 
-</article>
-    </div>
-  </div>
-</div>
-
+<ul id="search-results"></ul>
 
 <script>
   window.store = {
@@ -46,8 +39,8 @@ title: Search Results
       "{{ post.url | slugify }}": {
         "title": "{{ post.title | xml_escape }}",
         "author": "{{ post.author | xml_escape }}",
-        "category": "{{ post.categories | xml_escape }}",
-        "content": {{ post.content | strip_html | strip_newlines | jsonify }},
+        "categories": "{{ post.categories}}",
+        "content": {{ post.content | strip_html | strip_newlines | truncate:20 | jsonify }},
         "url": "{{ post.url | xml_escape }}"
       }
       {% unless forloop.last %},{% endunless %}
@@ -55,6 +48,12 @@ title: Search Results
   };
 </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/0.7.1/lunr.min.js"></script>
+<script src="/assets/js/lunr.min.js"></script>
 
 <script src="/assets/js/search.js"></script>
+
+    </div>
+  </div>
+</div>
+
+

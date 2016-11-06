@@ -84,14 +84,15 @@ layout: default
                         </ul>
                     </div>
                 </section>
-                <!-- Friends Blog -->
-                {% if site.friends %}
+                <!-- add search box -->
                 <hr>
                 <form action="/search" method="get">
                 <label for="search-box"></label>
                 <input type="text" id="search-box" name="query" placeholder="Search Articles">
                 </form>
                 <hr/>
+                <!-- Friends Blog -->
+                {% if site.friends %}
                 <h5>友情链接</h5>
                 <ul class="list-inline">
                     {% for friend in site.friends %}
