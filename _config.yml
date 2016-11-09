@@ -13,7 +13,6 @@ kramdown:
 gems:
   - jekyll-paginate
   - jekyll-sitemap
-  - jemoji
   - jekyll-feed
 
 # 国内用多说

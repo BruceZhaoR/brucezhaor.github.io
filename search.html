@@ -28,7 +28,7 @@ title: Search Results
     
 <form action="/search" method="get">
   <label for="search-box"></label>
-  <input type="text" id="search-box" name="query" placeholder="Search Articles">
+  <input type="text" id="search-box" name="query" placeholder="Only Support English">
 </form>
 
 <ul id="search-results"></ul>
@@ -40,7 +40,7 @@ title: Search Results
         "title": "{{ post.title | xml_escape }}",
         "author": "{{ post.author | xml_escape }}",
         "categories": "{{ post.categories}}",
-        "content": {{ post.content | strip_html | strip_newlines | truncate:20 | jsonify }},
+        "content": {{ post.content | strip_html | strip_new_lines | smartify | truncate: 200 | jsonify }},
         "url": "{{ post.url | xml_escape }}"
       }
       {% unless forloop.last %},{% endunless %}

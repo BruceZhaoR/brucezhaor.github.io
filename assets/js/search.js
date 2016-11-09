@@ -1,14 +1,25 @@
-(function() {
-  function displaySearchResults(results, store) {
+(function () {
+  function displaySearchResults(results, store, searchTerm) {
     var searchResults = document.getElementById('search-results');
 
     if (results.length) { // Are there any results?
       var appendString = '';
-
+      var patt = new RegExp(searchTerm, 'ig');
       for (var i = 0; i < results.length; i++) {  // Iterate over the results
         var item = store[results[i].ref];
-        appendString += '<li><a href="' + item.url + '"><h3>' + item.title + '</h3></a>';
-        appendString += '<p>' + item.content.substring(0, 150) + '...</p></li>';
+        //var matched = patt.exec( item.content);
+
+        appendString += '<li><a href="' + item.url + '"><b>' + item.title + '</b></a>';
+        while ((matched = patt.exec(item.content)) !== null) {
+          appendString += '<p><small>' + '... ' +
+            item.content.substring(matched.index - 30, matched.index) + '<b>' +
+            item.content.substring(matched.index, matched.index + matched[0].length) +
+            '</b>' +
+            item.content.substring(matched.index + matched[0].length, matched.index + matched[0].length + 30) +
+            '...</small></p>'
+        }
+
+        appendString += '</li>';
       }
 
       searchResults.innerHTML = appendString;
@@ -55,7 +66,7 @@
       });
 
       var results = idx.search(searchTerm); // Get lunr to perform a search
-      displaySearchResults(results, window.store); // We'll write this in the next section
+      displaySearchResults(results, window.store, searchTerm);
     }
   }
 })();
