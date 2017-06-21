@@ -109,30 +109,6 @@ layout: default
 					{% endunless %}  
 			
 					<hr>
-			
-			{% if site.duoshuo_share && site.duoshuo_username %}
-                <!-- 多说 Share start -->
-				<div class="ds-share"
-                    style="text-align: right"
-                    data-thread-key="{{page.id}}"
-                    data-title="{{page.title}}"
-                    data-url="{{site.url}}{{site.BASE_PATH}}{{page.url}}"
-                    data-images="{{site.url}}{{site.BASE_PATH}}{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}"
-                    data-content="| {{ page.description }} | {{ site.SEOTitle }}." >
-                    <div class="ds-share-inline">
-                      <ul  class="ds-share-icons-16">
-                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
-                        <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-                        <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
-                        <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
-                      </ul>
-                      <div class="ds-share-icons-more">
-                      </div>
-                    </div>
-                <hr>
-                </div>
-                <!-- 多说 Share end-->
-                {% endif %}
 
                 <ul class="pager">
                     {% if page.previous %}
@@ -152,16 +128,23 @@ layout: default
 
                 {% if site.duoshuo_username %}
                 <!-- 多说评论框 start -->
-                <div class="comment">
+		<div id="SOHUCS" sid="{{page.id}}" ></div>
+			
+		<a href="#SOHUCS" id="changyan_count_unit"></a>//评论数
+		<a href="#SOHUCS" id="changyan_parti_unit"></a>//参与数
+		<script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js">
+		</script>
+		<!-- 注释多说评论
+		<div class="comment">
                     <div class="ds-thread"
                         data-thread-key="{{page.id}}"
                         data-title="{{page.title}}"
                         data-url="{{site.url}}{{site.BASE_PATH}}{{page.url}}" >
                     </div>
-					<!-- 多说热评文章 end -->
-					<div class="ds-top-threads" data-range="monthly" data-num-items="5"></div>
+
                 </div>
-                <!-- 多说评论框 end -->
+	        --->
+                <!-- 多说评论框 end -->
                 {% endif %}
 				
                 {% if site.disqus %}
@@ -196,22 +179,15 @@ layout: default
 </article>
 
 {% if site.duoshuo_username %}
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-
-    var _user = '{{site.duoshuo_username}}';
-    // duoshuo comment query.
-    var duoshuoQuery = {short_name: _user };
-    (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0]
-         || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-</script>
-<!-- 多说公共JS代码 end -->
+<!-- 畅言JS代码start-->
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cyt4EmGx1'; 
+var conf = 'prod_95359b2bdca543237b07790b1e9bc9df'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+<!-- 畅言公共JS代码 end -->
 {% endif %}
 
 {% if site.disqus %}
