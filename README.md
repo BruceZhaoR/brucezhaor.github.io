@@ -16,6 +16,10 @@ article a:hover {
 article a:visited {
   color: #ccc;
 }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "PingFang SC","Microsoft YaHei","Microsoft JhengHei","Source Han Sans SC","Noto Sans CJK SC","Source Han Sans CN","Noto Sans SC","Source Han Sans TC","Noto Sans CJK TC","WenQuanYi Micro Hei", SimSun, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
 ```
 2. 站内搜索功能
 
@@ -30,3 +34,10 @@ article a:visited {
 3. 代码高亮
 
 - highlight.js + nord css https://github.com/arcticicestudio/nord-highlightjs 
+
+
+4. 评论系统
+
+- gitment  https://github.com/imsun/gitment
+- http://mazhuang.org/about/ 
+
