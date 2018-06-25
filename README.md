@@ -1,8 +1,8 @@
-## 重新用hugo构建博客准备工作
+## 閲嶆柊鐢╤ugo鏋勫缓鍗氬鍑嗗宸ヤ綔
 
-### 页面布局
+### 椤甸潰甯冨眬
 
-1. page 链接
+1. page 閾炬帴
 
 ```css
 a {
@@ -17,26 +17,31 @@ article a:visited {
   color: #ccc;
 }
 
+::selection {
+    background: #0ac478;
+    color: white;
+    }
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "PingFang SC","Microsoft YaHei","Microsoft JhengHei","Source Han Sans SC","Noto Sans CJK SC","Source Han Sans CN","Noto Sans SC","Source Han Sans TC","Noto Sans CJK TC","WenQuanYi Micro Hei", SimSun, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 ```
-2. 站内搜索功能
+2. 绔欏唴鎼滅储鍔熻兘
 
-- RStudio的keras用的是`swiftype`
-- cosx.org用的是Algolia instantsearch.js
-- lunr.js 之前用过，中文：http://linfuyan.com/add-chinese-support-to-lunrjs 
+- RStudio鐨刱eras鐢ㄧ殑鏄痐swiftype`
+- cosx.org鐢ㄧ殑鏄疉lgolia instantsearch.js
+- lunr.js 涔嬪墠鐢ㄨ繃锛屼腑鏂囷細http://linfuyan.com/add-chinese-support-to-lunrjs 
 - hugo search: https://github.com/aerobatic/hugo-search-demo 
 - hugo-algolia https://github.com/10Dimensional/hugo-algolia 
 - hugo + lunr https://github.com/goblindegook/hugo-lunr-index-cli 
 - hugo + Bleve https://github.com/tischda/hugo-search
 
-3. 代码高亮
+3. 浠ｇ爜楂樹寒
 
 - highlight.js + nord css https://github.com/arcticicestudio/nord-highlightjs 
 
 
-4. 评论系统
+4. 璇勮绯荤粺
 
 - gitment  https://github.com/imsun/gitment
 - http://mazhuang.org/about/ 
