@@ -5,7 +5,7 @@ categories : [R]
 tags : [ggplot2]
 date:       2016-05-31 
 author:    "Bruce Zhao"
-header-img: "https://cdn.rawgit.com/BruceZhaoR/brucezhaor.github.io/master/img/post/ggplot-basic.jpg"
+header-img: "https://cdn.jsdelivr.net/gh/BruceZhaoR/brucezhaor.github.io@master/img/post/ggplot-basic.jpg"
 description: "使用ggplot2绘制常见基本图形，附有代码与调整参数。"
 ---
 
