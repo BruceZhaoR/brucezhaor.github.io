@@ -1,0 +1,14 @@
+  <footer class="small">
+  {{ partial "foot_custom.html" . }}
+  {{ if .Site.Params.footer }}
+  {{ if not $.IsHome }}
+  <hr/>
+  {{ end }}
+  <p class="nav-bottom">
+    <span>{{ replace .Site.Params.footer "{Year}" now.Year | markdownify }}</span>
+    <span class="menu-bottom">{{ partial "menu_extra.html" . }}</span>
+  </p>
+  {{ end }}
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+
+{{ if .IsPage }}
+{{ with or (or .Params.author (index (or .Site.Params.author dict) .Section)) "" }}
+<span class="single-author">Posted by {{ . }}</span>
+{{ end }}
+{{ $date := "" }}
+{{ if .Params.date }}
+{{ $date = .Date.Format "January 2, 2006" }}
+{{ else }}
+{{ with .Lastmod }}
+{{ $date = .Format "January 2, 2006" }}
+{{ end }}
+{{ end }}
+{{ with $date }}
+<span class="single-date">on {{ . }}</span>
+{{ end }}
+{{ end }}
+
+<hr>

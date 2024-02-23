@@ -1,0 +1,108 @@
+baseurl: "/"
+languageCode: "zh-CN"
+title: "BZR | BruceZhao's Blog"
+theme: "hugo-paged"
+ignoreFiles: ["\\.Rmd$", "\\.Rmarkdown$", "_cache$"]
+hasCJKLanguage: true
+enableEmoji: true
+footnotereturnlinkcontents: "↩"
+enableRobotsTXT: true
+
+outputs:
+  home: [html, rss, json]
+
+## 文章链接设置
+## slug: 文章开头可以自己设定，也可以使用默认
+# permalinks:
+#   cn: "/:sections/:year/:month/:slug/"
+#   en: "/:sections/:year/:month/:slug/"
+
+
+# 分页，默认10篇文章
+paginate: 10
+
+
+# 分类页面设置
+taxonomies:
+  category: categories  # layouts/categories/list.html
+  tag: tags
+
+disable_math: true # 默认不加载数学公式相关js
+
+params:
+  description: "Personal website of BruceZhaoR; BZR的个人网站"
+  footer: "&copy; 2015 - {Year} by [Bruce Zhao](/) made with "
+  twitterImage: "/images/favicon.ico"
+  reading_speed: 150
+  logo:
+    img: "logo.png"
+    url: "/"
+    alt: "BruceZhao's Blog"
+
+
+
+markup:
+  highlight:
+    codeFences: false
+  goldmark:
+    renderer:
+      unsafe: true
+
+
+
+menu:
+  main:
+    - name: "首页"
+      url: "/"
+      weight: 1
+    - name: "文章"
+      url: "/cn/"
+      weight: 2
+    - name: "查找"
+      url: "/search/"
+      weight: 3
+    - name: "关于"
+      url: "/about/"
+      weight: 4
+    - name: "EN"
+      url: "/en/"
+      weight: 5
+  cn:
+    - name: "首页"
+      url: "/"
+      weight: 1
+    - name: "文章"
+      url: "/cn/"
+      weight: 2
+    - name: "查找"
+      url: "/search/"
+      weight: 3
+    - name: "标签"
+      url: "/tags/"
+      weight: 4
+    - name: "分类"
+      url: "/categories/"
+      weight: 5
+    - name: "关于"
+      url: "/about/"
+      weight: 6
+    - name: "EN"
+      url: "/en/"
+      weight: 7
+  en:
+    - name: "Home"
+      url: "/"
+      weight: 1
+    - name: "Blog"
+      url: "/en/"
+      weight: 2
+    - name: "Search"
+      url: "/search/"
+      weight: 3
+    - name: "About"
+      url: "/en/about/"
+      weight: 4
+    - name: "中文"
+      url: "/cn/"
+      weight: 5
+

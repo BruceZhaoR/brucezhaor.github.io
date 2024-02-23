@@ -1,0 +1,85 @@
+<!-- 导航栏固定脚本 -->
+<script>
+
+    window.addEventListener('scroll', function () {
+        var navTop = document.querySelector('.nav-top');
+        var logoImg = document.querySelector('.logo img');
+        var scrollValue = window.scrollY;
+
+        if (scrollValue > 0) {
+            // 向下滑动后，添加sticky属性
+            navTop.style.position = 'sticky';
+            navTop.style.top = '0';
+            navTop.style.backgroundColor = 'white';
+            navTop.style.zIndex = '100';
+
+        } else {
+            // 滑动到顶部时，移除sticky属性
+            // 移除特定的CSS属性
+            navTop.style.removeProperty('position');
+            navTop.style.removeProperty('top');
+            navTop.style.removeProperty('backgroundColor');
+            navTop.style.removeProperty('zIndex')
+        }
+
+        // 检查导航栏是否已经固定
+        var isHeaderSticky = window.getComputedStyle(navTop).position === 'sticky';
+        if (isHeaderSticky && scrollValue > 0) {
+            // 如果导航栏已固定，隐藏图表
+            // logoImg.classList.add('hidden');
+            logoImg.style.display = "none"
+        } else {
+            // 如果导航栏未固定，显示图表
+            // logoImg.classList.remove('hidden');
+            logoImg.style.removeProperty('display')
+        }
+
+        // back to top button display
+        if (window.pageYOffset > 250) {
+            document.getElementById('back-top').style.display = 'block';
+            document.getElementById('back-top').style.opacity = 1;
+        } else {
+            document.getElementById('back-top').style.display = 'none';
+            document.getElementById('back-top').style.opacity = 0;
+        }
+    });
+    // back to top scroll
+    document.getElementById('back-top').addEventListener('click', function () {
+        window.scrollTo({
+            top: 100,
+            behavior: 'smooth'
+        });
+    });
+
+</script>
+
+<!-- 通过左右方向键切换文章 -->
+<script>
+    (e => { const r = e.querySelector(".nav-prev > a"), t = e.querySelector(".nav-next > a"); e.addEventListener("keyup", (function (e) { if ("BODY" != e.target.nodeName.toUpperCase()) return; let o; "ArrowLeft" === e.key ? e.altKey ? history.back() : r && (o = r.href) : "ArrowRight" == e.key && (e.altKey ? history.forward() : t && (o = t.href)), o && (window.location = o) })); const o = e.querySelectorAll(".unlist"); if (0 === o.length) return; if (null !== sessionStorage.getItem("hide-notes")) return o.forEach((e => e.classList.remove("unlist"))); r && t && (window.location = e.referrer === t.href ? r.href : t.href) })(document);
+</script>
+
+<!-- <script>
+    var currentPageNumber = 1;
+    // 定义一个函数来为page-num元素分配编号
+    function assignPageNumbers() {
+        // 获取所有带有page-num类的元素
+        var pageNumElements = document.querySelectorAll('.page-num');
+        // 遍历这些元素
+        pageNumElements.forEach(function (element) {
+            // 为元素分配当前编号
+            element.textContent = currentPageNumber;
+            // 增加当前编号
+            currentPageNumber++;
+        });
+    }
+    
+    // 当页面加载时，调用函数来分配编号
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // 从localStorage读取当前编号
+        currentPageNumber = parseInt(localStorage.getItem('currentPageNumber')) || 1;
+        // 分配编号
+        assignPageNumbers();
+        // 将当前编号保存到localStorage
+        localStorage.setItem('currentPageNumber', currentPageNumber);
+    });
+</script> -->

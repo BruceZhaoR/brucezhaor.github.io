@@ -1,0 +1,2 @@
+{{ $toc := partial "toc.html" . }}
+{{ replace $toc `<a href="#` (print "<a href=\"" .RelPermalink "#") | replaceRE "(?s)<nav ?.*?>|</nav>" "" | replaceRE "^\\s*<ul>" `<ul class="toc-list">` | safeHTML }}

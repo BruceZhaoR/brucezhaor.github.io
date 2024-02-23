@@ -1,0 +1,61 @@
+/* 字体方案 */
+/*参考链接： https://zhuanlan.zhihu.com/p/313284552 */
+
+@font-face {
+  font-family: 'source han serif cn';
+  src: local('Source Han Serif CN'), local('Source Han Serif SC'), local('Source Han Serif'), local('Noto Serif CJK SC'), url(https://cdn.jsdelivr.net/gh/yihui/cron/fonts/SourceHanSerifCN-Regular-yihui.woff2) format('woff2'),
+    url('../fonts/SourceHanSerifCN-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono Regular'), url(https://cdn.jsdelivr.net/npm/jetbrains-mono/fonts/webfonts/JetBrainsMono-Regular.woff2) format('woff2'),
+    url('../fonts/JetBrainsMono-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url('../fonts/open-sans-400.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url('../fonts/open-sans-700.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../fonts/fontawesome-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", 'source han serif cn', "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Source Han Sans SC", "Noto Sans", "WenQuanYi Micro Hei", STHeiti, SimSun, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1.1rem;
+}
+
+code {
+  font-family: "JetBrains Mono", "Lucida Console", Monaco, Consolas, 'Source Code Pro', monospace, 'source han serif cn', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+.menu,
+.meta-line,
+.pagination-bar,
+footer {
+  font-family: 'Open Sans', "Helvetica Neue", "Segoe UI", Optima, Candara, Arial, 'source han serif cn', sans-serif;
+}
+
+/* 发表日期采用的字体 */
+span.single-author,span.single-date {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.1rem;
+  font-style: italic;
+}
+

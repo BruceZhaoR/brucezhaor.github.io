@@ -1,0 +1,443 @@
+:root {
+  --text-width: 680px;
+}
+
+.main {
+  line-height: 1.75;
+}
+
+.main h2 {
+  line-height: 1.25
+}
+
+
+/* 修改archive页面 margin modified by Bzr 2024-02-18 */
+
+/* .archive>.toc-line {
+  margin-top: 0.8em;
+  margin-bottom: 0.1em;
+} */
+
+h2.toc-line {
+  font-size: 1.5em;
+}
+
+.archive h2.toc-line>a {
+  font-style: normal;
+}
+
+.single h1.title {
+  font-style: normal;
+}
+
+.single h2.subtitle {
+  font-style: italic
+}
+
+.archive>.meta-line {
+  margin-top: 0.1em;
+  margin-bottom: 0.2em;
+}
+
+ul {
+  line-height: 1.5;
+
+}
+
+.archive blockquote {
+  margin-top: 0.4em;
+  font-size: 0.85em;
+}
+
+/* 分类标签靠右布局 ----------------*/
+.single span.term {
+  margin-left: auto;
+}
+
+/* logo图表大小调整 ----------------*/
+.logo img {
+  max-height: 6rem;
+  position: absolute;
+  top: 2em;
+}
+
+
+/*  Back Top Button  ----------------*/
+#back-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: none;
+  /* 初始不展示*/
+}
+
+#back-top a {
+  background: rgba(0, 0, 0, 0.45);
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  transition: 1s;
+  width: 40px;
+  height: 40px;
+  display: block;
+  font-size: 36px;
+  color: #fff;
+  text-align: center;
+  border-radius: 3px 3px;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+#back-top a:hover {
+  background-color: #2b79c3;
+}
+
+#back-top i {
+  font-size: 24px;
+  line-height: 40px;
+  vertical-align: top;
+}
+
+/* 向上图标透明白色 ----------------*/
+/* .fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale
+} */
+
+.fa-chevron-up:before {
+  color: rgba(252, 252, 252, 0.81);
+  /* content: "\f077" */
+}
+
+/*  Back Top Button  End */
+
+
+/* keyboard样式 ----------------*/
+kbd {
+  border: 2px solid #ccc;
+  box-shadow: 2px 2px #999;
+  display: inline-block;
+  padding: 0 5px;
+  border-radius: .25em;
+  min-width: 1.5em;
+  text-align: center;
+  margin-right: .15em
+}
+
+kbd:hover {
+  position: relative;
+  top: 2px;
+  left: 2px
+}
+
+
+/* 借鉴yihui的样式 ----------------*/
+
+.en .main>p:first-of-type::first-line {
+  font-variant: small-caps;
+  letter-spacing: .05em;
+  font-size: 1.1em
+}
+
+.en .main>p:first-of-type::first-letter {
+  font-size: 3em;
+  padding: .1em .1em 0 0;
+  float: left;
+  line-height: 1em;
+  font-family: cursive
+}
+
+/*引用设置，鼠标悬浮显示竖线----------------------*/
+blockquote {
+  margin: 1em 0;
+  padding: 0 2em;
+  font-style: italic;
+}
+
+.single blockquote {
+  background: 0 0;
+  border-left-width: 3px;
+  padding: 0 2em
+}
+
+.single blockquote:not(:hover) {
+  border-left-color: transparent
+}
+
+ol,
+ul {
+  padding: 0 0 0 20px
+}
+
+ol ol {
+  list-style: lower-roman
+}
+
+code[class=fullwidth] {
+  background: 0 0
+}
+
+.comments {
+  margin-top: 1em
+}
+
+
+.archive {
+  max-width: none;
+  width: 100%
+}
+
+
+/*footer 样式 love动画 --------------------------------*/
+/*love animation*/
+.love {
+  display: inline-block;
+  /* position: relative;
+  top: .2em; */
+  font-size: 1em;
+  font-family: 'Open Sans';
+  color: #ff79c6;
+  -webkit-transform: scale(.9);
+  -moz-transform: scale(.9);
+  transform: scale(.9);
+  -webkit-animation: love .5s infinite linear alternate-reverse;
+  -moz-animation: love .5s infinite linear alternate-reverse;
+  animation: love .5s infinite linear alternate-reverse;
+}
+
+@-webkit-keyframes love {
+  to {
+    -webkit-transform: scale(1.1);
+  }
+}
+
+@-moz-keyframes love {
+  to {
+    -moz-transform: scale(1.1);
+  }
+}
+
+@keyframes love {
+  to {
+    transform: scale(1.1);
+  }
+}
+
+/* link color change -------------------------------*/
+a {
+  -webit-transition: color 0.3s ease-out;
+  -moz-transition: color 0.3s ease-out;
+  transition: color 0.3s ease-out;
+
+}
+
+a:hover {
+  /* color: rgb(8, 92, 4); */
+  color: #2b79c3;
+}
+
+
+
+.dots {
+  /* border-bottom: 2px dotted var(--border-color);
+  margin: 0 .5em .5em; */
+  min-width: 2rem;
+  /* flex-grow: 1; */
+}
+
+/* if you don't like code blocks to be full-width, you can reset their width: ----------------*/
+@media (min-width: 768px) {
+  .main>pre {
+    width: 100%;
+    margin-left: auto;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+
+  pre,
+  table {
+    width: auto;
+    max-width: none;
+    margin-left: auto
+  }
+
+  #TableOfContents {
+    columns: 2
+  }
+
+  .nav-next {
+    border-right: 1px solid;
+    padding-right: 0.8em;
+    font-size: 1rem;
+  }
+
+  .nav-prev {
+    border-left: 1px solid;
+    padding-left: 1em;
+    font-size: 1rem;
+  }
+}
+
+@media print {
+
+  del,
+  footer,
+  .nav-top,
+  #TableOfContents,
+  .comments {
+    display: none
+  }
+}
+
+@media only screen and (min-width: 992px) {
+
+  .side-right {
+    float: right;
+    clear: right;
+    background: 0 0;
+    padding: 0 0 1em;
+    width: calc(var(--body-width) - var(--text-width) - 2.5rem * 2 - 2rem);
+    margin-right: calc(var(--text-width) + 2.5rem * 2 - var(--body-width))
+  }
+
+  blockquote .side-right {
+    margin-right: calc(var(--text-width) + 2.5rem * 2 - var(--body-width) - 2rem)
+  }
+}
+
+/* 小屏幕字体缩小 --------------------------------*/
+@media only screen and (max-width: 768px) {
+  .archive>h2.toc-line {
+    font-size: 1.3rem;
+  }
+
+  .archive>div.meta-line {
+    font-size: 0.9rem;
+  }
+
+  .archive blockquote,
+  .toc-list,
+  .toc-list ul {
+    border-left: 2px solid var(--border-color);
+    padding-left: 0.6em;
+    margin-left: 0.3em;
+    margin-right: 1.8em;
+  }
+
+  .nav-next {
+    font-size: 1rem;
+  }
+
+  .nav-prev {
+    font-size: 1rem;
+  }
+
+  #back-top {
+    right: 0
+  }
+}
+
+/* 页面序号问题，待解决 */
+/* .cn .page-num {
+  counter-increment: none;
+}
+
+.cn .page-num::before {
+  content: none;
+} */
+
+.pagination-bar {
+  height: auto;
+  width: 100%;
+  height: 60px;
+  font-size: 1rem;
+  border-top: 1px dashed var(--border-color);
+}
+
+.pagination-bar .pagination {
+  position: relative;
+  height: 60px;
+  line-height: 60px;
+  display: block;
+  list-style: none;
+  padding: 0 10px;
+  width: auto
+}
+
+.pagination-bar .pagination .pagination-next,
+.pagination-bar .pagination .pagination-prev {
+  float: left;
+  margin-right: 10px
+}
+
+.pagination-bar .pagination .pagination-number {
+  float: right;
+  color: #9eabb3
+  
+}
+
+.btn {
+  width: auto;
+  height: auto;
+  background: #fff;
+  border-radius: 3px;
+  padding: 8px 15px;
+  margin: 0;
+  letter-spacing: .01em;
+  /* font-size: 1.6rem; */
+  cursor: pointer
+}
+
+.btn:active,.btn:focus,.btn:hover {
+  text-decoration: none
+}
+
+.btn--disabled,.btn--disabled:hover {
+  color: #bbc4c9!important;
+  border: 1px solid #bbc4c9;
+  cursor: not-allowed;
+  text-decoration: none
+}
+
+.btn--default {
+  color: #9eabb3!important;
+  border: 1px solid #9eabb3
+}
+
+.btn--default:hover {
+  color: #738691!important;
+  border: 1px solid #738691
+}
+
+
+.btn--small {
+  /* font-size: 1.rem; */
+  padding: 8px 15px;
+}
+
+
+/* 特定页面标题设置 */
+/* <style type="text/css">
+h1.title::before {
+  content: "❆❤";
+}
+</style> */
+
+
+/* h1.title::before {
+  content: "✡";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 6em;
+  color: var(--border-color);
+  opacity: .5;
+  position: absolute;
+  inset: -.15em 0;
+  z-index: -1;
+} */
