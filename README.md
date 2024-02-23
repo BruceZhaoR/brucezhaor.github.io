@@ -1,3 +1,6 @@
+![网站构建状态](https://github.com/brucezhaor/brucezhaor.github.io/actions/workflows/hugo.yml/badge.svg?event=push)
+
+
 # Welcome to Brucezhao's Blog
 
 个人网站， 记录各种。。。  我网故我在  :wink:
